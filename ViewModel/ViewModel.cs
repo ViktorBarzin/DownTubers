@@ -9,6 +9,6 @@
 
     public class ViewModel
     {
-        садас
+        int a = 0;
     }
 }
