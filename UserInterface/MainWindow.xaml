@@ -9,8 +9,8 @@
         WindowState="Maximized"
         Title="MainWindow">
     <Grid>
-        <TabControl TabStripPlacement="Top" Margin="5,5,5,5">
-            <TabItem Name="MainTab" 
+        <TabControl TabStripPlacement="Top">
+            <TabItem Name="mainTab" 
                      Header="MAIN">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -18,22 +18,30 @@
                         <RowDefinition/>
                         <RowDefinition/>
                         <RowDefinition/>
-	                    <RowDefinition />
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
                     </Grid.RowDefinitions>
+
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <Grid Grid.RowSpan="3" 
-                          Grid.Column="0">
-                        <Label Background="AntiqueWhite"
-                               Margin="0,50,0,0"></Label>
-                    </Grid>
-                    <Grid Grid.Column="0"
-                          Grid.Row="4">
+                    <Grid Grid.Row="0" Grid.ColumnSpan="5" Grid.Column="3">
                         <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
                             <RowDefinition/>
                             <RowDefinition/>
                             <RowDefinition/>
@@ -42,14 +50,72 @@
                             <ColumnDefinition/>
                             <ColumnDefinition/>
                             <ColumnDefinition/>
-	                        <ColumnDefinition />
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-                        <Grid Grid.ColumnSpan="2">
+                        <Grid Grid.RowSpan="2" Grid.Row="2" Grid.ColumnSpan="6">
+                            <TextBox/>
+                        </Grid>
+                        <Grid Grid.Column="7" Grid.Row="2" Grid.RowSpan="2">
+                            <Button Content="Search"/>
+                        </Grid>
+                    </Grid>
+                    <Grid Grid.Row="0" Grid.RowSpan="2" Grid.Column="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0">
+                            <Button Width="40" 
+                                    Height="40"
+                                    HorizontalAlignment="Left"
+                                    Content=". . ."/>
+                        </Grid>
+                    </Grid>
+                    <Grid Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="6" Grid.RowSpan="6">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0" Grid.ColumnSpan="1">
+                            <Label Background="AntiqueWhite" Margin="0,60,0,0"></Label>
+                        </Grid>
+                    </Grid>
+                    <Grid Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="3">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.ColumnSpan="3">
                             <TextBox TextWrapping="Wrap"></TextBox>
                         </Grid>
-                        <Grid Grid.Row="0"
-                              Grid.Column="3">
-                            <Button></Button>
+                        <Grid Grid.Column="3" >
+                            <Button Content="Send"></Button>
+                        </Grid>
+                    </Grid>
+                    <Grid Grid.Column="0" Grid.ColumnSpan="9" Grid.Row="1" Grid.RowSpan="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="1"
+                              Grid.ColumnSpan="3">
+                            <MediaElement Source="http://hubblesource.stsci.edu/sources/video/clips/details/images/hst_1.mpg" Stretch="UniformToFill" />
                         </Grid>
                     </Grid>
                 </Grid>
