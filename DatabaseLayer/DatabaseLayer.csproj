@@ -52,18 +52,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DownTubersDb.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
       <DependentUpon>DownTubersDb.Context.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="DownTubersDb.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
       <DependentUpon>DownTubersDb.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="DownTubersDb.Designer.cs">
-      <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
       <DependentUpon>DownTubersDb.edmx</DependentUpon>
     </Compile>
     <Compile Include="HistorySet.cs">
@@ -101,13 +101,13 @@
   <ItemGroup>
     <Content Include="DownTubersDb.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DownTubersDb.edmx</DependentUpon>
       <LastGenOutput>DownTubersDb.Context.cs</LastGenOutput>
+      <DependentUpon>DownTubersDb.edmx</DependentUpon>
     </Content>
     <Content Include="DownTubersDb.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DownTubersDb.edmx</DependentUpon>
       <LastGenOutput>DownTubersDb.cs</LastGenOutput>
+      <DependentUpon>DownTubersDb.edmx</DependentUpon>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
