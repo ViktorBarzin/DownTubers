@@ -96,9 +96,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DataBinding\DataBinding.csproj">
-      <Project>{3ea9ce14-4b08-4c72-b41f-bf2702120372}</Project>
-      <Name>DataBinding</Name>
+    <ProjectReference Include="..\Interfaces\Interfaces.csproj">
+      <Project>{b093b24b-71da-420f-b7f2-b63bd23ace2a}</Project>
+      <Name>Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ViewModel\ViewModel.csproj">
+      <Project>{12c8083d-004d-4141-b6be-c1ba9915b2df}</Project>
+      <Name>ViewModel</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

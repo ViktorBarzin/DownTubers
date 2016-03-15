@@ -49,9 +49,9 @@
       <Project>{009cf4fd-f6b0-4639-89a9-5b699afef9d4}</Project>
       <Name>DatabaseLayer</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DataBinding\DataBinding.csproj">
-      <Project>{3ea9ce14-4b08-4c72-b41f-bf2702120372}</Project>
-      <Name>DataBinding</Name>
+    <ProjectReference Include="..\Interfaces\Interfaces.csproj">
+      <Project>{b093b24b-71da-420f-b7f2-b63bd23ace2a}</Project>
+      <Name>Interfaces</Name>
     </ProjectReference>
     <ProjectReference Include="..\Validation\Validation.csproj">
       <Project>{dcffb9fa-137e-4f7a-980b-359a16d61e2c}</Project>
