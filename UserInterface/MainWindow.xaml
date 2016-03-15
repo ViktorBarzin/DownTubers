@@ -9,7 +9,7 @@
         WindowState="Maximized"
         Title="MainWindow">
     <Grid>
-        <TabControl TabStripPlacement="Top" Margin="5,5,5,5">
+        <TabControl TabStripPlacement="Top" Margin="5,5,5,5" SelectionChanged="TabControl_SelectionChanged">
             <TabItem Name="mainTab" 
                      Header="MAIN">
                 <Grid>
