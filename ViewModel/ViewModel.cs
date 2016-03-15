@@ -12,8 +12,7 @@
 
     public class ViewModel
     {
-        private IView View = new DataBinding(); 
-        // Admin Panel logic
+                // Admin Panel logic
 
         public void BtnUserSearchClick(string username)
         {

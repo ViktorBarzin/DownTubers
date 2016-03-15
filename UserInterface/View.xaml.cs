@@ -16,14 +16,11 @@ using System.Windows.Shapes;
 namespace UserInterface
 {
     using System.Collections.Specialized;
-
-    using DataBinding;
     /// <summary>
     /// Interaction logic for View.xaml
     /// </summary>
     public partial class View : Window
     {
-        private readonly DataBinding dataBinding = new DataBinding();
 
         public View()
         {
@@ -32,7 +29,7 @@ namespace UserInterface
 
         private void BtnUserSearch_OnClick(object sender, RoutedEventArgs e)
         {
-           this.dataBinding.BtnUserSearchClick(this.TxtAdminUserSearch.Text);
+           //this.dataBinding.BtnUserSearchClick(this.TxtAdminUserSearch.Text);
         }
     }
 }
