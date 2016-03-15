@@ -1,0 +1,442 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DownTubersModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="HistorySet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="VideoId" Type="int" Nullable="false" />
+          <Property Name="WatchDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PlaylistSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="VideoId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreationDate" Type="datetime" Nullable="false" />
+          <Property Name="LastModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="UserSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="PlaylistId" Type="int" />
+          <Property Name="SubscribersId" Type="int" />
+          <Property Name="Registered" Type="date" />
+          <Property Name="LastLogin" Type="datetime" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="VideoSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="AuthorId" Type="int" Nullable="false" />
+          <Property Name="UploadTime" Type="datetime" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Length" Type="real" Nullable="false" />
+          <Property Name="Views" Type="int" Nullable="false" />
+          <Property Name="Likes" Type="int" />
+        </EntityType>
+        <Association Name="FK_HistorySet_UserSet">
+          <End Role="UserSet" Type="Self.UserSet" Multiplicity="1" />
+          <End Role="HistorySet" Type="Self.HistorySet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HistorySet">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HistorySet_VideoSet">
+          <End Role="VideoSet" Type="Self.VideoSet" Multiplicity="1" />
+          <End Role="HistorySet" Type="Self.HistorySet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VideoSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HistorySet">
+              <PropertyRef Name="VideoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlaylistSet_UserSet">
+          <End Role="UserSet" Type="Self.UserSet" Multiplicity="1" />
+          <End Role="PlaylistSet" Type="Self.PlaylistSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PlaylistSet">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlaylistSet_VideoSet">
+          <End Role="VideoSet" Type="Self.VideoSet" Multiplicity="1" />
+          <End Role="PlaylistSet" Type="Self.PlaylistSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VideoSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PlaylistSet">
+              <PropertyRef Name="VideoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserSet_UserSet">
+          <End Role="UserSet" Type="Self.UserSet" Multiplicity="0..1" />
+          <End Role="UserSet1" Type="Self.UserSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserSet1">
+              <PropertyRef Name="SubscribersId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VideoSet_UserSet">
+          <End Role="UserSet" Type="Self.UserSet" Multiplicity="1" />
+          <End Role="VideoSet" Type="Self.VideoSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VideoSet">
+              <PropertyRef Name="AuthorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DownTubersModelStoreContainer">
+          <EntitySet Name="HistorySet" EntityType="Self.HistorySet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PlaylistSet" EntityType="Self.PlaylistSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserSet" EntityType="Self.UserSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VideoSet" EntityType="Self.VideoSet" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_HistorySet_UserSet" Association="Self.FK_HistorySet_UserSet">
+            <End Role="UserSet" EntitySet="UserSet" />
+            <End Role="HistorySet" EntitySet="HistorySet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HistorySet_VideoSet" Association="Self.FK_HistorySet_VideoSet">
+            <End Role="VideoSet" EntitySet="VideoSet" />
+            <End Role="HistorySet" EntitySet="HistorySet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlaylistSet_UserSet" Association="Self.FK_PlaylistSet_UserSet">
+            <End Role="UserSet" EntitySet="UserSet" />
+            <End Role="PlaylistSet" EntitySet="PlaylistSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlaylistSet_VideoSet" Association="Self.FK_PlaylistSet_VideoSet">
+            <End Role="VideoSet" EntitySet="VideoSet" />
+            <End Role="PlaylistSet" EntitySet="PlaylistSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserSet_UserSet" Association="Self.FK_UserSet_UserSet">
+            <End Role="UserSet" EntitySet="UserSet" />
+            <End Role="UserSet1" EntitySet="UserSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VideoSet_UserSet" Association="Self.FK_VideoSet_UserSet">
+            <End Role="UserSet" EntitySet="UserSet" />
+            <End Role="VideoSet" EntitySet="VideoSet" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DownTubersModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="HistorySet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="VideoId" Type="Int32" Nullable="false" />
+          <Property Name="WatchDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="UserSet" Relationship="Self.FK_HistorySet_UserSet" FromRole="HistorySet" ToRole="UserSet" />
+          <NavigationProperty Name="VideoSet" Relationship="Self.FK_HistorySet_VideoSet" FromRole="HistorySet" ToRole="VideoSet" />
+        </EntityType>
+        <EntityType Name="PlaylistSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="VideoId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="UserSet" Relationship="Self.FK_PlaylistSet_UserSet" FromRole="PlaylistSet" ToRole="UserSet" />
+          <NavigationProperty Name="VideoSet" Relationship="Self.FK_PlaylistSet_VideoSet" FromRole="PlaylistSet" ToRole="VideoSet" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="UserSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PlaylistId" Type="Int32" />
+          <Property Name="SubscribersId" Type="Int32" />
+          <Property Name="Registered" Type="DateTime" Precision="0" />
+          <Property Name="LastLogin" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="HistorySet" Relationship="Self.FK_HistorySet_UserSet" FromRole="UserSet" ToRole="HistorySet" />
+          <NavigationProperty Name="PlaylistSet" Relationship="Self.FK_PlaylistSet_UserSet" FromRole="UserSet" ToRole="PlaylistSet" />
+          <NavigationProperty Name="UserSet1" Relationship="Self.FK_UserSet_UserSet" FromRole="UserSet" ToRole="UserSet1" />
+          <NavigationProperty Name="UserSet2" Relationship="Self.FK_UserSet_UserSet" FromRole="UserSet1" ToRole="UserSet" />
+          <NavigationProperty Name="VideoSet" Relationship="Self.FK_VideoSet_UserSet" FromRole="UserSet" ToRole="VideoSet" />
+        </EntityType>
+        <EntityType Name="VideoSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AuthorId" Type="Int32" Nullable="false" />
+          <Property Name="UploadTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Length" Type="Single" Nullable="false" />
+          <Property Name="Views" Type="Int32" Nullable="false" />
+          <Property Name="Likes" Type="Int32" />
+          <NavigationProperty Name="HistorySet" Relationship="Self.FK_HistorySet_VideoSet" FromRole="VideoSet" ToRole="HistorySet" />
+          <NavigationProperty Name="PlaylistSet" Relationship="Self.FK_PlaylistSet_VideoSet" FromRole="VideoSet" ToRole="PlaylistSet" />
+          <NavigationProperty Name="UserSet" Relationship="Self.FK_VideoSet_UserSet" FromRole="VideoSet" ToRole="UserSet" />
+        </EntityType>
+        <Association Name="FK_HistorySet_UserSet">
+          <End Role="UserSet" Type="Self.UserSet" Multiplicity="1" />
+          <End Role="HistorySet" Type="Self.HistorySet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HistorySet">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HistorySet_VideoSet">
+          <End Role="VideoSet" Type="Self.VideoSet" Multiplicity="1" />
+          <End Role="HistorySet" Type="Self.HistorySet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VideoSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HistorySet">
+              <PropertyRef Name="VideoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlaylistSet_UserSet">
+          <End Role="UserSet" Type="Self.UserSet" Multiplicity="1" />
+          <End Role="PlaylistSet" Type="Self.PlaylistSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PlaylistSet">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlaylistSet_VideoSet">
+          <End Role="VideoSet" Type="Self.VideoSet" Multiplicity="1" />
+          <End Role="PlaylistSet" Type="Self.PlaylistSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VideoSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PlaylistSet">
+              <PropertyRef Name="VideoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserSet_UserSet">
+          <End Role="UserSet" Type="Self.UserSet" Multiplicity="0..1" />
+          <End Role="UserSet1" Type="Self.UserSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserSet1">
+              <PropertyRef Name="SubscribersId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VideoSet_UserSet">
+          <End Role="UserSet" Type="Self.UserSet" Multiplicity="1" />
+          <End Role="VideoSet" Type="Self.VideoSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VideoSet">
+              <PropertyRef Name="AuthorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DownTubersEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="HistorySet" EntityType="Self.HistorySet" />
+          <EntitySet Name="PlaylistSet" EntityType="Self.PlaylistSet" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="UserSet" EntityType="Self.UserSet" />
+          <EntitySet Name="VideoSet" EntityType="Self.VideoSet" />
+          <AssociationSet Name="FK_HistorySet_UserSet" Association="Self.FK_HistorySet_UserSet">
+            <End Role="UserSet" EntitySet="UserSet" />
+            <End Role="HistorySet" EntitySet="HistorySet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HistorySet_VideoSet" Association="Self.FK_HistorySet_VideoSet">
+            <End Role="VideoSet" EntitySet="VideoSet" />
+            <End Role="HistorySet" EntitySet="HistorySet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlaylistSet_UserSet" Association="Self.FK_PlaylistSet_UserSet">
+            <End Role="UserSet" EntitySet="UserSet" />
+            <End Role="PlaylistSet" EntitySet="PlaylistSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlaylistSet_VideoSet" Association="Self.FK_PlaylistSet_VideoSet">
+            <End Role="VideoSet" EntitySet="VideoSet" />
+            <End Role="PlaylistSet" EntitySet="PlaylistSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserSet_UserSet" Association="Self.FK_UserSet_UserSet">
+            <End Role="UserSet" EntitySet="UserSet" />
+            <End Role="UserSet1" EntitySet="UserSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VideoSet_UserSet" Association="Self.FK_VideoSet_UserSet">
+            <End Role="UserSet" EntitySet="UserSet" />
+            <End Role="VideoSet" EntitySet="VideoSet" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DownTubersModelStoreContainer" CdmEntityContainer="DownTubersEntities">
+          <EntitySetMapping Name="HistorySet">
+            <EntityTypeMapping TypeName="DownTubersModel.HistorySet">
+              <MappingFragment StoreEntitySet="HistorySet">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="VideoId" ColumnName="VideoId" />
+                <ScalarProperty Name="WatchDate" ColumnName="WatchDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PlaylistSet">
+            <EntityTypeMapping TypeName="DownTubersModel.PlaylistSet">
+              <MappingFragment StoreEntitySet="PlaylistSet">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="VideoId" ColumnName="VideoId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="DownTubersModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserSet">
+            <EntityTypeMapping TypeName="DownTubersModel.UserSet">
+              <MappingFragment StoreEntitySet="UserSet">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="PlaylistId" ColumnName="PlaylistId" />
+                <ScalarProperty Name="SubscribersId" ColumnName="SubscribersId" />
+                <ScalarProperty Name="Registered" ColumnName="Registered" />
+                <ScalarProperty Name="LastLogin" ColumnName="LastLogin" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VideoSet">
+            <EntityTypeMapping TypeName="DownTubersModel.VideoSet">
+              <MappingFragment StoreEntitySet="VideoSet">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
+                <ScalarProperty Name="UploadTime" ColumnName="UploadTime" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Length" ColumnName="Length" />
+                <ScalarProperty Name="Views" ColumnName="Views" />
+                <ScalarProperty Name="Likes" ColumnName="Likes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
