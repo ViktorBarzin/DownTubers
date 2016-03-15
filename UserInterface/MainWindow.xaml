@@ -9,7 +9,7 @@
         WindowState="Maximized"
         Title="MainWindow">
     <Grid>
-        <TabControl TabStripPlacement="Top" Margin="5,5,5,5" SelectionChanged="TabControl_SelectionChanged">
+        <TabControl TabStripPlacement="Top" Margin="5,5,5,5">
             <TabItem Name="mainTab" 
                      Header="MAIN">
                 <Grid>
@@ -26,24 +26,6 @@
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <Grid Grid.Column="5" Grid.Row="0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                        </Grid.RowDefinitions>
-                        
-                        <Image Grid.Column="4" 
-                               Grid.Row="0"
-                               Source="C:\Users\Dimitar\Desktop\ubuntu-logo32.png"
-                               HorizontalAlignment="Right"/>
-                    </Grid>
                     <Grid Grid.RowSpan="3" Grid.Column="0">
                         <Label Background="AntiqueWhite" Margin="0,50,0,0"></Label>
                     </Grid>
@@ -83,23 +65,137 @@
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <Grid Grid.Column="5" Grid.Row="0">
+                </Grid>
+            </TabItem>
+            <TabItem Name="Admin"
+                     Header="ADMINISTRATOR">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="2*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.ColumnSpan="3" Grid.Row="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
                             <ColumnDefinition/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" 
+                               Grid.Row="0" 
+                               HorizontalAlignment="Center" 
+                               VerticalAlignment="Center"
+                               FontSize="30">
+                            User Search
+                        </Label>
+                        <Label Grid.Column="1"
+                               Grid.Row="0"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               FontSize="30">
+                            Video Search
+                        </Label>
+                        <TextBox Grid.Column="0" 
+                                 Grid.Row="1"
+                                 BorderThickness="1"
+                                 Height="25"
+                                 Width="220"
+                                 VerticalAlignment="Top"/>
+                        <TextBox Grid.Column="1"
+                                 Grid.Row="1"
+                                 BorderThickness="1"
+                                 Height="25"
+                                 Width="220"
+                                 VerticalAlignment="Top"/>
+                        <Button Grid.Column="0"
+                                Grid.Row="1"
+                                Width="120"
+                                Height="25"
+                                VerticalAlignment="Stretch"
+                                HorizontalAlignment="Center">
+                            Search
+                        </Button>
+                        <Button Grid.Column="1"
+                                Grid.Row="1"
+                                Width="120"
+                                Height="25"
+                                VerticalAlignment="Stretch"
+                                HorizontalAlignment="Center">
+                            Search
+                        </Button>
+                    </Grid>
+                    <Grid Grid.Column="0"
+                          Grid.Row="1">
                         <Grid.RowDefinitions>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
+                            <RowDefinition Height="9*"/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
-
-                        <Image Grid.Column="4" 
-                               Grid.Row="0"
-                               Source="C:\Users\Dimitar\Desktop\ubuntu-logo32.png"
-                               HorizontalAlignment="Right"/>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="5*"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <ListView Grid.Column="1"
+                                  Grid.Row="0">
+                        </ListView>
+                    </Grid>
+                    <Grid Grid.Column="1"
+                          Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="9*"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="5*"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <ListView Grid.Column="1"
+                                  Grid.Row="0">
+                        </ListView>
+                    </Grid>
+                    <Grid Grid.Column="2"
+                          Grid.RowSpan="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition Height="15*"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="9*"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <DataGrid Grid.Column="1"
+                                  Grid.Row="1">
+                            <DataGrid.Background>
+                                <SolidColorBrush 
+                                    Color="AliceBlue"
+                                    Opacity="0.3"/>
+                            </DataGrid.Background>
+                        </DataGrid>
+                        <Button Grid.Column="1"
+                                Grid.Row="3"
+                                HorizontalAlignment="Center"
+                                Width="60"
+                                Height="25">
+                            Cancel
+                        </Button>
+                        <Button Grid.Column="1"
+                                Grid.Row="3"
+                                HorizontalAlignment="Right"
+                                Width="60"
+                                Height="25">
+                            Save
+                        </Button>
                     </Grid>
                 </Grid>
             </TabItem>
