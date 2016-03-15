@@ -15,19 +15,24 @@ using System.Windows.Shapes;
 
 namespace UserInterface
 {
+    using System.Collections.Specialized;
+
+    using DataBinding;
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for View.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class View : Window
     {
-        public MainWindow()
+        private readonly DataBinding dataBinding = new DataBinding();
+
+        public View()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
 
         private void BtnUserSearch_OnClick(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+           this.dataBinding.BtnUserSearchClick(this.TxtAdminUserSearch.Text);
         }
     }
 }

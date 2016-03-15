@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViewModel", "ViewModel\View
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseLayer", "DatabaseLayer\DatabaseLayer.csproj", "{009CF4FD-F6B0-4639-89A9-5B699AFEF9D4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBinding", "DataBinding\DataBinding.csproj", "{3EA9CE14-4B08-4C72-B41F-BF2702120372}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Validation", "Validation\Validation.csproj", "{DCFFB9FA-137E-4F7A-980B-359A16D61E2C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{009CF4FD-F6B0-4639-89A9-5B699AFEF9D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{009CF4FD-F6B0-4639-89A9-5B699AFEF9D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{009CF4FD-F6B0-4639-89A9-5B699AFEF9D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3EA9CE14-4B08-4C72-B41F-BF2702120372}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3EA9CE14-4B08-4C72-B41F-BF2702120372}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3EA9CE14-4B08-4C72-B41F-BF2702120372}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3EA9CE14-4B08-4C72-B41F-BF2702120372}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DCFFB9FA-137E-4F7A-980B-359A16D61E2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCFFB9FA-137E-4F7A-980B-359A16D61E2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCFFB9FA-137E-4F7A-980B-359A16D61E2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCFFB9FA-137E-4F7A-980B-359A16D61E2C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

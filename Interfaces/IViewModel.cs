@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataBinding
+namespace Interfaces
 {
-    public class Class1
+    interface IViewModel
     {
     }
 }

@@ -55,8 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="View.cs" />
-    <Page Include="MainWindow.xaml">
+    <Page Include="View.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -64,8 +63,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
+    <Compile Include="View.xaml.cs">
+      <DependentUpon>View.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -97,9 +96,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ViewModel\ViewModel.csproj">
-      <Project>{12c8083d-004d-4141-b6be-c1ba9915b2df}</Project>
-      <Name>ViewModel</Name>
+    <ProjectReference Include="..\DataBinding\DataBinding.csproj">
+      <Project>{3ea9ce14-4b08-4c72-b41f-bf2702120372}</Project>
+      <Name>DataBinding</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
