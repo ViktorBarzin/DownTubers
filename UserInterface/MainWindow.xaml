@@ -10,7 +10,7 @@
         Title="MainWindow">
     <Grid>
         <TabControl TabStripPlacement="Top" Margin="5,5,5,5">
-            <TabItem Name="mainTab" 
+            <TabItem Name="MainTab" 
                      Header="MAIN">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -18,6 +18,7 @@
                         <RowDefinition/>
                         <RowDefinition/>
                         <RowDefinition/>
+	                    <RowDefinition />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
@@ -25,10 +26,13 @@
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <Grid Grid.RowSpan="3" Grid.Column="0">
-                        <Label Background="AntiqueWhite" Margin="0,50,0,0"></Label>
+                    <Grid Grid.RowSpan="3" 
+                          Grid.Column="0">
+                        <Label Background="AntiqueWhite"
+                               Margin="0,50,0,0"></Label>
                     </Grid>
-                    <Grid Grid.Column="0" Grid.Row="4">
+                    <Grid Grid.Column="0"
+                          Grid.Row="4">
                         <Grid.RowDefinitions>
                             <RowDefinition/>
                             <RowDefinition/>
@@ -38,17 +42,19 @@
                             <ColumnDefinition/>
                             <ColumnDefinition/>
                             <ColumnDefinition/>
+	                        <ColumnDefinition />
                         </Grid.ColumnDefinitions>
                         <Grid Grid.ColumnSpan="2">
                             <TextBox TextWrapping="Wrap"></TextBox>
                         </Grid>
-                        <Grid Grid.Column="3">
+                        <Grid Grid.Row="0"
+                              Grid.Column="3">
                             <Button></Button>
                         </Grid>
                     </Grid>
                 </Grid>
             </TabItem>
-            <TabItem Name="myProfile" 
+            <TabItem Name="Profile" 
                      Header="MY PROFILE">
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -63,11 +69,11 @@
                             <RowDefinition/>
                         </Grid.RowDefinitions>
                         <Label Grid.Row="0"
-                               x:Name="lblDescription"
+                               x:Name="LblDescription"
                                FontSize="20"
                                BorderThickness="2"/>
                         <ListView Grid.Row="1"
-                                  x:Name="lsPlayLists">
+                                  x:Name="LsPlayLists">
                             <ListView.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <StackPanel Orientation="Horizontal"/>
@@ -75,7 +81,7 @@
                             </ListView.ItemsPanel>
                         </ListView>
                         <ListView Grid.Row="2"
-                                  x:Name="lsUploadedVideos">
+                                  x:Name="LsUploadedVideos">
                             <ListView.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <StackPanel Orientation="Horizontal"/>
@@ -83,7 +89,7 @@
                             </ListView.ItemsPanel>
                         </ListView>
                         <ListView Grid.Row="3"
-                                  x:Name="lsLikedVideos">
+                                  x:Name="LsLikedVideos">
                             <ListView.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <StackPanel Orientation="Horizontal"/>
@@ -136,7 +142,7 @@
                                  Width="220"
                                  VerticalAlignment="Top"
                                  FontSize="16"
-                                 x:Name="txtUserSearch"/>
+                                 x:Name="TxtUserSearch"/>
                         <TextBox Grid.Column="1"
                                  Grid.Row="1"
                                  BorderThickness="1"
@@ -144,14 +150,14 @@
                                  Width="220"
                                  VerticalAlignment="Top"
                                  FontSize="16"
-                                 x:Name="txtVideoSearch"/>
+                                 x:Name="TxtVideoSearch"/>
                         <Button Grid.Column="0"
                                 Grid.Row="1"
                                 Width="120"
                                 Height="25"
                                 VerticalAlignment="Stretch"
                                 HorizontalAlignment="Center"
-                                x:Name="btnUserSearch">
+                                x:Name="BtnUserSearch">
                             Search
                         </Button>
                         <Button Grid.Column="1"
@@ -160,7 +166,7 @@
                                 Height="25"
                                 VerticalAlignment="Stretch"
                                 HorizontalAlignment="Center"
-                                x:Name="btnVideoSearch">
+                                x:Name="BtnVideoSearch">
                             Search
                         </Button>
                     </Grid>
@@ -177,7 +183,7 @@
                         </Grid.ColumnDefinitions>
                         <ListView Grid.Column="1"
                                   Grid.Row="0"
-                                  x:Name="lsvUsers">
+                                  x:Name="LsvUsers">
                         </ListView>
                     </Grid>
                     <Grid Grid.Column="1"
@@ -193,15 +199,17 @@
                         </Grid.ColumnDefinitions>
                         <ListView Grid.Column="1"
                                   Grid.Row="0"
-                                  x:Name="lsvVideos">
+                                  x:Name="LsvVideos">
                         </ListView>
                     </Grid>
                     <Grid Grid.Column="2"
+                          Grid.Row="0"
                           Grid.RowSpan="2">
                         <Grid.RowDefinitions>
                             <RowDefinition/>
                             <RowDefinition Height="15*"/>
                             <RowDefinition/>
+	                        <RowDefinition />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
@@ -210,7 +218,7 @@
                         </Grid.ColumnDefinitions>
                         <DataGrid Grid.Column="1"
                                   Grid.Row="1"
-                                  x:Name="dtgAdminResult">
+                                  x:Name="DtgAdminResult">
                             <DataGrid.Background>
                                 <SolidColorBrush 
                                     Color="AliceBlue"
@@ -222,7 +230,7 @@
                                 HorizontalAlignment="Center"
                                 Width="60"
                                 Height="25"
-                                x:Name="btnAdminCancel">
+                                x:Name="BtnAdminCancel">
                             Cancel
                         </Button>
                         <Button Grid.Column="1"
@@ -230,7 +238,7 @@
                                 HorizontalAlignment="Right"
                                 Width="60"
                                 Height="25"
-                                x:Name="btnAdminSave">
+                                x:Name="BtnAdminSave">
                             Save
                         </Button>
                     </Grid>
