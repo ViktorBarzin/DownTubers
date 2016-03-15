@@ -261,7 +261,7 @@
           <NavigationProperty Name="PlaylistSet" Relationship="Self.FK_PlaylistSet_UserSet" FromRole="UserSet" ToRole="PlaylistSet" />
           <NavigationProperty Name="VideoSet" Relationship="Self.FK_VideoSet_UserSet" FromRole="UserSet" ToRole="VideoSet" />
           <NavigationProperty Name="UserId" Relationship="Self.Subscribers" FromRole="UserSet" ToRole="UserSet1" />
-          <NavigationProperty Name="SubscriberId" Relationship="Self.Subscribers" FromRole="UserSet1" ToRole="UserSet" />
+          <NavigationProperty Name="Subscriber" Relationship="Self.Subscribers" FromRole="UserSet1" ToRole="UserSet" />
         </EntityType>
         <EntityType Name="VideoSet">
           <Key>

@@ -120,7 +120,7 @@
 
         public ICollection<UserSet> GetAllSubscribers(UserSet user)
         {
-            return this.Context.UserSet.SelectMany(x => x.SubscriberId).ToList();
+            return this.Context.UserSet.SelectMany(x => x.Subscriber).ToList();
         }
 
         // History logic
