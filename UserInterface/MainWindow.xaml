@@ -137,11 +137,11 @@
                             <RowDefinition/>
                         </Grid.RowDefinitions>
                         <Label Grid.Row="0"
-                               x:Name="LblDescription"
+                               x:Name="LblProfileDescription"
                                FontSize="20"
                                BorderThickness="2"/>
                         <ListView Grid.Row="1"
-                                  x:Name="LsPlayLists">
+                                  x:Name="LsvProfilePlayLists">
                             <ListView.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <StackPanel Orientation="Horizontal"/>
@@ -149,7 +149,7 @@
                             </ListView.ItemsPanel>
                         </ListView>
                         <ListView Grid.Row="2"
-                                  x:Name="LsUploadedVideos">
+                                  x:Name="LsvProfileUploadedVideos">
                             <ListView.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <StackPanel Orientation="Horizontal"/>
@@ -157,7 +157,7 @@
                             </ListView.ItemsPanel>
                         </ListView>
                         <ListView Grid.Row="3"
-                                  x:Name="LsLikedVideos">
+                                  x:Name="LsvProfileLikedVideos">
                             <ListView.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <StackPanel Orientation="Horizontal"/>
@@ -210,7 +210,7 @@
                                  Width="220"
                                  VerticalAlignment="Top"
                                  FontSize="16"
-                                 x:Name="TxtUserSearch"/>
+                                 x:Name="TxtAdminUserSearch"/>
                         <TextBox Grid.Column="1"
                                  Grid.Row="1"
                                  BorderThickness="1"
@@ -218,14 +218,15 @@
                                  Width="220"
                                  VerticalAlignment="Top"
                                  FontSize="16"
-                                 x:Name="TxtVideoSearch"/>
+                                 x:Name="TxtAdminVideoSearch"/>
                         <Button Grid.Column="0"
                                 Grid.Row="1"
                                 Width="120"
                                 Height="25"
                                 VerticalAlignment="Stretch"
                                 HorizontalAlignment="Center"
-                                x:Name="BtnUserSearch">
+                                x:Name="BtnAdminUserSearch"
+                                Click="BtnUserSearch_OnClick">
                             Search
                         </Button>
                         <Button Grid.Column="1"
@@ -234,7 +235,7 @@
                                 Height="25"
                                 VerticalAlignment="Stretch"
                                 HorizontalAlignment="Center"
-                                x:Name="BtnVideoSearch">
+                                x:Name="BtnAdminVideoSearch">
                             Search
                         </Button>
                     </Grid>
@@ -251,7 +252,7 @@
                         </Grid.ColumnDefinitions>
                         <ListView Grid.Column="1"
                                   Grid.Row="0"
-                                  x:Name="LsvUsers">
+                                  x:Name="LsvAdminUsers">
                         </ListView>
                     </Grid>
                     <Grid Grid.Column="1"
@@ -267,7 +268,7 @@
                         </Grid.ColumnDefinitions>
                         <ListView Grid.Column="1"
                                   Grid.Row="0"
-                                  x:Name="LsvVideos">
+                                  x:Name="LsvAdminVideos">
                         </ListView>
                     </Grid>
                     <Grid Grid.Column="2"
