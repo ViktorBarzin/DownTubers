@@ -25,6 +25,14 @@
           <Property Name="CreationDate" Type="datetime" Nullable="false" />
           <Property Name="LastModifiedDate" Type="datetime" />
         </EntityType>
+        <EntityType Name="Subscribers">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="SubscriberId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="SubscriberId" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
@@ -46,10 +54,11 @@
           <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
           <Property Name="LastName" Type="nvarchar" MaxLength="50" />
           <Property Name="PlaylistId" Type="int" />
-          <Property Name="SubscribersId" Type="int" />
           <Property Name="Registered" Type="date" />
           <Property Name="LastLogin" Type="datetime" Nullable="false" />
           <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="Priveleges" Type="int" Nullable="false" />
+          <Property Name="PictureLocation" Type="nvarchar" MaxLength="250" />
         </EntityType>
         <EntityType Name="VideoSet">
           <Key>
@@ -63,9 +72,12 @@
           <Property Name="Length" Type="real" Nullable="false" />
           <Property Name="Views" Type="int" Nullable="false" />
           <Property Name="Likes" Type="int" />
+          <Property Name="VideoPath" Type="nvarchar" MaxLength="250" Nullable="false" />
         </EntityType>
         <Association Name="FK_HistorySet_UserSet">
-          <End Role="UserSet" Type="Self.UserSet" Multiplicity="1" />
+          <End Role="UserSet" Type="Self.UserSet" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="HistorySet" Type="Self.HistorySet" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="UserSet">
@@ -77,7 +89,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_HistorySet_VideoSet">
-          <End Role="VideoSet" Type="Self.VideoSet" Multiplicity="1" />
+          <End Role="VideoSet" Type="Self.VideoSet" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="HistorySet" Type="Self.HistorySet" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="VideoSet">
@@ -101,7 +115,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PlaylistSet_VideoSet">
-          <End Role="VideoSet" Type="Self.VideoSet" Multiplicity="1" />
+          <End Role="VideoSet" Type="Self.VideoSet" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="PlaylistSet" Type="Self.PlaylistSet" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="VideoSet">
@@ -112,15 +128,29 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_UserSet_UserSet">
-          <End Role="UserSet" Type="Self.UserSet" Multiplicity="0..1" />
-          <End Role="UserSet1" Type="Self.UserSet" Multiplicity="*" />
+        <Association Name="FK_Subscribers_UserSet">
+          <End Role="UserSet" Type="Self.UserSet" Multiplicity="1" />
+          <End Role="Subscribers" Type="Self.Subscribers" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="UserSet">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="UserSet1">
-              <PropertyRef Name="SubscribersId" />
+            <Dependent Role="Subscribers">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Subscribers_UserSet1">
+          <End Role="UserSet" Type="Self.UserSet" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Subscribers" Type="Self.Subscribers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Subscribers">
+              <PropertyRef Name="SubscriberId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -139,6 +169,7 @@
         <EntityContainer Name="DownTubersModelStoreContainer">
           <EntitySet Name="HistorySet" EntityType="Self.HistorySet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PlaylistSet" EntityType="Self.PlaylistSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Subscribers" EntityType="Self.Subscribers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserSet" EntityType="Self.UserSet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VideoSet" EntityType="Self.VideoSet" Schema="dbo" store:Type="Tables" />
@@ -158,9 +189,13 @@
             <End Role="VideoSet" EntitySet="VideoSet" />
             <End Role="PlaylistSet" EntitySet="PlaylistSet" />
           </AssociationSet>
-          <AssociationSet Name="FK_UserSet_UserSet" Association="Self.FK_UserSet_UserSet">
+          <AssociationSet Name="FK_Subscribers_UserSet" Association="Self.FK_Subscribers_UserSet">
             <End Role="UserSet" EntitySet="UserSet" />
-            <End Role="UserSet1" EntitySet="UserSet" />
+            <End Role="Subscribers" EntitySet="Subscribers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Subscribers_UserSet1" Association="Self.FK_Subscribers_UserSet1">
+            <End Role="UserSet" EntitySet="UserSet" />
+            <End Role="Subscribers" EntitySet="Subscribers" />
           </AssociationSet>
           <AssociationSet Name="FK_VideoSet_UserSet" Association="Self.FK_VideoSet_UserSet">
             <End Role="UserSet" EntitySet="UserSet" />
@@ -217,15 +252,16 @@
           <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="PlaylistId" Type="Int32" />
-          <Property Name="SubscribersId" Type="Int32" />
           <Property Name="Registered" Type="DateTime" Precision="0" />
           <Property Name="LastLogin" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Priveleges" Type="Int32" Nullable="false" />
+          <Property Name="PictureLocation" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="HistorySet" Relationship="Self.FK_HistorySet_UserSet" FromRole="UserSet" ToRole="HistorySet" />
           <NavigationProperty Name="PlaylistSet" Relationship="Self.FK_PlaylistSet_UserSet" FromRole="UserSet" ToRole="PlaylistSet" />
-          <NavigationProperty Name="UserSet1" Relationship="Self.FK_UserSet_UserSet" FromRole="UserSet" ToRole="UserSet1" />
-          <NavigationProperty Name="UserSet2" Relationship="Self.FK_UserSet_UserSet" FromRole="UserSet1" ToRole="UserSet" />
           <NavigationProperty Name="VideoSet" Relationship="Self.FK_VideoSet_UserSet" FromRole="UserSet" ToRole="VideoSet" />
+          <NavigationProperty Name="UserId" Relationship="Self.Subscribers" FromRole="UserSet" ToRole="UserSet1" />
+          <NavigationProperty Name="SubscriberId" Relationship="Self.Subscribers" FromRole="UserSet1" ToRole="UserSet" />
         </EntityType>
         <EntityType Name="VideoSet">
           <Key>
@@ -239,12 +275,15 @@
           <Property Name="Length" Type="Single" Nullable="false" />
           <Property Name="Views" Type="Int32" Nullable="false" />
           <Property Name="Likes" Type="Int32" />
+          <Property Name="VideoPath" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="HistorySet" Relationship="Self.FK_HistorySet_VideoSet" FromRole="VideoSet" ToRole="HistorySet" />
           <NavigationProperty Name="PlaylistSet" Relationship="Self.FK_PlaylistSet_VideoSet" FromRole="VideoSet" ToRole="PlaylistSet" />
           <NavigationProperty Name="UserSet" Relationship="Self.FK_VideoSet_UserSet" FromRole="VideoSet" ToRole="UserSet" />
         </EntityType>
         <Association Name="FK_HistorySet_UserSet">
-          <End Role="UserSet" Type="Self.UserSet" Multiplicity="1" />
+          <End Role="UserSet" Type="Self.UserSet" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="HistorySet" Type="Self.HistorySet" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="UserSet">
@@ -256,7 +295,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_HistorySet_VideoSet">
-          <End Role="VideoSet" Type="Self.VideoSet" Multiplicity="1" />
+          <End Role="VideoSet" Type="Self.VideoSet" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="HistorySet" Type="Self.HistorySet" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="VideoSet">
@@ -280,7 +321,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PlaylistSet_VideoSet">
-          <End Role="VideoSet" Type="Self.VideoSet" Multiplicity="1" />
+          <End Role="VideoSet" Type="Self.VideoSet" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="PlaylistSet" Type="Self.PlaylistSet" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="VideoSet">
@@ -288,18 +331,6 @@
             </Principal>
             <Dependent Role="PlaylistSet">
               <PropertyRef Name="VideoId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_UserSet_UserSet">
-          <End Role="UserSet" Type="Self.UserSet" Multiplicity="0..1" />
-          <End Role="UserSet1" Type="Self.UserSet" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="UserSet">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="UserSet1">
-              <PropertyRef Name="SubscribersId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -314,6 +345,10 @@
               <PropertyRef Name="AuthorId" />
             </Dependent>
           </ReferentialConstraint>
+        </Association>
+        <Association Name="Subscribers">
+          <End Role="UserSet" Type="Self.UserSet" Multiplicity="*" />
+          <End Role="UserSet1" Type="Self.UserSet" Multiplicity="*" />
         </Association>
         <EntityContainer Name="DownTubersEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="HistorySet" EntityType="Self.HistorySet" />
@@ -337,13 +372,13 @@
             <End Role="VideoSet" EntitySet="VideoSet" />
             <End Role="PlaylistSet" EntitySet="PlaylistSet" />
           </AssociationSet>
-          <AssociationSet Name="FK_UserSet_UserSet" Association="Self.FK_UserSet_UserSet">
-            <End Role="UserSet" EntitySet="UserSet" />
-            <End Role="UserSet1" EntitySet="UserSet" />
-          </AssociationSet>
           <AssociationSet Name="FK_VideoSet_UserSet" Association="Self.FK_VideoSet_UserSet">
             <End Role="UserSet" EntitySet="UserSet" />
             <End Role="VideoSet" EntitySet="VideoSet" />
+          </AssociationSet>
+          <AssociationSet Name="Subscribers" Association="Self.Subscribers">
+            <End Role="UserSet" EntitySet="UserSet" />
+            <End Role="UserSet1" EntitySet="UserSet" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -395,10 +430,11 @@
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="PlaylistId" ColumnName="PlaylistId" />
-                <ScalarProperty Name="SubscribersId" ColumnName="SubscribersId" />
                 <ScalarProperty Name="Registered" ColumnName="Registered" />
                 <ScalarProperty Name="LastLogin" ColumnName="LastLogin" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Priveleges" ColumnName="Priveleges" />
+                <ScalarProperty Name="PictureLocation" ColumnName="PictureLocation" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -413,9 +449,18 @@
                 <ScalarProperty Name="Length" ColumnName="Length" />
                 <ScalarProperty Name="Views" ColumnName="Views" />
                 <ScalarProperty Name="Likes" ColumnName="Likes" />
+                <ScalarProperty Name="VideoPath" ColumnName="VideoPath" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <AssociationSetMapping Name="Subscribers" TypeName="DownTubersModel.Subscribers" StoreEntitySet="Subscribers">
+            <EndProperty Name="UserSet">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+            <EndProperty Name="UserSet1">
+              <ScalarProperty Name="Id" ColumnName="SubscriberId" />
+            </EndProperty>
+          </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

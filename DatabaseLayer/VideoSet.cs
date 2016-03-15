@@ -29,6 +29,7 @@ namespace DatabaseLayer
         public float Length { get; set; }
         public int Views { get; set; }
         public Nullable<int> Likes { get; set; }
+        public string VideoPath { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HistorySet> HistorySet { get; set; }

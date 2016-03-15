@@ -19,8 +19,9 @@ namespace DatabaseLayer
         {
             this.HistorySet = new HashSet<HistorySet>();
             this.PlaylistSet = new HashSet<PlaylistSet>();
-            this.UserSet1 = new HashSet<UserSet>();
             this.VideoSet = new HashSet<VideoSet>();
+            this.UserId = new HashSet<UserSet>();
+            this.SubscriberId = new HashSet<UserSet>();
         }
     
         public int Id { get; set; }
@@ -30,19 +31,21 @@ namespace DatabaseLayer
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public Nullable<int> PlaylistId { get; set; }
-        public Nullable<int> SubscribersId { get; set; }
         public Nullable<System.DateTime> Registered { get; set; }
         public System.DateTime LastLogin { get; set; }
         public string Description { get; set; }
+        public int Priveleges { get; set; }
+        public string PictureLocation { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HistorySet> HistorySet { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PlaylistSet> PlaylistSet { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserSet> UserSet1 { get; set; }
-        public virtual UserSet UserSet2 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<VideoSet> VideoSet { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UserSet> UserId { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UserSet> SubscriberId { get; set; }
     }
 }
