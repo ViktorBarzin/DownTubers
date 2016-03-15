@@ -10,7 +10,7 @@
         Title="MainWindow">
     <Grid>
         <TabControl TabStripPlacement="Top">
-            <TabItem Name="mainTab" 
+            <TabItem Name="MainTab" 
                      Header="MAIN">
                 <Grid>
                     <Grid.RowDefinitions>
