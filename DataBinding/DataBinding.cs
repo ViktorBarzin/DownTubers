@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ViewModel
+namespace DataBinding
 {
-    class Validation
+    public class Class1
     {
     }
 }
