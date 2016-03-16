@@ -8,10 +8,15 @@ namespace Interfaces
 {
     public interface IView
     {
-        void UpdateUserSearchResult();
+        // Admin tab updates
+        void UpdateAdminUserSearchResult();
 
-        void UpdateVideoSearchResult();
+        void UpdateAdminVideoSearchResult();
 
-        void UpdateDetailedInfoGrid();
+        void UpdateAdminDetailedInfoGrid();
+
+        // Profile tab updates
+
+
     }
 }
