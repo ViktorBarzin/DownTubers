@@ -166,8 +166,7 @@
                             </Grid.ColumnDefinitions>
                             <Button x:Name="BtnPause" 
                                     Click="BtnPause_OnClick"  
-                                    Grid.Column="0" 
-                                    Grid.Row="2"
+                                    Grid.Column="0"
                                     Content="Pause"/>
                             <Slider x:Name="SdrVolume" 
                                     Grid.Column="1" 
@@ -180,7 +179,10 @@
                             <Slider x:Name="SdrPlayback" 
                                     Grid.Column="2" 
                                     VerticalAlignment="Center" 
-                                    Margin="10"/>
+                                    Margin="10"
+                                    Minimum="0"
+                                    Maximum="1"
+                                    Value="{Binding MediaPlayer.Position, Mode=TwoWay, ElementName=Player}"/>
                             <Button x:Name="BtnFullscreen" 
                                     Grid.Column="3"
                                     Content="[+]"/>
