@@ -23,8 +23,16 @@ namespace Interfaces
 
         // Profile tab updates
 
-        void Logout();
+        void ProfilePictureCLick();
 
+        void PlaylistClick(string playlistName);
+
+        void UploadedVideoClick(string videoName);
+
+        void LikedVideoClick();
+        
         void Edit();
+
+        void Logout();
     }
 }
