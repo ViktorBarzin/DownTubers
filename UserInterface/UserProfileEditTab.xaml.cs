@@ -15,21 +15,21 @@ using System.Windows.Shapes;
 namespace UserInterface
 {
     /// <summary>
-    /// Interaction logic for EdinProfileTab.xaml
+    /// Interaction logic for UserProfileEditTab.xaml
     /// </summary>
-    public partial class EdinProfileTab : Window
+    public partial class UserProfileEditTab : Window
     {
-        public EdinProfileTab()
+        public UserProfileEditTab()
         {
             InitializeComponent();
         }
 
-        private void BtnEditChangeLogo_OnClick(object sender, RoutedEventArgs e)
+        private void BtnEdinPromote_OnClick(object sender, RoutedEventArgs e)
         {
             throw new NotImplementedException();
         }
 
-        private void BtnEdinPromote_OnClick(object sender, RoutedEventArgs e)
+        private void BtnEditChangeLogo_OnClick(object sender, RoutedEventArgs e)
         {
             throw new NotImplementedException();
         }

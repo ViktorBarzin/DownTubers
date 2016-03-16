@@ -75,7 +75,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="EdinProfileTab.xaml">
+    <Page Include="UserProfileEditTab.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -87,8 +87,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="EdinProfileTab.xaml.cs">
-      <DependentUpon>EdinProfileTab.xaml</DependentUpon>
+    <Compile Include="UserProfileEditTab.xaml.cs">
+      <DependentUpon>UserProfileEditTab.xaml</DependentUpon>
     </Compile>
     <Compile Include="View.xaml.cs">
       <DependentUpon>View.xaml</DependentUpon>
