@@ -63,6 +63,20 @@
                                     Content=". . ."/>
                         </Grid>
                     </Grid>
+                    <Grid Grid.Row="0" Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition Height="2*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="15*"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox Grid.Row="1" Grid.Column="0"/>
+                        <Button Grid.Column="1" Grid.Row="1"
+                                Content="Search"/>
+                    </Grid>
                 </Grid>
             </TabItem>
             <TabItem Name="Profile" 
