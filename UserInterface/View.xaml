@@ -45,7 +45,8 @@
                                      x:Name="TxtMainWriteComment"/>
                             <Button Grid.Column="1"
                                     Grid.Row="1"
-                                    Content="Send"
+                                    Content="✍"
+                                    FontSize="30"
                                     x:Name="BtnMainSendComment"/>
                         </Grid>
                     </Grid>
@@ -64,7 +65,8 @@
                         </Grid.ColumnDefinitions>
                         <Button Grid.Column="1" 
                                     Grid.Row="1"
-                                    Content=". . ."
+                                    Content="≡"
+                                    FontSize="20"
                                     x:Name="BtnMainShowHideComments"/>
                     </Grid>
                     <Grid Grid.Row="0" 
@@ -88,7 +90,9 @@
                                  FontSize="30"/>
                         <Button Grid.Column="2" 
                                 Grid.Row="1"
-                                x:Name="BtnMainSearch"/>
+                                x:Name="BtnMainSearch"
+                                Content="🔍"
+                                FontSize="20"/>
                         <Label Grid.Row="3" 
                                Grid.Column="1" 
                                Grid.ColumnSpan="2" 
@@ -165,7 +169,9 @@
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
                             <Button x:Name="BtnPause" 
-                                    Click="BtnPause_OnClick"/>
+                                    Click="BtnPause_OnClick"
+                                    Content="❚❚"
+                                    FontSize="20"/>
                             <Slider x:Name="SdrVolume" 
                                     Grid.Column="1" 
                                     VerticalAlignment="Center" 
@@ -184,9 +190,11 @@
                                     Value="{Binding MediaPlayer.Position, Mode=TwoWay, ElementName=Player}"/>
                             <Button x:Name="BtnFullscreen" 
                                     Grid.Column="3"
-                                    Content="[+]"/>
+                                    Content="❐"
+                                    FontSize="20"/>
                             <Button Grid.Column="5"
-                                    Content="\/"
+                                    Content="⬇"
+                                    FontSize="30"
                                     x:Name="BtnMainDownload"/>
                         </Grid>
                     </Grid>
@@ -207,11 +215,13 @@
                         </Grid.ColumnDefinitions>
                         <Button Grid.Column="4" 
                                 Grid.Row="1"
-                                Content="Log out" 
+                                Content="✖"
+                                FontSize="20"
                                 x:Name="BtnMainLogOut"/>
                         <Button Grid.Column="2"
                                 Grid.Row="1"
-                                Content="Upload"
+                                Content="≜"
+                                FontSize="30"
                                 x:Name="BtnMainUpload" />
                     </Grid>
                 </Grid>

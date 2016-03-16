@@ -48,12 +48,12 @@ namespace UserInterface
 		    if (Player.MediaPlayer.IsPlaying)
 		    {
 			    Player.MediaPlayer.Pause();
-			    BtnPause.Content = "Play";
-		    }
+			    BtnPause.Content = "▶";
+            }
 		    else
 		    {
 				Player.MediaPlayer.Play();
-				BtnPause.Content = "Pause";
+				BtnPause.Content = "❚❚";
 			}
 	    }
 
