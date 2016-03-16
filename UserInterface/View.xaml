@@ -77,8 +77,8 @@
                         <Button Grid.Column="1" Grid.Row="1"
                                 Content="Search"/>
                     </Grid>
-                </Grid>
-            </TabItem>
+    </Grid>
+    </TabItem>
             <TabItem Name="Profile" 
                      Header="MY PROFILE">
                 <Grid>
