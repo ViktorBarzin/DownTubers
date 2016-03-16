@@ -23,14 +23,13 @@ namespace UserInterface
             this.InitializeComponent();
 			Player.MediaPlayer.VlcLibDirectory = new DirectoryInfo(Path.Combine(Directory.GetCurrentDirectory(), "VLCLibs"));
 			Player.MediaPlayer.EndInit();
-			Player.MediaPlayer.Play(new Uri(@"http://37.157.138.76/videos/The.Walking.Dead.S06E02.720p.HDTV.x264-KILLERS.mkv"));
-			var media = Player.MediaPlayer.GetCurrentMedia();
-        }
+			Player.MediaPlayer.Play(new Uri(@"http://37.157.138.76/videos/GOT_Best_Scene.mp4"));
+		}
 
         private void BtnUserSearch_OnClick(object sender, RoutedEventArgs e)
         {
-           //this.dataBinding.BtnUserSearchClick(this.TxtAdminUserSearch.Text);
-        }
+			//this.dataBinding.BtnUserSearchClick(this.TxtAdminUserSearch.Text);
+		}
 
         private void BtnProfileEdit_OnClick(object sender, RoutedEventArgs e)
         {
@@ -38,5 +37,19 @@ namespace UserInterface
             UserProfileEditTab editTab = new UserProfileEditTab(ref newView);
             editTab.ShowDialog();
         }
+
+	    private void BtnPause_OnClick(object sender, RoutedEventArgs e)
+	    {
+		    if (Player.MediaPlayer.IsPlaying)
+		    {
+			    Player.MediaPlayer.Pause();
+			    BtnPause.Content = "Play";
+		    }
+		    else
+		    {
+				Player.MediaPlayer.Play();
+				BtnPause.Content = "Pause";
+			}
+	    }
     }
 }
