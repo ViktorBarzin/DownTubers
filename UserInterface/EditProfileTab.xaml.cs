@@ -28,5 +28,10 @@ namespace UserInterface
         {
             throw new NotImplementedException();
         }
+
+        private void BtnEdinPromote_OnClick(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
