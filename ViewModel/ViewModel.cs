@@ -14,16 +14,9 @@
 
     public class ViewModel
     {
-                // Admin Panel logic
-                //private  IView
-
+        public IView View;
         public void BtnUserSearchClick(string username)
         {
-            //if (Validation.IsNullOrEmpty(username))
-            //{
-            //    return;
-            //}
-            
 
         }
     }

@@ -34,5 +34,13 @@ namespace Interfaces
         void Edit();
 
         void Logout();
+
+        // Main tab logic
+
+        void ShowHideComment();
+
+        void VideoSearch();
+
+        
     }
 }
