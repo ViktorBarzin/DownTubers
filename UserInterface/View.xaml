@@ -12,7 +12,62 @@
         <TabControl TabStripPlacement="Top">
             <TabItem Name="MainTab" 
                      Header="MAIN">
+<<<<<<< HEAD
                 
+=======
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="3*"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Column="0" Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="10*"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Label Background="AntiqueWhite"/>
+                        <Grid Grid.Column="0" Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="3*"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <TextBox Grid.Column="0"
+                                     TextWrapping="Wrap"/>
+                            <Button Grid.Column="1"
+                                    Content="Send"/>
+                        </Grid>
+                    </Grid>
+                    <Grid Grid.Column="0" Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="2*"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Column="0" Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="4*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="3*"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Button Grid.Column="0" 
+                                    Grid.Row="0"
+                                    Content=". . ."/>
+                        </Grid>
+                    </Grid>
+                </Grid>
+>>>>>>> efcc1a8ffd26aec3571602cae9a03a4901fa4714
             </TabItem>
             <TabItem Name="Profile" 
                      Header="MY PROFILE">
@@ -25,7 +80,7 @@
                         <Grid.RowDefinitions>
                             <RowDefinition/>
                             <RowDefinition/>
-                            <RowDefinition/>                            
+                            <RowDefinition/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
                         <Label Grid.Row="0"
@@ -170,7 +225,7 @@
                             <RowDefinition/>
                             <RowDefinition Height="15*"/>
                             <RowDefinition/>
-	                        <RowDefinition />
+                            <RowDefinition />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
