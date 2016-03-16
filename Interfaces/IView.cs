@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace Interfaces
 {
+    using System.Reflection.Emit;
+
     public interface IView
     {
         // Utility methods
@@ -29,10 +31,24 @@ namespace Interfaces
 
         void UploadedVideoClick(string videoName);
 
-        void LikedVideoClick();
+        void LikedVideoClick(string videoName);
         
-        void Edit();
+        void Edit(string videoName);
+        
+        // Main tab logic
+
+        void ShowHideComment();
+
+        void VideoSearch(string search);
+
+        void Upload();
+
+        void Download(string videoName);
+
+        void OpenSuggestedVideo(string videoName);
 
         void Logout();
+
+
     }
 }
