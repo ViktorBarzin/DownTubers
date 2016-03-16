@@ -14,8 +14,9 @@
 
     public class ViewModel : IViewModel
     {
-        // TODO : implementation for viewmodel + adding classes for properties
-        // TODO : documentation tomorrow (:
+
+        // TODO : implementation for viewmodel + adding classes for properties to display them
+        // TODO : documentation 
         public UserSet DetailedUserInfo
         {
             get
