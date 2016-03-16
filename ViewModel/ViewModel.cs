@@ -10,9 +10,12 @@
 
     using DatabaseLayer;
 
+    using Interfaces;
+
     public class ViewModel
     {
                 // Admin Panel logic
+                //private  IView
 
         public void BtnUserSearchClick(string username)
         {
