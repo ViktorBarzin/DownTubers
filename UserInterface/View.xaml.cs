@@ -12,18 +12,21 @@ using Vlc.DotNet.Wpf;
 namespace UserInterface
 {
     using System.Collections.Specialized;
+
+    using Interfaces;
+
     /// <summary>
     /// Interaction logic for View.xaml
     /// </summary>
-    public partial class View : Window
+    public partial class View : Window, IView
     {
 
         public View()
         {
             this.InitializeComponent();
-			Player.MediaPlayer.VlcLibDirectory = new DirectoryInfo(Path.Combine(Directory.GetCurrentDirectory(), "VLCLibs"));
-			Player.MediaPlayer.EndInit();
-			Player.MediaPlayer.Play(new Uri(@"http://37.157.138.76/videos/GOT_Best_Scene.mp4"));
+            this.Player.MediaPlayer.VlcLibDirectory = new DirectoryInfo(Path.Combine(Directory.GetCurrentDirectory(), "VLCLibs"));
+            this.Player.MediaPlayer.EndInit();
+            this.Player.MediaPlayer.Play(new Uri(@"http://37.157.138.76/videos/GOT_Best_Scene.mp4"));
 		}
 
         private void BtnUserSearch_OnClick(object sender, RoutedEventArgs e)
@@ -51,5 +54,85 @@ namespace UserInterface
 				BtnPause.Content = "Pause";
 			}
 	    }
+
+        public void SaveChanges()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SearchUsers(string username)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SearchVideos(string videoTitle)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SaveChangesToUser()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void CancelChanges()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ProfilePictureCLick()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void PlaylistClick(string playlistName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UploadedVideoClick(string videoName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void LikedVideoClick(string videoName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Edit(string videoName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ShowHideComment()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void VideoSearch(string search)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Upload()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Download(string videoName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OpenSuggestedVideo(string videoName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Logout()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
