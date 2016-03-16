@@ -31,5 +31,10 @@ namespace UserInterface
         {
            //this.dataBinding.BtnUserSearchClick(this.TxtAdminUserSearch.Text);
         }
+
+        private void BtnProfileEdit_OnClick(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

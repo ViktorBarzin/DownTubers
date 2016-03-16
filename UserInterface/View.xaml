@@ -92,36 +92,47 @@
                             <RowDefinition Height="3*"/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
-                        <Grid Grid.Row="0">
+                        <Image Grid.Column="0" 
+                               Grid.Row="0"
+                               x:Name="ImgProfileUserLogo">
+                        </Image>
+                        <TextBox Grid.Row="1"
+                                 Grid.Column="0"
+                                 x:Name="TxtProfileUserInfo"
+                                 TextWrapping="Wrap"
+                                 IsReadOnly="True"
+                                 FontSize="16"
+                                 BorderThickness="0"/>
+                        <Grid Grid.Row="2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition Height="2*"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
-                            <Image Grid.Column="0" 
-                                   Grid.RowSpan="2"
-                                   x:Name="ImgProfileUserLogo">
-                                <!--TO DO-->
-                            </Image>
-                            <Label Grid.Column="1"
-                                   Grid.Row="0"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Bottom"
-                                   FontSize="20"
-                                   x:Name="LblProfileUserName">
-                                Dragan
-                            </Label>
-                            <Label Grid.Column="1"
-                                   Grid.Row="1"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Center"
-                                   FontSize="15"
-                                   x:Name="LblProfileUserRegDate">
-                                Subscribers: 69
-                            </Label>
+                            <Button Grid.Row="1"
+                                    Grid.Column="1"
+                                    Width="70"
+                                    Height="35"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Center"
+                                    x:Name="BtnProfileEdit"
+                                    Content="Edit"
+                                    FontSize="16"
+                                    Click="BtnProfileEdit_OnClick"/>
+                            <Button Grid.Row="1"
+                                    Grid.Column="0"
+                                    Width="70"
+                                    Height="35"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Center"
+                                    x:Name="BtnProfileLogOut"
+                                    Content="Log Out"
+                                    FontSize="16"
+                                    Click="BtnProfileEdit_OnClick"/>
                         </Grid>
                     </Grid>
                     <Grid Grid.Column="1">
