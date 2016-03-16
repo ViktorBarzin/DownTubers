@@ -68,7 +68,7 @@
                           Grid.Column="1">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="2*"/>
-                            <RowDefinition Height="3*"/>
+                            <RowDefinition Height="4*"/>
                             <RowDefinition Height="2*"/>
                             <RowDefinition Height="7*"/>
                             <RowDefinition />
@@ -81,7 +81,8 @@
                         </Grid.ColumnDefinitions>
                         <TextBox Grid.Row="1" 
                                  Grid.Column="1"
-                                 x:Name="TxtMainSearch"/>
+                                 x:Name="TxtMainSearch"
+                                 FontSize="30"/>
                         <Button Grid.Column="2" 
                                 Grid.Row="1"
                                 x:Name="BtnMainSearch"/>
@@ -90,7 +91,6 @@
                                Grid.ColumnSpan="2" 
                                x:Name="LblMainVideoCaption" 
                                Background="AntiqueWhite"
-                               TextBlock.TextAlignment="Center"
                                TextBlock.FontSize="30">
                             Hardwell on Air - 2016 (mix gatso batso) edni neshto
                         </Label>
@@ -162,8 +162,7 @@
                         <Button Grid.Column="2" 
                                 Grid.Row="1"
                                 Content="Log out" 
-                                x:Name="BtnMainLogOut">
-                        </Button>
+                                x:Name="BtnMainLogOut"/>
                     </Grid>
                 </Grid>
             </TabItem>
