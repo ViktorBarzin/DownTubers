@@ -4,14 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.IO;
+using Vlc.DotNet.Core;
+using Vlc.DotNet.Core.Interops;
+using Vlc.DotNet.Wpf;
 
 namespace UserInterface
 {
@@ -25,6 +21,10 @@ namespace UserInterface
         public View()
         {
             this.InitializeComponent();
+			Player.MediaPlayer.VlcLibDirectory = new DirectoryInfo(Path.Combine(Directory.GetCurrentDirectory(), "VLCLibs"));
+			Player.MediaPlayer.EndInit();
+			Player.MediaPlayer.Play(new Uri(@"http://37.157.138.76/videos/The.Walking.Dead.S06E02.720p.HDTV.x264-KILLERS.mkv"));
+			var media = Player.MediaPlayer.GetCurrentMedia();
         }
 
         private void BtnUserSearch_OnClick(object sender, RoutedEventArgs e)
