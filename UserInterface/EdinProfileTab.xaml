@@ -11,9 +11,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
@@ -28,10 +26,11 @@
                     <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition/>
+                    <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
-                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="2*"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <Label Grid.Row="0"
@@ -44,7 +43,7 @@
                 <Button Grid.Row="1"
                         Grid.RowSpan="2"
                         Grid.Column="0"
-                        HorizontalAlignment="Left"
+                        HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         Width="80"
                         Height="45"
@@ -71,6 +70,7 @@
                     <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition/>
+                    <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Label Grid.Row="0"
                        HorizontalAlignment="Center"
@@ -94,7 +94,19 @@
                          BorderThickness="1"
                          FontSize="16"
                          x:Name="TxtEditEmail"/>
+                <Button Grid.Row="3"
+                        Width="80"
+                        Height="33"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Content="Promote"
+                        FontSize="19"
+                        x:Name="BtnEdinPromote"
+                        Click="BtnEdinPromote_OnClick"/>
             </Grid>
+        </Grid>
+        <Grid Grid.Row="1">
+            
         </Grid>
     </Grid>
 </Window>
