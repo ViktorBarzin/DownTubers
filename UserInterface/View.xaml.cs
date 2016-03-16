@@ -51,5 +51,11 @@ namespace UserInterface
 				BtnPause.Content = "Pause";
 			}
 	    }
+
+	    private void SdrVolume_OnValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+	    {
+			if(Player.MediaPlayer?.Audio != null)
+				Player.MediaPlayer.Audio.Volume = (int)SdrVolume.Value;
+	    }
     }
 }

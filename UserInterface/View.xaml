@@ -154,14 +154,12 @@
                                 <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition Width="5*"/>
                                 <ColumnDefinition/>
-<!--                                <ColumnDefinition/>-->
                             </Grid.ColumnDefinitions>
-
+                            
                             <Button x:Name="BtnPause" Click="BtnPause_OnClick"  Grid.Column="0">Pause</Button>
-                            <Slider x:Name="SdrVolume" Grid.Column="1" VerticalAlignment="Center" Margin="10"></Slider>
+                            <Slider x:Name="SdrVolume" Minimum="0" Maximum="100" Value="100" ValueChanged="SdrVolume_OnValueChanged" Grid.Column="1" VerticalAlignment="Center" Margin="10"></Slider>
                             <Slider x:Name="SdrPlayback" Grid.Column="2" VerticalAlignment="Center" Margin="10"></Slider>
                             <Button x:Name="BtnFullscreen" Grid.Column="3">[+]</Button>
-<!--                            <Button Grid.Column="4">\/</Button>-->
                         </Grid>
                         </Grid>
                     <Grid Grid.Column="2" Grid.Row="0">
