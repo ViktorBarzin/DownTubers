@@ -24,13 +24,16 @@
                         <RowDefinition Height="3*"/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <Grid Grid.Column="0" Grid.Row="1">
+                    <Grid Grid.Column="0" 
+                          Grid.Row="1">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="10*"/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
-                        <Label Background="AntiqueWhite" x:Name="LblMainComments"/>
-                        <Grid Grid.Column="0" Grid.Row="1">
+                        <Label Background="AntiqueWhite" 
+                               x:Name="LblMainComments"/>
+                        <Grid Grid.Column="0" 
+                              Grid.Row="1">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="3*"/>
                                 <ColumnDefinition/>
@@ -43,7 +46,8 @@
                                     x:Name="BtnMainSendComment"/>
                         </Grid>
                     </Grid>
-                    <Grid Grid.Column="0" Grid.Row="0">
+                    <Grid Grid.Column="0" 
+                          Grid.Row="0">
                         <Grid.RowDefinitions>
                             <RowDefinition/>
                             <RowDefinition Height="2*"/>
@@ -60,11 +64,14 @@
                                     Content=". . ."
                                     x:Name="BtnMainShowHideComments"/>
                     </Grid>
-                    <Grid Grid.Row="0" Grid.Column="1">
+                    <Grid Grid.Row="0" 
+                          Grid.Column="1">
                         <Grid.RowDefinitions>
-                            <RowDefinition/>
                             <RowDefinition Height="2*"/>
-                            <RowDefinition Height="6*"/>
+                            <RowDefinition Height="3*"/>
+                            <RowDefinition Height="2*"/>
+                            <RowDefinition Height="7*"/>
+                            <RowDefinition />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
@@ -72,41 +79,56 @@
                             <ColumnDefinition/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-                        <TextBox Grid.Row="1" Grid.Column="1"
+                        <TextBox Grid.Row="1" 
+                                 Grid.Column="1"
                                  x:Name="TxtMainSearch"/>
-                        <Button Grid.Column="2" Grid.Row="1"
-                                x:Name="BtnMainSearch">
-                        </Button>
+                        <Button Grid.Column="2" 
+                                Grid.Row="1"
+                                x:Name="BtnMainSearch"/>
+                        <Label Grid.Row="3" 
+                               Grid.Column="1" 
+                               Grid.ColumnSpan="2" 
+                               x:Name="LblMainVideoCaption" 
+                               Background="AntiqueWhite"
+                               TextBlock.TextAlignment="Center"
+                               TextBlock.FontSize="30">
+                            Hardwell on Air - 2016 (mix gatso batso) edni neshto
+                        </Label>
                     </Grid>
-                    <Grid Grid.Column="2" Grid.Row="1">
+                    <Grid Grid.Column="2" 
+                          Grid.Row="1">
                         <Grid.RowDefinitions>
                             <RowDefinition/>
                             <RowDefinition/>
                             <RowDefinition/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
-                        <ListView Grid.Row="0" x:Name="LvlMainFirstVideo">
+                        <ListView Grid.Row="0" 
+                                  x:Name="LvlMainFirstVideo">
                             <ListView.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <StackPanel Orientation="Horizontal"/>
                                 </ItemsPanelTemplate>
                             </ListView.ItemsPanel>
                         </ListView>
-                        <ListView Grid.Row="1" x:Name="LvlMainSecondVideo">
+                        <ListView Grid.Row="1" 
+                                  x:Name="LvlMainSecondVideo">
                             <ListView.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <StackPanel Orientation="Horizontal"/>
                                 </ItemsPanelTemplate>
                             </ListView.ItemsPanel>
                         </ListView>
-                        <ListView Grid.Row="2" x:Name="LvlMainThirdVideo">
+                        <ListView Grid.Row="2" 
+                                  x:Name="LvlMainThirdVideo">
                             <ListView.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <StackPanel Orientation="Horizontal"/>
                                 </ItemsPanelTemplate>
                             </ListView.ItemsPanel>
                         </ListView>
-                        <ListView Grid.Row="3" x:Name="LvlMainFourthVideo">
+                        <ListView Grid.Row="3" 
+                                  x:Name="LvlMainFourthVideo">
                             <ListView.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <StackPanel Orientation="Horizontal"/>
@@ -114,15 +136,18 @@
                             </ListView.ItemsPanel>
                         </ListView>
                     </Grid>
-                    <Grid Grid.Column="1" Grid.Row="1">
+                    <Grid Grid.Column="1" 
+                          Grid.Row="1">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
                             <ColumnDefinition Width="50*"/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-                        <vlc:VlcControl Grid.Column="1" x:Name="Player"/>
+                        <vlc:VlcControl Grid.Column="1" 
+                                        x:Name="Player"/>
                     </Grid>
-                    <Grid Grid.Column="3" Grid.Row="0">
+                    <Grid Grid.Column="3" 
+                          Grid.Row="0">
                         <Grid.RowDefinitions>
                             <RowDefinition/>
                             <RowDefinition Height="2*"/>
@@ -134,8 +159,11 @@
                             <ColumnDefinition Width="4*"/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-                        <Button Grid.Column="2" Grid.Row="1"
-                                Content="Log out"/>
+                        <Button Grid.Column="2" 
+                                Grid.Row="1"
+                                Content="Log out" 
+                                x:Name="BtnMainLogOut">
+                        </Button>
                     </Grid>
                 </Grid>
             </TabItem>
@@ -243,8 +271,8 @@
                                 <RowDefinition/>
                                 <RowDefinition Height="3*"/>
                             </Grid.RowDefinitions>
-                            <ListView Grid.Row="1"
-                                  x:Name="LsvProfileUploadedVideos">
+                            <ListView Grid.Row="1" 
+                                      x:Name="LsvProfileUploadedVideos">
                                 <ListView.ItemsPanel>
                                     <ItemsPanelTemplate>
                                         <StackPanel Orientation="Horizontal"/>
@@ -263,8 +291,8 @@
                                 <RowDefinition/>
                                 <RowDefinition Height="3*"/>
                             </Grid.RowDefinitions>
-                            <ListView Grid.Row="1"
-                                  x:Name="LsvProfileLikedVideos">
+                            <ListView Grid.Row="1" 
+                                      x:Name="LsvProfileLikedVideos">
                                 <ListView.ItemsPanel>
                                     <ItemsPanelTemplate>
                                         <StackPanel Orientation="Horizontal"/>
@@ -293,7 +321,8 @@
                         <RowDefinition/>
                         <RowDefinition Height="2*"/>
                     </Grid.RowDefinitions>
-                    <Grid Grid.ColumnSpan="3" Grid.Row="0">
+                    <Grid Grid.ColumnSpan="3" 
+                          Grid.Row="0">
                         <Grid.RowDefinitions>
                             <RowDefinition/>
                             <RowDefinition/>
