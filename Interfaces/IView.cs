@@ -8,5 +8,10 @@ namespace Interfaces
 {
     public interface IView
     {
+        void UpdateUserSearchResult();
+
+        void UpdateVideoSearchResult();
+
+        void UpdateDetailedInfoGrid();
     }
 }
