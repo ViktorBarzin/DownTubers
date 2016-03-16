@@ -12,14 +12,15 @@ using Vlc.DotNet.Wpf;
 namespace UserInterface
 {
     using System.Collections.Specialized;
-
+    using ViewModel;
     using Interfaces;
 
     /// <summary>
     /// Interaction logic for View.xaml
     /// </summary>
-    public partial class View : Window, IView
+    public partial class View : Window
     {
+        private readonly IViewModel viewModel; 
 
         public View()
         {
@@ -27,11 +28,12 @@ namespace UserInterface
             this.Player.MediaPlayer.VlcLibDirectory = new DirectoryInfo(Path.Combine(Directory.GetCurrentDirectory(), "VLCLibs"));
             this.Player.MediaPlayer.EndInit();
             this.Player.MediaPlayer.Play(new Uri(@"http://37.157.138.76/videos/GOT_Best_Scene.mp4"));
+            this.viewModel = new ViewModel();
 		}
 
         private void BtnUserSearch_OnClick(object sender, RoutedEventArgs e)
         {
-			//this.dataBinding.BtnUserSearchClick(this.TxtAdminUserSearch.Text);
+			this.viewModel.SearchUsers(this.TxtAdminUserSearch.Text);
 		}
 
         private void BtnProfileEdit_OnClick(object sender, RoutedEventArgs e)
@@ -53,6 +55,12 @@ namespace UserInterface
 				Player.MediaPlayer.Play();
 				BtnPause.Content = "Pause";
 			}
+	    }
+
+
+	    private void SdrVolume_OnValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+	    {
+			if(this.Player.MediaPlayer?.Audio != null) this.Player.MediaPlayer.Audio.Volume = (int)this.SdrVolume.Value;
 	    }
 
         public void SaveChanges()
