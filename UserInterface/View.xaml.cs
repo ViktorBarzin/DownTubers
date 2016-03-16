@@ -23,8 +23,8 @@ namespace UserInterface
             this.InitializeComponent();
 			Player.MediaPlayer.VlcLibDirectory = new DirectoryInfo(Path.Combine(Directory.GetCurrentDirectory(), "VLCLibs"));
 			Player.MediaPlayer.EndInit();
-			Player.MediaPlayer.Play(new Uri(@"http://37.157.138.76/videos/The.Walking.Dead.S06E02.720p.HDTV.x264-KILLERS.mkv"));
-			var media = Player.MediaPlayer.GetCurrentMedia();
+			Player.MediaPlayer.Play(new Uri(@"http://37.157.138.76/videos/GOT_Best_Scene.mp4"));
+            var media = Player.MediaPlayer.GetCurrentMedia();
         }
 
         private void BtnUserSearch_OnClick(object sender, RoutedEventArgs e)
