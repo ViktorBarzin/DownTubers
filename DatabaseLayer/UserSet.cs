@@ -20,7 +20,7 @@ namespace DatabaseLayer
             this.HistorySet = new HashSet<HistorySet>();
             this.PlaylistSet = new HashSet<PlaylistSet>();
             this.VideoSet = new HashSet<VideoSet>();
-            this.UserId = new HashSet<UserSet>();
+            this.User = new HashSet<UserSet>();
             this.Subscriber = new HashSet<UserSet>();
         }
     
@@ -30,7 +30,6 @@ namespace DatabaseLayer
         public string Email { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public Nullable<int> PlaylistId { get; set; }
         public Nullable<System.DateTime> Registered { get; set; }
         public System.DateTime LastLogin { get; set; }
         public string Description { get; set; }
@@ -44,7 +43,7 @@ namespace DatabaseLayer
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<VideoSet> VideoSet { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserSet> UserId { get; set; }
+        public virtual ICollection<UserSet> User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserSet> Subscriber { get; set; }
     }

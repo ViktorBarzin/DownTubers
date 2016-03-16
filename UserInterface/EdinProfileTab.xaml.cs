@@ -23,5 +23,10 @@ namespace UserInterface
         {
             InitializeComponent();
         }
+
+        private void BtnEditChangeLogo_OnClick(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

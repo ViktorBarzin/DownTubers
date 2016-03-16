@@ -4,11 +4,11 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="359b8a79cfff4dc88071be8944e54f00" Name="Diagram1">
+      <Diagram DiagramId="fe11f4b8024a4dfc8d6bb8c015b1a5ae" Name="Diagram1">
         <EntityTypeShape EntityType="DownTubersModel.HistorySet" Width="1.5" PointX="5.25" PointY="7.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="DownTubersModel.PlaylistSet" Width="1.5" PointX="8.25" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DownTubersModel.PlaylistSet" Width="1.5" PointX="8.25" PointY="7.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DownTubersModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DownTubersModel.UserSet" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DownTubersModel.UserSet" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
         <EntityTypeShape EntityType="DownTubersModel.VideoSet" Width="1.5" PointX="3" PointY="10.625" IsExpanded="true" />
         <AssociationConnector Association="DownTubersModel.FK_HistorySet_UserSet" ManuallyRouted="false" />
         <AssociationConnector Association="DownTubersModel.FK_HistorySet_VideoSet" ManuallyRouted="false" />
