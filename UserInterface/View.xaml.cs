@@ -57,8 +57,90 @@ namespace UserInterface
 			}
 	    }
 
-        // IView implementation below
-        
-        
+
+	    private void SdrVolume_OnValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+	    {
+			if(this.Player.MediaPlayer?.Audio != null) this.Player.MediaPlayer.Audio.Volume = (int)this.SdrVolume.Value;
+	    }
+
+        public void SaveChanges()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SearchUsers(string username)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SearchVideos(string videoTitle)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SaveChangesToUser()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void CancelChanges()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ProfilePictureCLick()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void PlaylistClick(string playlistName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UploadedVideoClick(string videoName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void LikedVideoClick(string videoName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Edit(string videoName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ShowHideComment()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void VideoSearch(string search)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Upload()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Download(string videoName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OpenSuggestedVideo(string videoName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Logout()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
