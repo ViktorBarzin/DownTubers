@@ -27,21 +27,24 @@
                     <Grid Grid.Column="0" 
                           Grid.Row="1">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="10*"/>
+                            <RowDefinition Height="30*"/>
                             <RowDefinition/>
+                            <RowDefinition Height="3*"/>
                         </Grid.RowDefinitions>
                         <Label Background="AntiqueWhite" 
                                x:Name="LblMainComments"/>
                         <Grid Grid.Column="0" 
-                              Grid.Row="1">
+                              Grid.Row="2">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="3*"/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
                             <TextBox Grid.Column="0"
+                                     Grid.Row="2"
                                      TextWrapping="Wrap"
                                      x:Name="TxtMainWriteComment"/>
                             <Button Grid.Column="1"
+                                    Grid.Row="1"
                                     Content="Send"
                                     x:Name="BtnMainSendComment"/>
                         </Grid>
@@ -146,7 +149,7 @@
                         <vlc:VlcControl Grid.Column="1" 
                                         x:Name="Player"/>
                     </Grid>
-                    <Grid Grid.Column="3" 
+                    <Grid Grid.Column="2" 
                           Grid.Row="0">
                         <Grid.RowDefinitions>
                             <RowDefinition/>
@@ -155,18 +158,20 @@
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
-                            <ColumnDefinition Width="20*"/>
+                            <ColumnDefinition Width="60*"/>
+                            <ColumnDefinition Width="15*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="15*"/>
                             <ColumnDefinition Width="4*"/>
-                            <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-                        <Button Grid.Column="2" 
+                        <Button Grid.Column="4" 
                                 Grid.Row="1"
                                 Content="Log out" 
-                                x:Name="BtnMainLogOut">
-                            <Button.Effect>
-                                <DropShadowEffect BlurRadius="15" Color="White"/>
-                            </Button.Effect>
-                        </Button>
+                                x:Name="BtnMainLogOut"/>
+                        <Button Grid.Column="2"
+                                Grid.Row="1"
+                                Content="Upload"
+                                x:Name="BtnMainUpload"/>
                     </Grid>
                 </Grid>
             </TabItem>
