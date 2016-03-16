@@ -6,107 +6,154 @@
         xmlns:local="clr-namespace:UserInterface"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        WindowState="Maximized"
+        Width="300"
+        Height="400"
         Title="EditTab">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition/>
-            <RowDefinition Height="2*"/>
+            <RowDefinition Height="8*"/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0">
+        <Label Grid.ColumnSpan="2"
+               Grid.Row="0"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center"
+               FontSize="20"
+               x:Name="LblEditUser"
+               Content="vanka7a"/>
+        <Grid Grid.Row="1"
+              Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+            <Image Grid.Row="0"
+                   x:Name="ImgEditProfilePic"/>
+            <Label Grid.Row="1"
+                   FontSize="18"
+                   Content="username"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   x:Name="LblEditUsername"/>
+            <Label Grid.Row="2"
+                   FontSize="18"
+                   Content="password"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   x:Name="LblEditPassword"/>
+            <Label Grid.Row="3"
+                   FontSize="18"
+                   Content="email"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   x:Name="LblEditEmail"/>
+            <Label Grid.Row="4"
+                   FontSize="18"
+                   Content="description"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Top"
+                   x:Name="LblEditDescription"/>
+        </Grid>
+        <Grid Grid.Column="1"
+              Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+            <Button Grid.Row="0"
+                    Width="70"
+                    Height="30"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    FontSize="16"
+                    Content="Change"
+                    x:Name="BtnEditChangePic"/>
+            <TextBox Grid.Row="1"
+                     Width="120"
+                     Height="27"
+                     HorizontalAlignment="Center"
+                     VerticalAlignment="Center"
+                     FontSize="16"
+                     Text="sdas"
+                     x:Name="TxtEditUsername"/>
+            <TextBox Grid.Row="2"
+                     Width="120"
+                     Height="27"
+                     HorizontalAlignment="Center"
+                     VerticalAlignment="Center"
+                     FontSize="16"
+                     Text="sdas"
+                     x:Name="TxtEditPassword"/>
+            <TextBox Grid.Row="3"
+                     Width="120"
+                     Height="27"
+                     HorizontalAlignment="Center"
+                     VerticalAlignment="Center"
+                     FontSize="16"
+                     Text="sdas"
+                     x:Name="TxtEditEmail"/>
+            <TextBox Grid.Row="4"
+                     Width="120"
+                     Height="65"
+                     HorizontalAlignment="Center"
+                     VerticalAlignment="Center"
+                     FontSize="16"
+                     Text="sdas"
+                     TextWrapping="Wrap"
+                     x:Name="TxtEditDescription"/>
+        </Grid>
+        <Grid Grid.Column="1"
+              Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
-                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="10*"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Image Grid.Column="0"
-                   x:Name="ImgEditUserLogo"/>
-            <Grid Grid.Column="1">
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <Label Grid.Row="0"
-                       Grid.Column="0"
-                       HorizontalAlignment="Left"
-                       VerticalAlignment="Center"
-                       x:Name="LblEditUserName"
-                       FontSize="20"
-                       Content="Dragan"/>
-                <Button Grid.Row="1"
-                        Grid.RowSpan="2"
-                        Grid.Column="0"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        Width="80"
-                        Height="45"
-                        Content="ChangeLogo"
-                        x:Name="BtnEditChangeLogo"
-                        Click="BtnEditChangeLogo_OnClick"/>
-                <Label Grid.Row="2"
-                       Grid.Column="2"
-                       HorizontalAlignment="Right"
-                       VerticalAlignment="Center"
-                       x:Name="LblEditEmail"
-                       FontSize="17"
-                       Content="Email:"/>
-                <Label Grid.Row="1"
-                       Grid.Column="2"
-                       HorizontalAlignment="Right"
-                       VerticalAlignment="Center"
-                       x:Name="LblEditPrivilageUsername"
-                       FontSize="17"
-                       Content="Username:"/>
-            </Grid>
-            <Grid Grid.Column="2">
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-                <Label Grid.Row="0"
-                       HorizontalAlignment="Center"
-                       VerticalAlignment="Center"
-                       x:Name="LblEditPrivilages"
-                       FontSize="22"
-                       Content="Privilages"/>
-                <TextBox Grid.Row="1"
-                         Width="130"
-                         Height="30"
-                         HorizontalAlignment="Center"
-                         VerticalAlignment="Center"
-                         BorderThickness="1"
-                         FontSize="16"
-                         x:Name="TxtEditUsername"/>
-                <TextBox Grid.Row="2"
-                         Width="130"
-                         Height="30"
-                         HorizontalAlignment="Center"
-                         VerticalAlignment="Center"
-                         BorderThickness="1"
-                         FontSize="16"
-                         x:Name="TxtEditEmail"/>
-                <Button Grid.Row="3"
-                        Width="80"
-                        Height="33"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        Content="Promote"
-                        FontSize="19"
-                        x:Name="BtnEdinPromote"
-                        Click="BtnEdinPromote_OnClick"/>
-            </Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Button Grid.Column="1"
+                Width="50"
+                Height="25"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"
+                FontSize="15"
+                Content="Save"
+                x:Name="BtnEditSave"
+                Click="BtnEditSave_OnClick"/>
         </Grid>
-        <Grid Grid.Row="1">
-
+        <Grid Grid.Column="1"
+              Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="12*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Button Grid.Row="0"
+                Grid.Column="1"
+                Width="50"
+                Height="25"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                FontSize="15"
+                Content="Exit"
+                x:Name="BtnEditExit"
+                Click="BtnEditExit_OnClick"/>
         </Grid>
     </Grid>
 </Window>

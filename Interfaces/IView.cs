@@ -8,15 +8,31 @@ namespace Interfaces
 {
     public interface IView
     {
+        // Utility methods
+
+        void SaveChanges();
+
         // Admin tab updates
-        void UpdateAdminUserSearchResult();
+        void SearchUsers(string username);
 
-        void UpdateAdminVideoSearchResult();
+        void SearchVideos(string videoTitle);
 
-        void UpdateAdminDetailedInfoGrid();
+        void SaveChangesToUser();
+
+        void CancelChanges();
 
         // Profile tab updates
 
+        void ProfilePictureCLick();
 
+        void PlaylistClick(string playlistName);
+
+        void UploadedVideoClick(string videoName);
+
+        void LikedVideoClick();
+        
+        void Edit();
+
+        void Logout();
     }
 }

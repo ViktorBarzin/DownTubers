@@ -19,9 +19,12 @@ namespace UserInterface
     /// </summary>
     public partial class UserProfileEditTab : Window
     {
-        public UserProfileEditTab()
+        private View parent;
+
+        public UserProfileEditTab(ref View parent)
         {
             InitializeComponent();
+            this.parent = parent;
         }
 
         private void BtnEdinPromote_OnClick(object sender, RoutedEventArgs e)
@@ -30,6 +33,16 @@ namespace UserInterface
         }
 
         private void BtnEditChangeLogo_OnClick(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void BtnEditSave_OnClick(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void BtnEditExit_OnClick(object sender, RoutedEventArgs e)
         {
             throw new NotImplementedException();
         }
