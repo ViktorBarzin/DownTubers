@@ -46,30 +46,33 @@
                     <Grid Grid.Column="0" Grid.Row="0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
-                            <ColumnDefinition Width="5*"/>
+                            <ColumnDefinition Width="7*"/>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition/>
-                            <RowDefinition Height="4*"/>
+                            <RowDefinition Height="2*"/>
+                            <RowDefinition Height="6*"/>
                         </Grid.RowDefinitions>
                         <Button Grid.Column="0" 
-                                    Grid.Row="0"
+                                    Grid.Row="1"
                                     Content=". . ."
                                     x:Name="BtnMainShowHideComments"/>
                     </Grid>
                     <Grid Grid.Row="0" Grid.Column="1">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="7*"/>
-                            <RowDefinition Height="2*"/>
                             <RowDefinition/>
+                            <RowDefinition Height="2*"/>
+                            <RowDefinition Height="6*"/>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
                             <ColumnDefinition Width="15*"/>
                             <ColumnDefinition/>
+                            <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-                        <TextBox Grid.Row="1" Grid.Column="0"
+                        <TextBox Grid.Row="1" Grid.Column="1"
                                  x:Name="TxtMainSearch"/>
-                        <Button Grid.Column="1" Grid.Row="1"
+                        <Button Grid.Column="2" Grid.Row="1"
                                 x:Name="BtnMainSearch">
                         </Button>
                     </Grid>
@@ -116,9 +119,7 @@
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
                         <vlc:VlcControl Grid.Column="1" x:Name="Player"/>
-                        <Grid Grid.Row="1" Grid.Column="1">
-                            <vlc:VlcControl x:Name="Player"/>
-                        </Grid>
+                    </Grid>
                 </Grid>
             </TabItem>
             <TabItem Name="ProfileTab" 
