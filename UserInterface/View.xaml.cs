@@ -34,7 +34,9 @@ namespace UserInterface
 
         private void BtnProfileEdit_OnClick(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            View newView = this;
+            UserProfileEditTab editTab = new UserProfileEditTab(ref newView);
+            editTab.ShowDialog();
         }
     }
 }
