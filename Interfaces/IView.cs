@@ -1,54 +1,50 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿//using System;
+//using System.Collections.Generic;
+//using System.Linq;
+//using System.Text;
+//using System.Threading.Tasks;
 
-namespace Interfaces
-{
-    using System.Reflection.Emit;
+//namespace Interfaces
+//{
+//    using System.Reflection.Emit;
 
-    public interface IView
-    {
-        // Utility methods
+//    public interface IView
+//    {
+//        // Admin tab updates
+//        void UpdateUsers(string username);
 
-        void SaveChanges();
+//        void SearchVideos(string videoTitle);
 
-        // Admin tab updates
-        void SearchUsers(string username);
+//        void SaveChangesToUser();
 
-        void SearchVideos(string videoTitle);
+//        void CancelChanges();
 
-        void SaveChangesToUser();
+//        // Profile tab updates
 
-        void CancelChanges();
+//        void ProfilePictureCLick();
 
-        // Profile tab updates
+//        void PlaylistClick(string playlistName);
 
-        void ProfilePictureCLick();
+//        void UploadedVideoClick(string videoName);
 
-        void PlaylistClick(string playlistName);
+//        void LikedVideoClick(string videoName);
 
-        void UploadedVideoClick(string videoName);
+//        void Edit(string videoName);
 
-        void LikedVideoClick(string videoName);
-        
-        void Edit(string videoName);
-        
-        // Main tab logic
+//        // Main tab logic
 
-        void ShowHideComment();
+//        void ShowHideComment();
 
-        void VideoSearch(string search);
+//        void VideoSearch(string search);
 
-        void Upload();
+//        void Upload();
 
-        void Download(string videoName);
+//        void Download(string videoName);
 
-        void OpenSuggestedVideo(string videoName);
+//        void OpenSuggestedVideo(string videoName);
 
-        void Logout();
+//        void Logout();
 
 
-    }
-}
+//    }
+//}
