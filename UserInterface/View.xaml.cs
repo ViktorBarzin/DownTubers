@@ -55,7 +55,6 @@ namespace UserInterface
 			}
 	    }
 
-
 	    private void SdrVolume_OnValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
 	    {
 			if(this.Player.MediaPlayer?.Audio != null) this.Player.MediaPlayer.Audio.Volume = (int)this.SdrVolume.Value;
