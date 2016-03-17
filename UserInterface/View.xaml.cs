@@ -1,23 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.IO;
-using Vlc.DotNet.Core;
-using Vlc.DotNet.Core.Interops;
-using Vlc.DotNet.Wpf;
 
 namespace UserInterface
 {
     using System.Collections.Specialized;
+    using System.Windows.Input;
     using ViewModel;
     using Interfaces;
-
-    /// <summary>
-    /// Interaction logic for View.xaml
-    /// </summary>
+    using System.Windows.Controls;
+    using System.Windows.Media;
+    using System.Windows.Input;/// <summary>
+                               /// Interaction logic for View.xaml
+                               /// </summary>
     public partial class View : Window
     {
         private readonly IViewModel viewModel;
@@ -32,7 +27,7 @@ namespace UserInterface
             this.viewModel = new ViewModel();
             this.ShowHideComment(visible);
             this.GridMainVideo();
-		}
+        }
 
         private void BtnUserSearch_OnClick(object sender, RoutedEventArgs e)
         {
@@ -183,9 +178,16 @@ namespace UserInterface
             ShowHideComment(this.visible);
         }
 
-        private void TxtMainStartScreenSearch_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        private void BtnMainChangeTheme_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnMainSearch_OnClick(object sender, RoutedEventArgs e)
         {
             this.GrdMainVideo.Visibility = Visibility.Visible;
+            this.GrdMainStartScreen.Visibility = Visibility.Hidden;
+            this.Player.MediaPlayer.Pause();
         }
 
         private void BtnMainStartScreenChangeTheme_Click(object sender, RoutedEventArgs e)

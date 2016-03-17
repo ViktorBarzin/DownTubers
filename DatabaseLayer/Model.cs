@@ -123,6 +123,46 @@
             return this.Context.UserSet.SelectMany(x => x.Subscriber).ToList();
         }
 
+        public bool AddSubscriberTo(UserSet user, UserSet newSubscriber)
+        {
+            try
+            {
+                UserSet userToAdd = this.Context.UserSet.Find(user);
+                if (userToAdd == null)
+                {
+                    return false;
+                }
+
+                userToAdd.Subscriber.Add(newSubscriber);
+                this.SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public bool DeleteSubscriber(UserSet user, UserSet subscriberToDelete)
+        {
+            try
+            {
+                UserSet userToEdit = this.Context.UserSet.Find(user);
+                if (userToEdit == null)
+                {
+                    return false;
+                }
+
+                userToEdit.Subscriber.Remove(subscriberToDelete);
+                this.SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
         // History logic
 
         public ICollection<HistorySet> GetFullHistory(UserSet user)
@@ -162,6 +202,20 @@
             throw new ArgumentNullException("user");
         }
 
+        public bool AddPlaylist(PlaylistSet playlist)
+        {
+            try
+            {
+                this.Context.PlaylistSet.Add(playlist);
+                this.SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
         public bool DeletePlaylist(UserSet user, PlaylistSet playlistSet)
         {
             UserSet userToFind = this.Context.UserSet.Find(user.Id);
@@ -179,6 +233,60 @@
             this.Context.PlaylistSet.Remove(userToFind.PlaylistSet.FirstOrDefault(x => x.Id == playlistSet.Id));
             this.SaveChanges();
             return true;
+        }
+
+        public bool AddVideoToPlaylist(PlaylistSet playlist, VideoSet videoToAdd)
+        {
+            try
+            {
+                var playlistToEdit = this.Context.PlaylistSet.Find(playlist);
+                if (playlistToEdit == null)
+                {
+                    return false;
+                }
+
+                var videoToAddInDb = this.Context.VideoSet.Find(videoToAdd);
+                if (videoToAdd == null)
+                {
+                    return false;
+                }
+                
+                // TODO : check if this works fine
+                playlist.VideoSet.Add(videoToAdd);
+                this.SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public bool RemoveVideoFromPlaylist(PlaylistSet playlist, VideoSet videoToDelete)
+        {
+            try
+            {
+                var playlistToEdit = this.Context.PlaylistSet.Find(playlist);
+                if (playlistToEdit == null)
+                {
+                    return false;
+                }
+
+                var videoToAddInDb = this.Context.VideoSet.Find(videoToDelete);
+                if (videoToDelete == null)
+                {
+                    return false;
+                }
+
+                // TODO : check if this works fine
+                playlist.VideoSet.Add(videoToDelete);
+                this.SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
     }
 }

@@ -14,6 +14,13 @@ namespace DatabaseLayer
     
     public partial class PlaylistSet
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public PlaylistSet()
+        {
+            this.UserSet = new HashSet<UserSet>();
+            this.VideoSet = new HashSet<VideoSet>();
+        }
+    
         public int Id { get; set; }
         public int UserId { get; set; }
         public int VideoId { get; set; }
@@ -21,7 +28,9 @@ namespace DatabaseLayer
         public System.DateTime CreationDate { get; set; }
         public Nullable<System.DateTime> LastModifiedDate { get; set; }
     
-        public virtual UserSet UserSet { get; set; }
-        public virtual VideoSet VideoSet { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UserSet> UserSet { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<VideoSet> VideoSet { get; set; }
     }
 }

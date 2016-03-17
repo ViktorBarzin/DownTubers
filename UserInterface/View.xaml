@@ -21,7 +21,7 @@
             <TabItem Name="MainTab" 
                      Header="MAIN">
                 <Grid Style="{DynamicResource BackGroundTheme}">
-                    <Grid x:Name="GrdMainVideo" Visibility="Hidden">
+                    <Grid x:Name="GrdMainVideo">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
                             <ColumnDefinition Width="3*"/>
@@ -59,12 +59,12 @@
                                     Style="{DynamicResource ButtonStyle}"/>
                             </Grid>
                         </Grid>
-                        <Grid Grid.Column="0" 
+                        <!--<Grid Grid.Column="0" 
                           Grid.Row="0">
                             <Grid.RowDefinitions>
                                 <RowDefinition/>
                                 <RowDefinition Height="2*"/>
-                                <RowDefinition Height="6*"/>
+                                <RowDefinition Height="5.5*"/>
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
@@ -93,9 +93,14 @@
                                     Content="≡"
                                     FontSize="20"
                                     x:Name="BtnMainShowHideComments"
+<<<<<<< HEAD
                                     Click="BtnMainShowHideComments_Click"
                                     Style="{DynamicResource ButtonStyle}"/>
                         </Grid>
+=======
+                                Click="BtnMainShowHideComments_Click"/>
+                        </Grid>-->
+>>>>>>> f51437bbf9689733e7560199e2efe5ef6c856cc0
                         <Grid Grid.Row="0" 
                           Grid.Column="1">
                             <Grid.RowDefinitions>
@@ -111,7 +116,7 @@
                                 <ColumnDefinition/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-                            <TextBox Grid.Row="1" 
+                            <!--<TextBox Grid.Row="1" 
                                  Grid.Column="1"
                                  x:Name="TxtMainSearch"
                                  FontSize="30"
@@ -120,6 +125,7 @@
                                 Grid.Row="1"
                                 x:Name="BtnMainSearch"
                                 Content="🔍"
+<<<<<<< HEAD
                                 FontSize="20"
                                 Style="{DynamicResource ButtonStyle}"/>
                             <Label Grid.Row="3" 
@@ -131,6 +137,16 @@
                                Style="{DynamicResource LabelStyle}">
                                 Hardwell on Air - 2016 (mix gatso batso) edni neshto
                             </Label>
+=======
+                                FontSize="20"/>-->
+                            <!--<Label Grid.Row="3" 
+                                   Grid.Column="1" 
+                                   Grid.ColumnSpan="2" 
+                                   x:Name="LblMainVideoCaption" 
+                                   Background="AntiqueWhite"
+                                   TextBlock.FontSize="30"
+                                   Content="Hardwell on Air - 2016 (mix gatso batso) edni neshto"/>-->
+>>>>>>> f51437bbf9689733e7560199e2efe5ef6c856cc0
                         </Grid>
                         <Grid Grid.Column="2" 
                           Grid.Row="1">
@@ -235,7 +251,7 @@
                                     Style="{DynamicResource ButtonStyle}"/>
                             </Grid>
                         </Grid>
-                        <Grid Grid.Column="2" 
+                        <!--<Grid Grid.Column="2" 
                           Grid.Row="0">
                             <Grid.RowDefinitions>
                                 <RowDefinition/>
@@ -260,9 +276,13 @@
                                 Grid.Row="1"
                                 Content="≜"
                                 FontSize="30"
+<<<<<<< HEAD
                                 x:Name="BtnMainUpload"
                                 Style="{DynamicResource ButtonStyle}"/>
                         </Grid>
+=======
+                                x:Name="BtnMainUpload"/>
+                        </Grid>-->
                     </Grid>
                     <Grid x:Name="GrdMainStartScreen">
                         <Grid.ColumnDefinitions>
@@ -280,7 +300,7 @@
                             <Grid.RowDefinitions>
                                 <RowDefinition/>
                                 <RowDefinition Height="2*"/>
-                                <RowDefinition Height="6*"/>
+                                <RowDefinition Height="7*"/>
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
@@ -296,22 +316,22 @@
                                 Grid.Row="1"
                                 Content="⏏"
                                 FontSize="20"
-                                x:Name="BtnMainStartScreenGoHome"
+                                x:Name="BtnMainGoHome"
                                 Style="{DynamicResource ButtonStyle}"/>
                             <Button Grid.Column="4"
                                 Grid.Row="1"
                                 Content="◐"
                                 FontSize="20"
-                                x:Name="BtnMainStartScreenChangeTheme" 
-                                Click="BtnMainStartScreenChangeTheme_Click"
+                                x:Name="BtnMainChangeTheme" 
+                                Click="BtnMainChangeTheme_Click"
                                 Style="{DynamicResource ButtonStyle}"/>
                         </Grid>
                         <Grid Grid.Row="0" 
                           Grid.Column="1">
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="2*"/>
+                                <RowDefinition Height="1.5*"/>
                                 <RowDefinition Height="4*"/>
-                                <RowDefinition Height="3*"/>
+                                <RowDefinition Height="5*"/>
                                 <RowDefinition Height="7*"/>
                                 <RowDefinition />
                             </Grid.RowDefinitions>
@@ -324,14 +344,14 @@
                             <TextBox Grid.Row="1" 
                                  Grid.Column="1"
                                  x:Name="TxtMainStartScreenSearch"
-                                 Keyboard.KeyDown="TxtMainStartScreenSearch_KeyDown"
                                  FontSize="30"
                                  Style="{DynamicResource TextBoxStyle}"/>
                             <Button Grid.Column="2" 
                                 Grid.Row="1"
-                                x:Name="BtnMainStartScreenSearch"
+                                x:Name="BtnMainSearch"
                                 Content="🔍"
                                 FontSize="20"
+                                Click="BtnMainSearch_OnClick"
                                 Style="{DynamicResource ButtonStyle}"/>
                         </Grid>
                         <Grid Grid.Column="2" 
@@ -339,7 +359,7 @@
                             <Grid.RowDefinitions>
                                 <RowDefinition/>
                                 <RowDefinition Height="2*"/>
-                                <RowDefinition Height="6*"/>
+                                <RowDefinition Height="7.5*"/>
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
@@ -359,7 +379,7 @@
                                 Grid.Row="1"
                                 Content="≜"
                                 FontSize="30"
-                                x:Name="BtnMainStartScreenUpload"
+                                x:Name="BtnMainUpload"
                                 Style="{DynamicResource ButtonStyle}"/>
                         </Grid>
                         <Grid Grid.Row="1" Grid.ColumnSpan="3">
