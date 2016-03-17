@@ -10,9 +10,11 @@ namespace UserInterface
     using Interfaces;
     using System.Windows.Controls;
     using System.Windows.Media;
-    using System.Windows.Input;/// <summary>
-                               /// Interaction logic for View.xaml
-                               /// </summary>
+    using System.Windows.Input;
+    
+    /// <summary>
+    /// Interaction logic for View.xaml
+    /// </summary>
     public partial class View : Window
     {
         private readonly IViewModel viewModel;
@@ -25,7 +27,7 @@ namespace UserInterface
             this.Player.MediaPlayer.EndInit();
             this.Player.MediaPlayer.Play(new Uri(@"http://37.157.138.76/videos/GOT_Best_Scene.mp4"));
             this.viewModel = new ViewModel();
-            this.ShowHideComment(visible);
+            this.ShowHideComment(this.visible);
             this.GridMainVideo();
         }
 
@@ -54,7 +56,6 @@ namespace UserInterface
 				BtnPause.Content = "❚❚";
 			}
 	    }
-
 
 	    private void SdrVolume_OnValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
 	    {
@@ -120,7 +121,7 @@ namespace UserInterface
                 this.LvlMainThirdVideo.Visibility = Visibility.Visible;
                 this.LvlMainFourthVideo.Visibility = Visibility.Visible;
 
-                this.LblMainComments.Visibility = Visibility.Visible;
+                this.TxtMainComments.Visibility = Visibility.Visible;
                 this.TxtMainWriteComment.Visibility = Visibility.Visible;
                 this.BtnMainSendComment.Visibility = Visibility.Visible;
             
@@ -135,7 +136,7 @@ namespace UserInterface
                 this.LvlMainThirdVideo.Visibility = Visibility.Hidden;
                 this.LvlMainFourthVideo.Visibility = Visibility.Hidden;
 
-                this.LblMainComments.Visibility = Visibility.Hidden;
+                this.TxtMainComments.Visibility = Visibility.Hidden;
                 this.TxtMainWriteComment.Visibility = Visibility.Hidden;
                 this.BtnMainSendComment.Visibility = Visibility.Hidden;
 
@@ -187,7 +188,6 @@ namespace UserInterface
         {
             this.GrdMainVideo.Visibility = Visibility.Visible;
             this.GrdMainStartScreen.Visibility = Visibility.Hidden;
-            this.Player.MediaPlayer.Pause();
         }
 
         private void BtnMainStartScreenChangeTheme_Click(object sender, RoutedEventArgs e)

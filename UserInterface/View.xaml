@@ -39,9 +39,15 @@
                                 <RowDefinition/>
                                 <RowDefinition Height="3*"/>
                             </Grid.RowDefinitions>
-                            <Label Style="{DynamicResource LabelStyle}" 
-                               x:Name="LblMainComments"/>
-                            <Grid Grid.Column="0" 
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="5"/>
+                                <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <TextBox Grid.Column="1" 
+                                     Style="{DynamicResource TextBoxStyle}" 
+                                     x:Name="TxtMainComments"
+                                     IsReadOnly="True"/>
+                            <Grid Grid.Column="1" 
                               Grid.Row="2">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="5*"/>
@@ -93,11 +99,9 @@
                                     Content="≡"
                                     FontSize="20"
                                     x:Name="BtnMainShowHideComments"
-<<<<<<< HEAD
                                     Click="BtnMainShowHideComments_Click"
                                     Style="{DynamicResource ButtonStyle}"/>
                         </Grid>
-=======
                                 Click="BtnMainShowHideComments_Click"/>
                         </Grid>-->
                         <Grid Grid.Row="0" 
@@ -719,13 +723,7 @@
                                  VerticalAlignment="Top"
                                  FontSize="16"
                                  x:Name="TxtAdminVideoSearch"
-                                 Style="{DynamicResource TextBoxStyle}">
-                            <TextBox.Background>
-                                <SolidColorBrush 
-                                    Color="AliceBlue"
-                                    Opacity="0.3"/>
-                            </TextBox.Background>
-                        </TextBox>
+                                 Style="{DynamicResource TextBoxStyle}"/>
                         <Button Grid.Column="0"
                                 Grid.Row="1"
                                 Width="120"
