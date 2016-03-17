@@ -9,7 +9,13 @@
         WindowStartupLocation="CenterScreen"
         WindowState="Maximized"
         Title="View">
-    
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="BlueTheme.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
     <Grid>
         <TabControl TabStripPlacement="Top" Margin="0,10,0,-10">
             <TabItem Name="MainTab" 
@@ -36,7 +42,7 @@
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="5"/>
                                 <ColumnDefinition/>
-                                </Grid.ColumnDefinitions>
+                            </Grid.ColumnDefinitions>
                             <TextBox Grid.Column="1" 
                                      Style="{DynamicResource TextBoxStyle}" 
                                      x:Name="TxtMainComments"
@@ -148,13 +154,39 @@
                           Grid.Row="1">
                             <Grid.RowDefinitions>
                                 <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
                             </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                                <ColumnDefinition Width="5"/>
-                            </Grid.ColumnDefinitions>
                             <ListView Grid.Row="0" 
                                   x:Name="LvlMainFirstVideo"
+                                  Style="{DynamicResource ListViewStyle}">
+                                <ListView.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel Orientation="Horizontal"/>
+                                    </ItemsPanelTemplate>
+                                </ListView.ItemsPanel>
+                            </ListView>
+                            <ListView Grid.Row="1" 
+                                  x:Name="LvlMainSecondVideo"
+                                  Style="{DynamicResource ListViewStyle}">
+                                <ListView.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel Orientation="Horizontal"/>
+                                    </ItemsPanelTemplate>
+                                </ListView.ItemsPanel>
+                            </ListView>
+                            <ListView Grid.Row="2" 
+                                  x:Name="LvlMainThirdVideo"
+                                  Style="{DynamicResource ListViewStyle}">
+                                <ListView.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel Orientation="Horizontal"/>
+                                    </ItemsPanelTemplate>
+                                </ListView.ItemsPanel>
+                            </ListView>
+                            <ListView Grid.Row="3" 
+                                  x:Name="LvlMainFourthVideo"
                                   Style="{DynamicResource ListViewStyle}">
                                 <ListView.ItemsPanel>
                                     <ItemsPanelTemplate>
@@ -246,9 +278,11 @@
                                 Grid.Row="1"
                                 Content="≜"
                                 FontSize="30"
+<<<<<<< HEAD
                                 x:Name="BtnMainUpload"
                                 Style="{DynamicResource ButtonStyle}"/>
                         </Grid>
+=======
                                 x:Name="BtnMainUpload"/>
                         </Grid>-->
                     </Grid>
@@ -348,37 +382,17 @@
                                 Content="≜"
                                 FontSize="30"
                                 x:Name="BtnMainUpload"
-                                Style="{DynamicResource ButtonStyle}"
-                                Click="BtnMainUpload_OnClick">
-                                <Button.ToolTip>
-                                    <ToolTip>
-                                        <StackPanel>
-                                            <TextBlock FontWeight="Bold" Text="Upload"/>
-                                            <TextBlock Text="Click to upload a video"/>
-                                            
-                                        </StackPanel>
-                                    </ToolTip>
-                                </Button.ToolTip>
-                            </Button>
+                                Style="{DynamicResource ButtonStyle}"/>
                         </Grid>
-                        <Grid Grid.Row="1" Grid.ColumnSpan="3" Grid.Column="0">
-                            <Grid.RowDefinitions>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                                <ColumnDefinition Width="5*"/>
-                                <ColumnDefinition Width="5*"/>
-                                <ColumnDefinition Width="5*"/>
-                                <ColumnDefinition/>
-                            </Grid.ColumnDefinitions>
-                            
-                        </Grid>
+                        <ListView Grid.Row="1"
+                                  Grid.Column="1"
+                                  Style="{DynamicResource ListViewStyle}"
+                                  x:Name="LsvMainVideoSearch">
+
+                        </ListView>
                     </Grid>
                 </Grid>
+
             </TabItem>
             <TabItem Name="ProfileTab" 
                      Header="MY PROFILE">
