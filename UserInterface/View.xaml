@@ -9,6 +9,13 @@
         WindowStartupLocation="CenterScreen"
         WindowState="Maximized"
         Title="View">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="BlueTheme.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
     <Grid>
         <TabControl TabStripPlacement="Top" Margin="0,10,0,-10">
             <TabItem Name="MainTab" 
