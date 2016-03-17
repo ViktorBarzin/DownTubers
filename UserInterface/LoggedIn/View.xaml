@@ -286,7 +286,7 @@
                                 Grid.Row="1"
                                 Content="⊝"
                                 FontSize="20"
-                                x:Name="BtnMainStartScreenLogOut"
+                                x:Name="BtnMainLogOut"
                                 Style="{DynamicResource ButtonStyle}">
                                 <Button.ToolTip>
                                     <ToolTip>
