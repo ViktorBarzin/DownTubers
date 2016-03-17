@@ -45,19 +45,19 @@
                                 </Grid.ColumnDefinitions>
                                 <TextBox Style="{DynamicResource TextBoxStyle}" 
                                      x:Name="TxtMainComments"
-                                     IsReadOnly="True"/>
+                                     IsReadOnly="True" Grid.ColumnSpan="2" RenderTransformOrigin="0.746,0.502"/>
                             <Grid Grid.Column="0" 
                               Grid.Row="2">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="5*"/>
-                                    <ColumnDefinition Width="5"/>
+                                    <ColumnDefinition/>
                                     <ColumnDefinition/>
                                 </Grid.ColumnDefinitions>
-                                <TextBox Grid.Column="0"
+                                <TextBox Grid.Column="1"
                                      TextWrapping="Wrap"
+                                         IsReadOnly="True"
                                      x:Name="TxtMainWriteComment"
                                      Style="{DynamicResource TextBoxStyle}"/>
-                                <Button Grid.Column="2"
+                                <Button Grid.Column="1"
                                     Content="✍"
                                     FontSize="30"
                                     x:Name="BtnMainSendComment"
@@ -285,7 +285,7 @@
                                 x:Name="BtnMainUpload"/>
                         </Grid>-->
                     </Grid>
-                    <Grid x:Name="GrdMainStartScreen">
+                    <Grid x:Name="GrdMainStartScreen" Visibility="Hidden">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
                             <ColumnDefinition Width="3*"/>

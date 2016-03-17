@@ -119,7 +119,7 @@ namespace UserInterface
                 this.LvlMainThirdVideo.Visibility = Visibility.Visible;
                 this.LvlMainFourthVideo.Visibility = Visibility.Visible;
 
-                this.LblMainComments.Visibility = Visibility.Visible;
+                this.TxtMainComments.Visibility = Visibility.Visible;
                 this.TxtMainWriteComment.Visibility = Visibility.Visible;
                 this.BtnMainSendComment.Visibility = Visibility.Visible;
             
@@ -134,7 +134,7 @@ namespace UserInterface
                 this.LvlMainThirdVideo.Visibility = Visibility.Hidden;
                 this.LvlMainFourthVideo.Visibility = Visibility.Hidden;
 
-                this.LblMainComments.Visibility = Visibility.Hidden;
+                this.TxtMainComments.Visibility = Visibility.Hidden;
                 this.TxtMainWriteComment.Visibility = Visibility.Hidden;
                 this.BtnMainSendComment.Visibility = Visibility.Hidden;
 
