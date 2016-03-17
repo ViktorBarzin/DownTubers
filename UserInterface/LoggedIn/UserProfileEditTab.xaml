@@ -10,13 +10,6 @@
         Width="330"
         Height="450"
         Title="EditTab">
-    <Window.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="BlueTheme.xaml"/>
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </Window.Resources>
     <Grid Style="{DynamicResource BackGroundTheme}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="157"/>
