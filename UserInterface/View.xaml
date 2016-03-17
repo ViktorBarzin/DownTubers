@@ -382,7 +382,8 @@
                                 Content="≜"
                                 FontSize="30"
                                 x:Name="BtnMainUpload"
-                                Style="{DynamicResource ButtonStyle}"/>
+                                Style="{DynamicResource ButtonStyle}"
+                                Click="BtnMainUpload_OnClick"/>
                         </Grid>
                         <Grid Grid.Row="1" Grid.ColumnSpan="3">
                             <Grid.RowDefinitions>
