@@ -172,26 +172,30 @@ namespace UserInterface
         {
             this.GrdMainVideo.Visibility = Visibility.Hidden;
         }
-<<<<<<< HEAD
-=======
 
         private void BtnMainShowHideComments_Click(object sender, RoutedEventArgs e)
         {
             ShowHideComment(this.visible);
         }
 
-        private void TxtMainStartScreenSearch_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        private void BtnMainChangeTheme_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnMainSearch_OnClick(object sender, RoutedEventArgs e)
         {
             this.GrdMainVideo.Visibility = Visibility.Visible;
+            this.GrdMainStartScreen.Visibility = Visibility.Hidden;
+            this.Player.MediaPlayer.Pause();
         }
 
-        private void BtnMainStartScreenChangeTheme_OnClick(object sender, RoutedEventArgs e)
+        private void BtnMainStartScreenChangeTheme_Click(object sender, RoutedEventArgs e)
         {
-            base.OnMouseDown(e as MouseButtonEventArgs);
-        }
->>>>>>> 27c24659de78a1cbc463a551564a526758b2e3a7 private void BtnMainChangeTheme_Click(object sender, RoutedEventArgs e)
-        {
-
+            //ResourceDictionary blueTheme = new ResourceDictionary();
+            //blueTheme.Source = new Uri("BlueTheme.xaml", UriKind.Relative);
+            //this.Resources.MergedDictionaries.Clear();
+            //this.Resources.MergedDictionaries.Add(blueTheme);
         }
     }
 }
