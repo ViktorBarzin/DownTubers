@@ -4,6 +4,8 @@ using System.IO;
 
 namespace UserInterface
 {
+    using System.Collections.Specialized;
+    using System.Windows.Input;
     using ViewModel;
     using Interfaces;
     using System.Windows.Controls;
@@ -169,6 +171,27 @@ namespace UserInterface
         public void GridMainVideo()
         {
             this.GrdMainVideo.Visibility = Visibility.Hidden;
+        }
+<<<<<<< HEAD
+=======
+
+        private void BtnMainShowHideComments_Click(object sender, RoutedEventArgs e)
+        {
+            ShowHideComment(this.visible);
+        }
+
+        private void TxtMainStartScreenSearch_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            this.GrdMainVideo.Visibility = Visibility.Visible;
+        }
+
+        private void BtnMainStartScreenChangeTheme_OnClick(object sender, RoutedEventArgs e)
+        {
+            base.OnMouseDown(e as MouseButtonEventArgs);
+        }
+>>>>>>> 27c24659de78a1cbc463a551564a526758b2e3a7 private void BtnMainChangeTheme_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

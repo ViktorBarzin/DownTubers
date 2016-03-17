@@ -7,13 +7,14 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
-        Width="300"
-        Height="400"
+        Width="330"
+        Height="450"
         Title="EditTab">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="157"/>
+            <ColumnDefinition Width="90*"/>
+            <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -34,7 +35,8 @@
                 <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
-                <RowDefinition Height="2*"/>
+                <RowDefinition/>
+                <RowDefinition Height="2.5*"/>
             </Grid.RowDefinitions>
             <Image Grid.Row="0"
                    x:Name="ImgEditProfilePic"/>
@@ -52,11 +54,17 @@
                    x:Name="LblEditPassword"/>
             <Label Grid.Row="3"
                    FontSize="18"
+                   Content="ConfirmPassword"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   x:Name="LblEditConfirmPassword"/>
+            <Label Grid.Row="4"
+                   FontSize="18"
                    Content="Email"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"
                    x:Name="LblEditEmail"/>
-            <Label Grid.Row="4"
+            <Label Grid.Row="5"
                    FontSize="18"
                    Content="Description"
                    HorizontalAlignment="Center"
@@ -70,7 +78,8 @@
                 <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
-                <RowDefinition Height="2*"/>
+                <RowDefinition/>
+                <RowDefinition Height="2.5*"/>
             </Grid.RowDefinitions>
             <Button Grid.Row="0"
                     Width="70"
@@ -81,31 +90,37 @@
                     Content="Change"
                     x:Name="BtnEditChangePic"/>
             <TextBox Grid.Row="1"
-                     Width="120"
+                     Width="150"
                      Height="27"
                      HorizontalAlignment="Center"
                      VerticalAlignment="Center"
                      FontSize="16"
                      Text="sdas"
                      x:Name="TxtEditUsername"/>
-            <TextBox Grid.Row="2"
-                     Width="120"
-                     Height="27"
-                     HorizontalAlignment="Center"
-                     VerticalAlignment="Center"
-                     FontSize="16"
-                     Text="sdas"
-                     x:Name="TxtEditPassword"/>
-            <TextBox Grid.Row="3"
-                     Width="120"
+            <PasswordBox Grid.Row="2"
+                         Width="150"
+                         Height="27"
+                         HorizontalAlignment="Center"
+                         VerticalAlignment="Center"
+                         FontSize="16"
+                         x:Name="PassEditPassword"/>
+            <PasswordBox Grid.Row="3"
+                         Width="150"
+                         Height="27"
+                         HorizontalAlignment="Center"
+                         VerticalAlignment="Center"
+                         FontSize="16"
+                         x:Name="PassEditConfirmPassword"/>
+            <TextBox Grid.Row="4"
+                     Width="150"
                      Height="27"
                      HorizontalAlignment="Center"
                      VerticalAlignment="Center"
                      FontSize="16"
                      Text="sdas"
                      x:Name="TxtEditEmail"/>
-            <TextBox Grid.Row="4"
-                     Width="120"
+            <TextBox Grid.Row="5"
+                     Width="150"
                      Height="65"
                      HorizontalAlignment="Center"
                      VerticalAlignment="Center"
