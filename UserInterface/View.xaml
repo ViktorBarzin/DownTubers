@@ -43,10 +43,11 @@
                                 <ColumnDefinition Width="5"/>
                                 <ColumnDefinition/>
                                 </Grid.ColumnDefinitions>
-                                <TextBox Style="{DynamicResource TextBoxStyle}" 
+                                <TextBox Grid.Column="1" 
+                                     Style="{DynamicResource TextBoxStyle}" 
                                      x:Name="TxtMainComments"
                                      IsReadOnly="True"/>
-                            <Grid Grid.Column="0" 
+                            <Grid Grid.Column="1" 
                               Grid.Row="2">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="5*"/>
