@@ -13,11 +13,13 @@ namespace Validation
     {
         public static bool IsNullOrEmpty(string text)
         {
+			
             return String.IsNullOrEmpty(text);
         }
 
         public static bool IsLongerThan5(string text)
         {
+			
             return text.Length > 5;
         }
 
