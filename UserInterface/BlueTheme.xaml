@@ -66,6 +66,5 @@
 
     <Style x:Key="GridStyle" TargetType="Grid">
         <Setter Property="Background" Value="{DynamicResource ContentBackGroundBrush}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource ContentBorderBrush}"/>
     </Style>
 </ResourceDictionary>
