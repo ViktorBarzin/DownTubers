@@ -179,7 +179,8 @@ namespace UserInterface
 
         private void BtnMainSearch_OnClick(object sender, RoutedEventArgs e)
         {
-
+            this.BtnMainSearch.Visibility = Visibility.Visible;
+            this.GrdMainVideo.Visibility = Visibility.Visible;
         }
 
         private void BtnMainStartScreenChangeTheme_Click(object sender, RoutedEventArgs e)
