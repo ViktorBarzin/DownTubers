@@ -21,15 +21,17 @@ namespace UserInterface
     /// </summary>
     public partial class Register : Window
     {
-        RegisterViewModel registerViewModel = new RegisterViewModel();
+        readonly RegisterViewModel registerViewModel = new RegisterViewModel();
         public Register()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
 
         private void BtnBack_OnClick(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            Startup.Startup logInWindows = new Startup.Startup();
+            this.Close();
+            logInWindows.Show();
         }
 
         private void BtnRegister_OnClick(object sender, RoutedEventArgs e)
@@ -43,11 +45,14 @@ namespace UserInterface
                 this.TxtLastName.Text,
                 this.TxtDescription.Text))
             {
-                MessageBox.Show("BRAVO BE MASHINKEEE");
+                MessageBox.Show("Registration successful !");
+                Startup.Startup loginWindow = new Startup.Startup();
+                this.Close();
+                loginWindow.Show();
             }
             else
             {
-                MessageBox.Show("Something went wrong");
+                MessageBox.Show("Somthing went wrong, please check you input again !");
             }
         }
     }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UserInterface"
         mc:Ignorable="d"
-        Title="Register" Height="403.847" Width="379.615">
+        Title="Register" Height="461.318" Width="421.553">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -68,7 +68,7 @@
                      Grid.Column="1"
                      Margin="0 0 15 0"
                      VerticalAlignment="Center"/>
-        
+
         <Label Grid.Row="4"
                Grid.Column="0"
                Margin="0 0 20 0"
@@ -103,7 +103,7 @@
                  Grid.Column="1"
                  Margin="0 0 15 0" 
                  VerticalAlignment="Center"/>
-        
+
         <Label Grid.Row="7"
                Grid.Column="1" 
                Margin="0 0 20 0"

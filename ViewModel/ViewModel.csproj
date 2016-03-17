@@ -60,6 +60,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LogInViewModel.cs" />
     <Compile Include="PasswordHash.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="RegisterViewModel.cs" />

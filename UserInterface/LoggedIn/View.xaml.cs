@@ -13,7 +13,9 @@ namespace UserInterface
         //private bool visible = true;
         private bool isBlue = true;
 
-        public View()
+        private int loggedInUserId;
+
+        public View(int userId)
         {
             this.InitializeComponent();
             this.Player.MediaPlayer.VlcLibDirectory = new DirectoryInfo(Path.Combine(Directory.GetCurrentDirectory(), "VLCLibs"));
@@ -21,7 +23,8 @@ namespace UserInterface
             this._viewModel = new ViewModel();
 			GrdMainVideo.Visibility = Visibility.Hidden;
 			//this.ShowHideComment(visible);
-		}
+            this.loggedInUserId = userId;
+        }
 
         private void BtnUserSearch_OnClick(object sender, RoutedEventArgs e)
         {

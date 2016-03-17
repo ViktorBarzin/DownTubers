@@ -46,7 +46,7 @@ namespace ViewModel
 
             if (!Validation.IsNullOrEmpty(description))
             {
-                userToAdd.FirstName = description;
+                userToAdd.Description = description;
             }
 
             userToAdd.Registered = DateTime.Now;

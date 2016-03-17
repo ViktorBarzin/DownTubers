@@ -14,14 +14,50 @@ using System.Windows.Shapes;
 
 namespace UserInterface.Startup
 {
+    using Interfaces;
+
+    using ViewModel;
+
     /// <summary>
     /// Interaction logic for Startup.xaml
     /// </summary>
     public partial class Startup : Window
     {
+        ILogInViewModel logInViewModel = new LogInViewModel();
+
         public Startup()
         {
-            InitializeComponent();
+            this.InitializeComponent();
+        }
+
+        private void BtnRegister_OnClick(object sender, RoutedEventArgs e)
+        {
+            var current = this;
+            Register register = new Register();
+            current.Close();
+            register.Show();
+        }
+
+        private void BtnLogin_OnClick(object sender, RoutedEventArgs e)
+        {
+            int loginId = this.logInViewModel.LogIn(this.TxtUsername.Text, this.TxtPassword.Password);
+            switch (loginId)
+            {
+                case -1:
+                    MessageBox.Show("User with this username not found !");
+                    break;
+                case -2:
+                    MessageBox.Show("Username or password wrong !");
+                    break;
+                case -3:
+                    MessageBox.Show("Please fill both username and password !");
+                    break;
+                default:
+                    View view = new View(loginId);
+                    this.Close();
+                    view.Show();
+                    break;
+            }
         }
     }
 }

@@ -21,6 +21,9 @@
                 this.Context.SaveChanges();
 
             }
+
+            // The code below actually fixes a runtime error somehow
+
             catch (DbEntityValidationException e)
             {
                 foreach (var error in e.EntityValidationErrors)
