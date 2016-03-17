@@ -75,23 +75,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="BlueTheme.xaml">
+    <Page Include="Themes\BlueTheme.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Register.xaml">
-	  <Generator>MSBuild:Compile</Generator>
-	  <SubType>Designer</SubType>
-	</Page>
-    <Page Include="UploadTab.xaml">
+    <Page Include="Startup\Register.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="LoggedIn\UploadTab.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserProfileEditTab.xaml">
+    <Page Include="LoggedIn\UserProfileEditTab.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View.xaml">
+    <Page Include="LoggedIn\View.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -99,16 +99,16 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Register.xaml.cs">
+    <Compile Include="Startup\Register.xaml.cs">
       <DependentUpon>Register.xaml</DependentUpon>
-	</Compile>
-    <Compile Include="UploadTab.xaml.cs">
+    </Compile>
+    <Compile Include="LoggedIn\UploadTab.xaml.cs">
       <DependentUpon>UploadTab.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserProfileEditTab.xaml.cs">
+    <Compile Include="LoggedIn\UserProfileEditTab.xaml.cs">
       <DependentUpon>UserProfileEditTab.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View.xaml.cs">
+    <Compile Include="LoggedIn\View.xaml.cs">
       <DependentUpon>View.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
