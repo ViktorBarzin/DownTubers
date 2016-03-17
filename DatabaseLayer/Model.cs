@@ -250,13 +250,42 @@
                 {
                     return false;
                 }
-
+                
+                // TODO : check if this works fine
+                playlist.VideoSet.Add(videoToAdd);
+                this.SaveChanges();
                 return true;
             }
             catch (Exception)
             {
-                
-                throw;
+                return false;
+            }
+        }
+
+        public bool RemoveVideoFromPlaylist(PlaylistSet playlist, VideoSet videoToDelete)
+        {
+            try
+            {
+                var playlistToEdit = this.Context.PlaylistSet.Find(playlist);
+                if (playlistToEdit == null)
+                {
+                    return false;
+                }
+
+                var videoToAddInDb = this.Context.VideoSet.Find(videoToDelete);
+                if (videoToDelete == null)
+                {
+                    return false;
+                }
+
+                // TODO : check if this works fine
+                playlist.VideoSet.Add(videoToDelete);
+                this.SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
             }
         }
     }
