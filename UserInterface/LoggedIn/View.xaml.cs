@@ -28,7 +28,7 @@ namespace UserInterface
             this.Player.MediaPlayer.Play(new Uri(@"http://37.157.138.76/videos/GOT_Best_Scene.mp4"));
             this.viewModel = new ViewModel();
             this.ShowHideComment(this.visible);
-            this.GridMainVideo();
+	        this.HideMainVideo();
         }
 
         private void BtnUserSearch_OnClick(object sender, RoutedEventArgs e)
@@ -169,7 +169,7 @@ namespace UserInterface
             throw new NotImplementedException();
         }
 
-        public void GridMainVideo()
+        public void HideMainVideo()
         {
             this.GrdMainVideo.Visibility = Visibility.Hidden;
         }
