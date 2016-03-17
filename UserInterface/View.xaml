@@ -14,166 +14,182 @@
             <TabItem Name="MainTab" 
                      Header="MAIN">
                 <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition Width="3*"/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition Height="3*"/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-                    <Grid Grid.Column="0" 
-                          Grid.Row="1">
+                    <Grid x:Name="GrdMainVideo" Visibility="Hidden">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="30*"/>
                             <RowDefinition/>
                             <RowDefinition Height="3*"/>
+                            <RowDefinition/>
                         </Grid.RowDefinitions>
-                        <Label Background="AntiqueWhite" 
-                               x:Name="LblMainComments"/>
                         <Grid Grid.Column="0" 
+                          Grid.Row="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30*"/>
+                                <RowDefinition/>
+                                <RowDefinition Height="3*"/>
+                            </Grid.RowDefinitions>
+                            <Label Background="AntiqueWhite" 
+                               x:Name="LblMainComments"/>
+                            <Grid Grid.Column="0" 
                               Grid.Row="2">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="5*"/>
-                                <ColumnDefinition Width="5"/>
-                                <ColumnDefinition/>
-                            </Grid.ColumnDefinitions>
-                            <TextBox Grid.Column="0"
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="5*"/>
+                                    <ColumnDefinition Width="5"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <TextBox Grid.Column="0"
                                      Grid.Row="2"
                                      TextWrapping="Wrap"
                                      x:Name="TxtMainWriteComment"/>
-                            <Button Grid.Column="2"
+                                <Button Grid.Column="2"
                                     Grid.Row="1"
                                     Content="✍"
                                     FontSize="30"
                                     x:Name="BtnMainSendComment"/>
+                            </Grid>
                         </Grid>
-                    </Grid>
-                    <Grid Grid.Column="0" 
+                        <Grid Grid.Column="0" 
                           Grid.Row="0">
-                        <Grid.RowDefinitions>
-                            <RowDefinition/>
-                            <RowDefinition Height="2*"/>
-                            <RowDefinition Height="6*"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition Width="4*"/>
-                            <ColumnDefinition Width="20*"/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-                        <Button Grid.Column="1" 
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition Height="2*"/>
+                                <RowDefinition Height="6*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="4"/>
+                                <ColumnDefinition Width="16*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="15*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="15*"/>
+                                <ColumnDefinition Width="60*"/>
+                            </Grid.ColumnDefinitions>
+                            <Button Grid.Column="2" 
+                                Grid.Row="1"
+                                Content="⏏"
+                                FontSize="20"
+                                x:Name="BtnMainGoHome"/>
+                            <Button Grid.Column="4"
+                                Grid.Row="1"
+                                Content="◐"
+                                FontSize="20"
+                                x:Name="BtnMainChangeTheme"/>
+                            <Button Grid.Column="6" 
                                     Grid.Row="1"
                                     Content="≡"
                                     FontSize="20"
-                                    x:Name="BtnMainShowHideComments"/>
-                    </Grid>
-                    <Grid Grid.Row="0" 
+                                    x:Name="BtnMainShowHideComments"
+                                Click="BtnMainShowHideComments_Click"/>
+                        </Grid>
+                        <Grid Grid.Row="0" 
                           Grid.Column="1">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="2*"/>
-                            <RowDefinition Height="4*"/>
-                            <RowDefinition Height="2*"/>
-                            <RowDefinition Height="7*"/>
-                            <RowDefinition />
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition Width="15*"/>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-                        <TextBox Grid.Row="1" 
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="2*"/>
+                                <RowDefinition Height="4*"/>
+                                <RowDefinition Height="2*"/>
+                                <RowDefinition Height="8*"/>
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="15*"/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <TextBox Grid.Row="1" 
                                  Grid.Column="1"
                                  x:Name="TxtMainSearch"
                                  FontSize="30"/>
-                        <Button Grid.Column="2" 
+                            <Button Grid.Column="2" 
                                 Grid.Row="1"
                                 x:Name="BtnMainSearch"
                                 Content="🔍"
                                 FontSize="20"/>
-                        <Label Grid.Row="3" 
+                            <Label Grid.Row="3" 
                                Grid.Column="1" 
                                Grid.ColumnSpan="2" 
                                x:Name="LblMainVideoCaption" 
                                Background="AntiqueWhite"
                                TextBlock.FontSize="30">
-                            Hardwell on Air - 2016 (mix gatso batso) edni neshto
-                        </Label>
-                    </Grid>
-                    <Grid Grid.Column="2" 
+                                Hardwell on Air - 2016 (mix gatso batso) edni neshto
+                            </Label>
+                        </Grid>
+                        <Grid Grid.Column="2" 
                           Grid.Row="1">
-                        <Grid.RowDefinitions>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                        </Grid.RowDefinitions>
-                        <ListView Grid.Row="0" 
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <ListView Grid.Row="0" 
                                   x:Name="LvlMainFirstVideo">
-                            <ListView.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <StackPanel Orientation="Horizontal"/>
-                                </ItemsPanelTemplate>
-                            </ListView.ItemsPanel>
-                        </ListView>
-                        <ListView Grid.Row="1" 
+                                <ListView.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel Orientation="Horizontal"/>
+                                    </ItemsPanelTemplate>
+                                </ListView.ItemsPanel>
+                            </ListView>
+                            <ListView Grid.Row="1" 
                                   x:Name="LvlMainSecondVideo">
-                            <ListView.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <StackPanel Orientation="Horizontal"/>
-                                </ItemsPanelTemplate>
-                            </ListView.ItemsPanel>
-                        </ListView>
-                        <ListView Grid.Row="2" 
+                                <ListView.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel Orientation="Horizontal"/>
+                                    </ItemsPanelTemplate>
+                                </ListView.ItemsPanel>
+                            </ListView>
+                            <ListView Grid.Row="2" 
                                   x:Name="LvlMainThirdVideo">
-                            <ListView.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <StackPanel Orientation="Horizontal"/>
-                                </ItemsPanelTemplate>
-                            </ListView.ItemsPanel>
-                        </ListView>
-                        <ListView Grid.Row="3" 
+                                <ListView.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel Orientation="Horizontal"/>
+                                    </ItemsPanelTemplate>
+                                </ListView.ItemsPanel>
+                            </ListView>
+                            <ListView Grid.Row="3" 
                                   x:Name="LvlMainFourthVideo">
-                            <ListView.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <StackPanel Orientation="Horizontal"/>
-                                </ItemsPanelTemplate>
-                            </ListView.ItemsPanel>
-                        </ListView>
-                    </Grid>
-                    <Grid Grid.Column="1" 
+                                <ListView.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel Orientation="Horizontal"/>
+                                    </ItemsPanelTemplate>
+                                </ListView.ItemsPanel>
+                            </ListView>
+                        </Grid>
+                        <Grid Grid.Column="1" 
                           Grid.Row="1">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition Width="49*"/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="30*"/>
-                            <RowDefinition/>
-                            <RowDefinition Height="3*"/>
-                        </Grid.RowDefinitions>
-                        <vlc:VlcControl Grid.Column="1" 
-                                        x:Name="Player"/>
-                        <Grid Grid.Row="2" 
-                              Grid.Column="1" 
-                              x:Name="PlayerControls">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
-                                <ColumnDefinition Width="4*"/>
-                                <ColumnDefinition Width="8*"/>
-                                <ColumnDefinition/>
-                                <ColumnDefinition Width="2"/>
+                                <ColumnDefinition Width="49*"/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-                            <Button x:Name="BtnPause" 
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30*"/>
+                                <RowDefinition/>
+                                <RowDefinition Height="3*"/>
+                            </Grid.RowDefinitions>
+                            <vlc:VlcControl Grid.Column="1" 
+                                        x:Name="Player"/>
+                            <Grid Grid.Row="2" 
+                              Grid.Column="1" 
+                              x:Name="PlayerControls">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="4*"/>
+                                    <ColumnDefinition Width="8*"/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="2"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Button x:Name="BtnPause" 
                                     Click="BtnPause_OnClick"
                                     Content="❚❚"
                                     FontSize="20"/>
-                            <Slider x:Name="SdrVolume" 
+                                <Slider x:Name="SdrVolume" 
                                     Grid.Column="1" 
                                     VerticalAlignment="Center" 
                                     Minimum="0"
@@ -181,7 +197,7 @@
                                     Value="100"
                                     ValueChanged="SdrVolume_OnValueChanged"
                                     Margin="10,6,10,2" Height="18"/>
-                            <Slider x:Name="SdrPlayback" 
+                                <Slider x:Name="SdrPlayback" 
                                     Grid.Column="2" 
                                     VerticalAlignment="Center"
                                     Minimum="0"
@@ -189,41 +205,239 @@
                                     Margin="10,4,10,0"
                                     Height="18"
                                     Value="{Binding MediaPlayer.Position, Mode=TwoWay, ElementName=Player}"/>
-                            <Button x:Name="BtnFullscreen" 
+                                <Button x:Name="BtnFullscreen" 
                                     Grid.Column="3"
                                     Content="❐"
                                     FontSize="20"/>
-                            <Button Grid.Column="5"
+                                <Button Grid.Column="5"
                                     Content="⬇"
                                     FontSize="30"
                                     x:Name="BtnMainDownload"/>
+                            </Grid>
                         </Grid>
-                    </Grid>
-                    <Grid Grid.Column="2" 
+                        <Grid Grid.Column="2" 
                           Grid.Row="0">
-                        <Grid.RowDefinitions>
-                            <RowDefinition/>
-                            <RowDefinition Height="2*"/>
-                            <RowDefinition Height="6*"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition Width="60*"/>
-                            <ColumnDefinition Width="15*"/>
-                            <ColumnDefinition Width="2*"/>
-                            <ColumnDefinition Width="15*"/>
-                            <ColumnDefinition Width="4*"/>
-                        </Grid.ColumnDefinitions>
-                        <Button Grid.Column="4" 
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition Height="2*"/>
+                                <RowDefinition Height="6*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="60*"/>
+                                <ColumnDefinition Width="15*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="15*"/>
+                                <ColumnDefinition Width="4*"/>
+                            </Grid.ColumnDefinitions>
+                            <Button Grid.Column="4" 
                                 Grid.Row="1"
                                 Content="⊝"
                                 FontSize="20"
                                 x:Name="BtnMainLogOut"/>
-                        <Button Grid.Column="2"
+                            <Button Grid.Column="2"
                                 Grid.Row="1"
                                 Content="≜"
                                 FontSize="30"
                                 x:Name="BtnMainUpload"/>
+                        </Grid>
+                    </Grid>
+                    <Grid x:Name="GrdMainStartScreen">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition Height="3*"/>
+                            <RowDefinition Height="40"/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Column="0" 
+                          Grid.Row="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition Height="2*"/>
+                                <RowDefinition Height="6*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="4"/>
+                                <ColumnDefinition Width="16*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="15*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="15*"/>
+                                <ColumnDefinition Width="60*"/>
+                            </Grid.ColumnDefinitions>
+                            <Button Grid.Column="2" 
+                                Grid.Row="1"
+                                Content="⏏"
+                                FontSize="20"
+                                x:Name="BtnMainStartScreenGoHome"/>
+                            <Button Grid.Column="4"
+                                Grid.Row="1"
+                                Content="◐"
+                                FontSize="20"
+                                x:Name="BtnMainStartScreenChangeTheme"/>
+                        </Grid>
+                        <Grid Grid.Row="0" 
+                          Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="2*"/>
+                                <RowDefinition Height="4*"/>
+                                <RowDefinition Height="3*"/>
+                                <RowDefinition Height="7*"/>
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="15*"/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <TextBox Grid.Row="1" 
+                                 Grid.Column="1"
+                                 x:Name="TxtMainStartScreenSearch"
+                                 Keyboard.KeyDown="TxtMainStartScreenSearch_KeyDown"
+                                 FontSize="30"/>
+                            <Button Grid.Column="2" 
+                                Grid.Row="1"
+                                x:Name="BtnMainStartScreenSearch"
+                                Content="🔍"
+                                FontSize="20"/>
+                        </Grid>
+                        <Grid Grid.Column="2" 
+                          Grid.Row="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition Height="2*"/>
+                                <RowDefinition Height="6*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="60*"/>
+                                <ColumnDefinition Width="15*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="15*"/>
+                                <ColumnDefinition Width="4*"/>
+                            </Grid.ColumnDefinitions>
+                            <Button Grid.Column="4" 
+                                Grid.Row="1"
+                                Content="⊝"
+                                FontSize="20"
+                                x:Name="BtnMainStartScreenLogOut"/>
+                            <Button Grid.Column="2"
+                                Grid.Row="1"
+                                Content="≜"
+                                FontSize="30"
+                                x:Name="BtnMainStartScreenUpload"/>
+                        </Grid>
+                        <Grid Grid.Row="1" Grid.ColumnSpan="3">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition Height="10"/>
+                                <RowDefinition/>
+                                <RowDefinition Height="10"/>
+                                <RowDefinition/>
+                                <RowDefinition Height="10"/>
+                                <RowDefinition/>
+                                <RowDefinition Height="10"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="5*"/>
+                                <ColumnDefinition Width="3"/>
+                                <ColumnDefinition Width="5*"/>
+                                <ColumnDefinition Width="3"/>
+                                <ColumnDefinition Width="5*"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <ListView Grid.Row="0" Grid.Column="1">
+                                <ListView.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel Orientation="Horizontal"/>
+                                    </ItemsPanelTemplate>
+                                </ListView.ItemsPanel>
+                            </ListView>
+                            <ListView Grid.Row="0" Grid.Column="3">
+                                <ListView.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel Orientation="Horizontal"/>
+                                    </ItemsPanelTemplate>
+                                </ListView.ItemsPanel>
+                            </ListView>
+                            <ListView Grid.Row="0" Grid.Column="5">
+                                <ListView.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel Orientation="Horizontal"/>
+                                    </ItemsPanelTemplate>
+                                </ListView.ItemsPanel>
+                            </ListView>
+                            <ListView Grid.Row="2" Grid.Column="1">
+                                <ListView.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel Orientation="Horizontal"/>
+                                    </ItemsPanelTemplate>
+                                </ListView.ItemsPanel>
+                            </ListView>
+                            <ListView Grid.Row="2" Grid.Column="3">
+                                <ListView.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel Orientation="Horizontal"/>
+                                    </ItemsPanelTemplate>
+                                </ListView.ItemsPanel>
+                            </ListView>
+                            <ListView Grid.Row="2" Grid.Column="5">
+                                <ListView.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel Orientation="Horizontal"/>
+                                    </ItemsPanelTemplate>
+                                </ListView.ItemsPanel>
+                            </ListView>
+                            <ListView Grid.Row="4" Grid.Column="1">
+                                <ListView.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel Orientation="Horizontal"/>
+                                    </ItemsPanelTemplate>
+                                </ListView.ItemsPanel>
+                            </ListView>
+                            <ListView Grid.Row="4" Grid.Column="3">
+                                <ListView.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel Orientation="Horizontal"/>
+                                    </ItemsPanelTemplate>
+                                </ListView.ItemsPanel>
+                            </ListView>
+                            <ListView Grid.Row="4" Grid.Column="5">
+                                <ListView.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel Orientation="Horizontal"/>
+                                    </ItemsPanelTemplate>
+                                </ListView.ItemsPanel>
+                            </ListView>
+                            <ListView Grid.Row="6" Grid.Column="1">
+                                <ListView.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel Orientation="Horizontal"/>
+                                    </ItemsPanelTemplate>
+                                </ListView.ItemsPanel>
+                            </ListView>
+                            <ListView Grid.Row="6" Grid.Column="3">
+                                <ListView.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel Orientation="Horizontal"/>
+                                    </ItemsPanelTemplate>
+                                </ListView.ItemsPanel>
+                            </ListView>
+                            <ListView Grid.Row="6" Grid.Column="5">
+                                <ListView.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel Orientation="Horizontal"/>
+                                    </ItemsPanelTemplate>
+                                </ListView.ItemsPanel>
+                            </ListView>
+                        </Grid>
                     </Grid>
                 </Grid>
             </TabItem>

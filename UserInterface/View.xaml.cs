@@ -20,7 +20,8 @@ namespace UserInterface
     /// </summary>
     public partial class View : Window
     {
-        private readonly IViewModel viewModel; 
+        private readonly IViewModel viewModel;
+        private bool visible = true;
 
         public View()
         {
@@ -29,6 +30,8 @@ namespace UserInterface
             this.Player.MediaPlayer.EndInit();
             this.Player.MediaPlayer.Play(new Uri(@"http://37.157.138.76/videos/GOT_Best_Scene.mp4"));
             this.viewModel = new ViewModel();
+            this.ShowHideComment(visible);
+            this.GridMainVideo();
 		}
 
         private void BtnUserSearch_OnClick(object sender, RoutedEventArgs e)
@@ -113,14 +116,41 @@ namespace UserInterface
             throw new NotImplementedException();
         }
 
-        public void ShowHideComment()
+        public void ShowHideComment(bool isShowed)
         {
-            throw new NotImplementedException();
+            if (isShowed)
+            {
+                this.LvlMainFirstVideo.Visibility = Visibility.Visible;
+                this.LvlMainSecondVideo.Visibility = Visibility.Visible;
+                this.LvlMainThirdVideo.Visibility = Visibility.Visible;
+                this.LvlMainFourthVideo.Visibility = Visibility.Visible;
+
+                this.LblMainComments.Visibility = Visibility.Visible;
+                this.TxtMainWriteComment.Visibility = Visibility.Visible;
+                this.BtnMainSendComment.Visibility = Visibility.Visible;
+            
+                this.visible = !visible;
+
+            }
+            if (!isShowed)
+            {
+
+                this.LvlMainFirstVideo.Visibility = Visibility.Hidden;
+                this.LvlMainSecondVideo.Visibility = Visibility.Hidden;
+                this.LvlMainThirdVideo.Visibility = Visibility.Hidden;
+                this.LvlMainFourthVideo.Visibility = Visibility.Hidden;
+
+                this.LblMainComments.Visibility = Visibility.Hidden;
+                this.TxtMainWriteComment.Visibility = Visibility.Hidden;
+                this.BtnMainSendComment.Visibility = Visibility.Hidden;
+
+                this.visible = !visible;
+            }
         }
 
         public void VideoSearch(string search)
         {
-            throw new NotImplementedException();
+            
         }
 
         public void Upload()
@@ -141,6 +171,21 @@ namespace UserInterface
         public void Logout()
         {
             throw new NotImplementedException();
+        }
+
+        public void GridMainVideo()
+        {
+            this.GrdMainVideo.Visibility = Visibility.Hidden;
+        }
+
+        private void BtnMainShowHideComments_Click(object sender, RoutedEventArgs e)
+        {
+            ShowHideComment(this.visible);
+        }
+
+        private void TxtMainStartScreenSearch_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            this.GrdMainVideo.Visibility = Visibility.Visible;
         }
     }
 }
