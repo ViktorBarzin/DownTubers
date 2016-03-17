@@ -189,5 +189,17 @@ namespace UserInterface
             //this.Resources.MergedDictionaries.Clear();
             //this.Resources.MergedDictionaries.Add(blueTheme);
         }
+
+        private void BtnMainUpload_OnClick(object sender, RoutedEventArgs e)
+        {
+            View newView = this;
+            UploadTab uploadTab = new UploadTab(ref newView);
+            uploadTab.ShowDialog();
+        }
+
+        private void BtnMainDownload_OnClick(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

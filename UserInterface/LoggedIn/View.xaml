@@ -10,13 +10,6 @@
         WindowState="Maximized"
         ResizeMode="NoResize"
         Title="View">
-    <!--<Window.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Themes/BlueTheme.xaml"/>
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </Window.Resources>-->
     <Grid>
         <TabControl TabStripPlacement="Top" Margin="0,10,0,-10">
             <TabItem Name="MainTab" 
@@ -225,6 +218,7 @@
                                     Content="⬇"
                                     FontSize="30"
                                     x:Name="BtnMainDownload"
+                                        Click="BtnMainDownload_OnClick"
                                     Style="{DynamicResource ButtonStyle}"/>
                             </Grid>
                         </Grid>
@@ -373,7 +367,8 @@
                                 Content="≜"
                                 FontSize="30"
                                 x:Name="BtnMainUpload"
-                                Style="{DynamicResource ButtonStyle}">
+                                Style="{DynamicResource ButtonStyle}"
+                                Click="BtnMainUpload_OnClick">
                                 <Button.ToolTip>
                                     <ToolTip>
                                         <StackPanel>
