@@ -20,10 +20,6 @@ namespace Interfaces
 
         void CancelChanges();
 
-        List<UserSet> UserMatches { get; set; }
-
-        List<VideoSet> VideoMatches { get; set; }
-
         UserSet DetailedUserInfo { get; set; }
 
         VideoSet DetailedVideoInfo { get; set; }
