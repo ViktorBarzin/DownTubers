@@ -15,7 +15,7 @@
             <RowDefinition Height="2*"/>
             <RowDefinition/>
             <RowDefinition Height="2*"/>
-            <RowDefinition Height="4*"/>
+            <RowDefinition Height="5*"/>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
@@ -84,8 +84,8 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="3*"/>
-                <RowDefinition Height="7*"/>
+                <RowDefinition/>
+                <RowDefinition Height="2*"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <Label Grid.Column="1"
@@ -102,6 +102,35 @@
                      TextWrapping="Wrap"
                      x:Name="TxtUploadDescription"
                      Style="{DynamicResource TextBoxStyle}"/>
+            <Grid Grid.Row="2"
+                  Grid.Column="0"
+                  Grid.ColumnSpan="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="15*"/>
+                    <ColumnDefinition Width="15*"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button 
+                    Grid.Column="1"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    Width="50"
+                    Height="25"
+                    FontSize="18"
+                    Content="Save"
+                    x:Name="BtnUploadSave"
+                    Style="{DynamicResource ButtonStyle}"/>
+                <Button 
+                    Grid.Column="1"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    Width="50"
+                    Height="25"
+                    FontSize="18"
+                    Content="Exit"
+                    x:Name="BtnUploadExit"
+                    Style="{DynamicResource ButtonStyle}"/>
+            </Grid>
         </Grid>
     </Grid>
 </Window>

@@ -14,11 +14,14 @@ using System.Windows.Shapes;
 
 namespace UserInterface
 {
+    using ViewModel;
+
     /// <summary>
     /// Interaction logic for Register.xaml
     /// </summary>
     public partial class Register : Window
     {
+        RegisterViewModel registerViewModel = new RegisterViewModel();
         public Register()
         {
             InitializeComponent();
@@ -31,7 +34,21 @@ namespace UserInterface
 
         private void BtnRegister_OnClick(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            if (this.registerViewModel.Register(
+                this.TxtUsername.Text,
+                this.TxtPassword.Password,
+                this.TxtConfirmPassword.Password,
+                this.TxtEmail.Text,
+                this.TxtFirstName.Text,
+                this.TxtLastName.Text,
+                this.TxtDescription.Text))
+            {
+                MessageBox.Show("BRAVO BE MASHINKEEE");
+            }
+            else
+            {
+                MessageBox.Show("Something went wrong");
+            }
         }
     }
 }
