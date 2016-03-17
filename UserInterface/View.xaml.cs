@@ -12,6 +12,8 @@ using Vlc.DotNet.Wpf;
 namespace UserInterface
 {
     using System.Collections.Specialized;
+    using System.Windows.Input;
+
     using ViewModel;
     using Interfaces;
 
@@ -186,6 +188,11 @@ namespace UserInterface
         private void TxtMainStartScreenSearch_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
             this.GrdMainVideo.Visibility = Visibility.Visible;
+        }
+
+        private void BtnMainStartScreenChangeTheme_OnClick(object sender, RoutedEventArgs e)
+        {
+            base.OnMouseDown(e as MouseButtonEventArgs);
         }
     }
 }

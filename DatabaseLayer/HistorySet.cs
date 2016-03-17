@@ -14,12 +14,19 @@ namespace DatabaseLayer
     
     public partial class HistorySet
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public HistorySet()
+        {
+            this.VideoSet = new HashSet<VideoSet>();
+        }
+    
         public int Id { get; set; }
         public int UserId { get; set; }
         public int VideoId { get; set; }
         public System.DateTime WatchDate { get; set; }
     
         public virtual UserSet UserSet { get; set; }
-        public virtual VideoSet VideoSet { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<VideoSet> VideoSet { get; set; }
     }
 }

@@ -279,7 +279,8 @@
                                 Grid.Row="1"
                                 Content="◐"
                                 FontSize="20"
-                                x:Name="BtnMainStartScreenChangeTheme"/>
+                                x:Name="BtnMainStartScreenChangeTheme"
+                                    Click="BtnMainStartScreenChangeTheme_OnClick"/>
                         </Grid>
                         <Grid Grid.Row="0" 
                           Grid.Column="1">
