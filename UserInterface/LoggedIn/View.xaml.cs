@@ -202,5 +202,10 @@ namespace UserInterface
             UploadTab uploadTab = new UploadTab(ref newView);
             uploadTab.ShowDialog();
         }
+
+        private void BtnMainDownload_OnClick(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

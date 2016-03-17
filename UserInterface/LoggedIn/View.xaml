@@ -217,6 +217,7 @@
                                     Content="⬇"
                                     FontSize="30"
                                     x:Name="BtnMainDownload"
+                                        Click="BtnMainDownload_OnClick"
                                     Style="{DynamicResource ButtonStyle}"/>
                             </Grid>
                         </Grid>
