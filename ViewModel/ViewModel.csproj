@@ -60,6 +60,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="PasswordHash.cs" />
+    <Compile Include="UserSearchResult.cs" />
+    <Compile Include="VideoSearchResult.cs" />
     <Compile Include="ViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -16,59 +16,19 @@
     {
 
         // TODO : implementation for viewmodel + adding classes for properties to display them
-        // TODO : documentation 
-        public UserSet DetailedUserInfo
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
+        // TODO : documentation
 
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
+        // Admin panel search results
 
-        public VideoSet DetailedVideoInfo
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
+        public UserSet DetailedUserInfo { get; set; }
+        
+        public VideoSet DetailedVideoInfo { get; set; }
+        
+        public UserSearchResult UserSearchResult { get; set; }
+        
+        public VideoSearchResult VideoSearchResult { get; set; }
 
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        public List<UserSet> UserMatches
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        public List<VideoSet> VideoMatches
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
-
+        // admin panel ends
         public void CancelChanges()
         {
             throw new NotImplementedException();
