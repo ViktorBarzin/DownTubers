@@ -187,5 +187,13 @@ namespace UserInterface
         {
             this.GrdMainVideo.Visibility = Visibility.Visible;
         }
+
+        private void BtnMainStartScreenChangeTheme_Click(object sender, RoutedEventArgs e)
+        {
+            //ResourceDictionary blueTheme = new ResourceDictionary();
+            //blueTheme.Source = new Uri("BlueTheme.xaml", UriKind.Relative);
+            //this.Resources.MergedDictionaries.Clear();
+            //this.Resources.MergedDictionaries.Add(blueTheme);
+        }
     }
 }

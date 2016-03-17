@@ -46,5 +46,10 @@ namespace UserInterface
         {
             throw new NotImplementedException();
         }
+
+        private void TxtEditUsername_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }
