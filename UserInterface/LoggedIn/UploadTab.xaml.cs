@@ -19,9 +19,17 @@ namespace UserInterface
     /// </summary>
     public partial class UploadTab : Window
     {
-        public UploadTab()
+        private View parent;
+
+        public UploadTab(ref View parent)
         {
+            this.parent = parent;
             InitializeComponent();
+        }
+
+        private void BtnUploadBrowse_OnClick(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
         }
     }
 }
