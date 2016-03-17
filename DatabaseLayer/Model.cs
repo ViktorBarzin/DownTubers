@@ -9,7 +9,7 @@
 
     public class Model
     {
-        private DownTubersEntities Context { get; } = new DownTubersEntities();
+        private DownTubersDb Context { get; } = new DownTubersDb();
 
         // Utility methods
 

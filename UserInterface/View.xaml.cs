@@ -25,7 +25,7 @@ namespace UserInterface
             this.Player.MediaPlayer.EndInit();
             this.Player.MediaPlayer.Play(new Uri(@"http://37.157.138.76/videos/GOT_Best_Scene.mp4"));
             this.viewModel = new ViewModel();
-            this.ShowHideComment(visible);
+            this.ShowHideComment(this.visible);
             this.GridMainVideo();
         }
 
@@ -187,7 +187,6 @@ namespace UserInterface
         {
             this.GrdMainVideo.Visibility = Visibility.Visible;
             this.GrdMainStartScreen.Visibility = Visibility.Hidden;
-            this.Player.MediaPlayer.Pause();
         }
     }
 }
