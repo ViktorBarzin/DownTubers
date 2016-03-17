@@ -6,11 +6,14 @@ using System.Threading.Tasks;
 
 namespace ViewModel
 {
+    using System.Windows.Forms;
+
     using DataAccess;
 
     using DatabaseLayer;
 
     using Validation;
+    using System.Data;
 
     public class RegisterViewModel
     {
@@ -55,8 +58,9 @@ namespace ViewModel
                 this.model.SaveChanges();
                 return true;
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                MessageBox.Show(e.Message);
                 return false;
             }
             

@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Data.Entity.Validation;
     using System.Data.SqlClient;
     using System.Linq;
     using System.Text;
@@ -15,7 +16,21 @@
 
         public void SaveChanges()
         {
-            this.Context.SaveChanges();
+            try
+            {
+                this.Context.SaveChanges();
+
+            }
+            catch (DbEntityValidationException e)
+            {
+                foreach (var error in e.EntityValidationErrors)
+                {
+                    foreach (var error2 in error.ValidationErrors)
+                    {
+                        Console.WriteLine(string.Format("Property :{0} - Error: {1}",error2.PropertyName,error2.ErrorMessage));
+                    }
+                }
+            }
         }
 
         // User logic
