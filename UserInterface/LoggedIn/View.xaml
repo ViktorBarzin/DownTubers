@@ -12,7 +12,7 @@
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="BlueTheme.xaml"/>
+                <ResourceDictionary Source="Themes/BlueTheme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
@@ -43,7 +43,7 @@
                                 <ColumnDefinition Width="5"/>
                                 <ColumnDefinition/>
                                 </Grid.ColumnDefinitions>
-                                <TextBox Grid.Column="1" 
+                            <TextBox Grid.Column="1" 
                                      Style="{DynamicResource TextBoxStyle}" 
                                      x:Name="TxtMainComments"
                                      IsReadOnly="True"/>
@@ -154,39 +154,13 @@
                           Grid.Row="1">
                             <Grid.RowDefinitions>
                                 <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
                             </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="5"/>
+                            </Grid.ColumnDefinitions>
                             <ListView Grid.Row="0" 
                                   x:Name="LvlMainFirstVideo"
-                                  Style="{DynamicResource ListViewStyle}">
-                                <ListView.ItemsPanel>
-                                    <ItemsPanelTemplate>
-                                        <StackPanel Orientation="Horizontal"/>
-                                    </ItemsPanelTemplate>
-                                </ListView.ItemsPanel>
-                            </ListView>
-                            <ListView Grid.Row="1" 
-                                  x:Name="LvlMainSecondVideo"
-                                  Style="{DynamicResource ListViewStyle}">
-                                <ListView.ItemsPanel>
-                                    <ItemsPanelTemplate>
-                                        <StackPanel Orientation="Horizontal"/>
-                                    </ItemsPanelTemplate>
-                                </ListView.ItemsPanel>
-                            </ListView>
-                            <ListView Grid.Row="2" 
-                                  x:Name="LvlMainThirdVideo"
-                                  Style="{DynamicResource ListViewStyle}">
-                                <ListView.ItemsPanel>
-                                    <ItemsPanelTemplate>
-                                        <StackPanel Orientation="Horizontal"/>
-                                    </ItemsPanelTemplate>
-                                </ListView.ItemsPanel>
-                            </ListView>
-                            <ListView Grid.Row="3" 
-                                  x:Name="LvlMainFourthVideo"
                                   Style="{DynamicResource ListViewStyle}">
                                 <ListView.ItemsPanel>
                                     <ItemsPanelTemplate>
@@ -278,11 +252,9 @@
                                 Grid.Row="1"
                                 Content="≜"
                                 FontSize="30"
-<<<<<<< HEAD
                                 x:Name="BtnMainUpload"
                                 Style="{DynamicResource ButtonStyle}"/>
                         </Grid>
-=======
                                 x:Name="BtnMainUpload"/>
                         </Grid>-->
                     </Grid>
@@ -383,124 +355,33 @@
                                 FontSize="30"
                                 x:Name="BtnMainUpload"
                                 Style="{DynamicResource ButtonStyle}"
-                                Click="BtnMainUpload_OnClick"/>
+                                Click="BtnMainUpload_OnClick">
+                                <Button.ToolTip>
+                                    <ToolTip>
+                                        <StackPanel>
+                                            <TextBlock FontWeight="Bold" Text="Upload"/>
+                                            <TextBlock Text="Click to upload a video"/>
+                                            
+                                        </StackPanel>
+                                    </ToolTip>
+                                </Button.ToolTip>
+                            </Button>
                         </Grid>
-                        <Grid Grid.Row="1" Grid.ColumnSpan="3">
+                        <Grid Grid.Row="1" Grid.ColumnSpan="3" Grid.Column="0">
                             <Grid.RowDefinitions>
                                 <RowDefinition/>
-                                <RowDefinition Height="10"/>
                                 <RowDefinition/>
-                                <RowDefinition Height="10"/>
                                 <RowDefinition/>
-                                <RowDefinition Height="10"/>
                                 <RowDefinition/>
-                                <RowDefinition Height="10"/>
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
                                 <ColumnDefinition Width="5*"/>
-                                <ColumnDefinition Width="3"/>
                                 <ColumnDefinition Width="5*"/>
-                                <ColumnDefinition Width="3"/>
                                 <ColumnDefinition Width="5*"/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-                            <ListView Grid.Row="0" Grid.Column="1"
-                                      Style="{DynamicResource ListViewStyle}">
-                                <ListView.ItemsPanel>
-                                    <ItemsPanelTemplate>
-                                        <StackPanel Orientation="Horizontal"/>
-                                    </ItemsPanelTemplate>
-                                </ListView.ItemsPanel>
-                            </ListView>
-                            <ListView Grid.Row="0" Grid.Column="3"
-                                      Style="{DynamicResource ListViewStyle}">
-                                <ListView.ItemsPanel>
-                                    <ItemsPanelTemplate>
-                                        <StackPanel Orientation="Horizontal"/>
-                                    </ItemsPanelTemplate>
-                                </ListView.ItemsPanel>
-                            </ListView>
-                            <ListView Grid.Row="0" Grid.Column="5"
-                                      Style="{DynamicResource ListViewStyle}">
-                                <ListView.ItemsPanel>
-                                    <ItemsPanelTemplate>
-                                        <StackPanel Orientation="Horizontal"/>
-                                    </ItemsPanelTemplate>
-                                </ListView.ItemsPanel>
-                            </ListView>
-                            <ListView Grid.Row="2" Grid.Column="1"
-                                      Style="{DynamicResource ListViewStyle}">
-                                <ListView.ItemsPanel>
-                                    <ItemsPanelTemplate>
-                                        <StackPanel Orientation="Horizontal"/>
-                                    </ItemsPanelTemplate>
-                                </ListView.ItemsPanel>
-                            </ListView>
-                            <ListView Grid.Row="2" Grid.Column="3"
-                                      Style="{DynamicResource ListViewStyle}">
-                                <ListView.ItemsPanel>
-                                    <ItemsPanelTemplate>
-                                        <StackPanel Orientation="Horizontal"/>
-                                    </ItemsPanelTemplate>
-                                </ListView.ItemsPanel>
-                            </ListView>
-                            <ListView Grid.Row="2" Grid.Column="5"
-                                      Style="{DynamicResource ListViewStyle}">
-                                <ListView.ItemsPanel>
-                                    <ItemsPanelTemplate>
-                                        <StackPanel Orientation="Horizontal"/>
-                                    </ItemsPanelTemplate>
-                                </ListView.ItemsPanel>
-                            </ListView>
-                            <ListView Grid.Row="4" Grid.Column="1"
-                                      Style="{DynamicResource ListViewStyle}">
-                                <ListView.ItemsPanel>
-                                    <ItemsPanelTemplate>
-                                        <StackPanel Orientation="Horizontal"/>
-                                    </ItemsPanelTemplate>
-                                </ListView.ItemsPanel>
-                            </ListView>
-                            <ListView Grid.Row="4" Grid.Column="3"
-                                      Style="{DynamicResource ListViewStyle}">
-                                <ListView.ItemsPanel>
-                                    <ItemsPanelTemplate>
-                                        <StackPanel Orientation="Horizontal"/>
-                                    </ItemsPanelTemplate>
-                                </ListView.ItemsPanel>
-                            </ListView>
-                            <ListView Grid.Row="4" Grid.Column="5"
-                                      Style="{DynamicResource ListViewStyle}">
-                                <ListView.ItemsPanel>
-                                    <ItemsPanelTemplate>
-                                        <StackPanel Orientation="Horizontal"/>
-                                    </ItemsPanelTemplate>
-                                </ListView.ItemsPanel>
-                            </ListView>
-                            <ListView Grid.Row="6" Grid.Column="1"
-                                      Style="{DynamicResource ListViewStyle}">
-                                <ListView.ItemsPanel>
-                                    <ItemsPanelTemplate>
-                                        <StackPanel Orientation="Horizontal"/>
-                                    </ItemsPanelTemplate>
-                                </ListView.ItemsPanel>
-                            </ListView>
-                            <ListView Grid.Row="6" Grid.Column="3"
-                                      Style="{DynamicResource ListViewStyle}">
-                                <ListView.ItemsPanel>
-                                    <ItemsPanelTemplate>
-                                        <StackPanel Orientation="Horizontal"/>
-                                    </ItemsPanelTemplate>
-                                </ListView.ItemsPanel>
-                            </ListView>
-                            <ListView Grid.Row="6" Grid.Column="5"
-                                      Style="{DynamicResource ListViewStyle}">
-                                <ListView.ItemsPanel>
-                                    <ItemsPanelTemplate>
-                                        <StackPanel Orientation="Horizontal"/>
-                                    </ItemsPanelTemplate>
-                                </ListView.ItemsPanel>
-                            </ListView>
+                            
                         </Grid>
                     </Grid>
                 </Grid>
@@ -724,7 +605,13 @@
                                  VerticalAlignment="Top"
                                  FontSize="16"
                                  x:Name="TxtAdminVideoSearch"
-                                 Style="{DynamicResource TextBoxStyle}"/>
+                                 Style="{DynamicResource TextBoxStyle}">
+                            <TextBox.Background>
+                                <SolidColorBrush 
+                                    Color="AliceBlue"
+                                    Opacity="0.3"/>
+                            </TextBox.Background>
+                        </TextBox>
                         <Button Grid.Column="0"
                                 Grid.Row="1"
                                 Width="120"

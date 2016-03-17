@@ -10,11 +10,9 @@ namespace UserInterface
     using Interfaces;
     using System.Windows.Controls;
     using System.Windows.Media;
-    using System.Windows.Input;
-    
-    /// <summary>
-    /// Interaction logic for View.xaml
-    /// </summary>
+    using System.Windows.Input;/// <summary>
+                               /// Interaction logic for View.xaml
+                               /// </summary>
     public partial class View : Window
     {
         private readonly IViewModel viewModel;
@@ -27,7 +25,7 @@ namespace UserInterface
             this.Player.MediaPlayer.EndInit();
             this.Player.MediaPlayer.Play(new Uri(@"http://37.157.138.76/videos/GOT_Best_Scene.mp4"));
             this.viewModel = new ViewModel();
-            this.ShowHideComment(this.visible);
+            //this.ShowHideComment(visible);
             this.GridMainVideo();
         }
 
@@ -54,6 +52,7 @@ namespace UserInterface
 		    {
 				Player.MediaPlayer.Play();
 				BtnPause.Content = "❚❚";
+                //Player.MediaPlayer.Length;   
 			}
 	    }
 
@@ -112,37 +111,37 @@ namespace UserInterface
             throw new NotImplementedException();
         }
 
-        public void ShowHideComment(bool isShowed)
-        {
-            if (isShowed)
-            {
-                this.LvlMainFirstVideo.Visibility = Visibility.Visible;
-                this.LvlMainSecondVideo.Visibility = Visibility.Visible;
-                this.LvlMainThirdVideo.Visibility = Visibility.Visible;
-                this.LvlMainFourthVideo.Visibility = Visibility.Visible;
+        //public void ShowHideComment(bool isShowed)
+        //{
+        //    if (isShowed)
+        //    {
+        //        this.LvlMainFirstVideo.Visibility = Visibility.Visible;
+        //        this.LvlMainSecondVideo.Visibility = Visibility.Visible;
+        //        this.LvlMainThirdVideo.Visibility = Visibility.Visible;
+        //        this.LvlMainFourthVideo.Visibility = Visibility.Visible;
 
-                this.TxtMainComments.Visibility = Visibility.Visible;
-                this.TxtMainWriteComment.Visibility = Visibility.Visible;
-                this.BtnMainSendComment.Visibility = Visibility.Visible;
+        //        this.TxtMainComments.Visibility = Visibility.Visible;
+        //        this.TxtMainWriteComment.Visibility = Visibility.Visible;
+        //        this.BtnMainSendComment.Visibility = Visibility.Visible;
             
-                this.visible = !visible;
+        //        this.visible = !visible;
 
-            }
-            if (!isShowed)
-            {
+        //    }
+        //    if (!isShowed)
+        //    {
 
-                this.LvlMainFirstVideo.Visibility = Visibility.Hidden;
-                this.LvlMainSecondVideo.Visibility = Visibility.Hidden;
-                this.LvlMainThirdVideo.Visibility = Visibility.Hidden;
-                this.LvlMainFourthVideo.Visibility = Visibility.Hidden;
+        //        this.LvlMainFirstVideo.Visibility = Visibility.Hidden;
+        //        this.LvlMainSecondVideo.Visibility = Visibility.Hidden;
+        //        this.LvlMainThirdVideo.Visibility = Visibility.Hidden;
+        //        this.LvlMainFourthVideo.Visibility = Visibility.Hidden;
 
-                this.TxtMainComments.Visibility = Visibility.Hidden;
-                this.TxtMainWriteComment.Visibility = Visibility.Hidden;
-                this.BtnMainSendComment.Visibility = Visibility.Hidden;
+        //        this.TxtMainComments.Visibility = Visibility.Hidden;
+        //        this.TxtMainWriteComment.Visibility = Visibility.Hidden;
+        //        this.BtnMainSendComment.Visibility = Visibility.Hidden;
 
-                this.visible = !visible;
-            }
-        }
+        //        this.visible = !visible;
+        //    }
+        //}
 
         public void VideoSearch(string search)
         {
@@ -174,10 +173,10 @@ namespace UserInterface
             this.GrdMainVideo.Visibility = Visibility.Hidden;
         }
 
-        private void BtnMainShowHideComments_Click(object sender, RoutedEventArgs e)
-        {
-            ShowHideComment(this.visible);
-        }
+        //private void BtnMainShowHideComments_Click(object sender, RoutedEventArgs e)
+        //{
+        //    ShowHideComment(this.visible);
+        //}
 
         private void BtnMainChangeTheme_Click(object sender, RoutedEventArgs e)
         {
@@ -186,8 +185,7 @@ namespace UserInterface
 
         private void BtnMainSearch_OnClick(object sender, RoutedEventArgs e)
         {
-            this.GrdMainVideo.Visibility = Visibility.Visible;
-            this.GrdMainStartScreen.Visibility = Visibility.Hidden;
+
         }
 
         private void BtnMainStartScreenChangeTheme_Click(object sender, RoutedEventArgs e)
