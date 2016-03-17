@@ -18,10 +18,10 @@ namespace DatabaseLayer
         public UserSet()
         {
             this.HistorySet = new HashSet<HistorySet>();
-            this.PlaylistSet = new HashSet<PlaylistSet>();
             this.VideoSet = new HashSet<VideoSet>();
             this.User = new HashSet<UserSet>();
             this.Subscriber = new HashSet<UserSet>();
+            this.PlaylistSet = new HashSet<PlaylistSet>();
         }
     
         public int Id { get; set; }
@@ -39,12 +39,12 @@ namespace DatabaseLayer
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HistorySet> HistorySet { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PlaylistSet> PlaylistSet { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<VideoSet> VideoSet { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserSet> User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserSet> Subscriber { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PlaylistSet> PlaylistSet { get; set; }
     }
 }

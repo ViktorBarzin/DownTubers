@@ -31,10 +31,10 @@ namespace DatabaseLayer
         public Nullable<int> Likes { get; set; }
         public string VideoPath { get; set; }
     
+        public virtual UserSet UserSet { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HistorySet> HistorySet { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PlaylistSet> PlaylistSet { get; set; }
-        public virtual UserSet UserSet { get; set; }
     }
 }

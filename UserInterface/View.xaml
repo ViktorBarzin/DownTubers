@@ -9,12 +9,19 @@
         WindowStartupLocation="CenterScreen"
         WindowState="Maximized"
         Title="View">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="BlueTheme.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
     <Grid>
         <TabControl TabStripPlacement="Top" Margin="0,10,0,-10">
             <TabItem Name="MainTab" 
                      Header="MAIN">
                 <Grid>
-                    <Grid x:Name="GrdMainVideo" Visibility="Hidden">
+                    <Grid x:Name="GrdMainVideo">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
                             <ColumnDefinition Width="3*"/>
@@ -52,12 +59,12 @@
                                     x:Name="BtnMainSendComment"/>
                             </Grid>
                         </Grid>
-                        <Grid Grid.Column="0" 
+                        <!--<Grid Grid.Column="0" 
                           Grid.Row="0">
                             <Grid.RowDefinitions>
                                 <RowDefinition/>
                                 <RowDefinition Height="2*"/>
-                                <RowDefinition Height="6*"/>
+                                <RowDefinition Height="5.5*"/>
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
@@ -85,7 +92,7 @@
                                     FontSize="20"
                                     x:Name="BtnMainShowHideComments"
                                 Click="BtnMainShowHideComments_Click"/>
-                        </Grid>
+                        </Grid>-->
                         <Grid Grid.Row="0" 
                           Grid.Column="1">
                             <Grid.RowDefinitions>
@@ -101,7 +108,7 @@
                                 <ColumnDefinition/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-                            <TextBox Grid.Row="1" 
+                            <!--<TextBox Grid.Row="1" 
                                  Grid.Column="1"
                                  x:Name="TxtMainSearch"
                                  FontSize="30"/>
@@ -109,15 +116,14 @@
                                 Grid.Row="1"
                                 x:Name="BtnMainSearch"
                                 Content="🔍"
-                                FontSize="20"/>
-                            <Label Grid.Row="3" 
-                               Grid.Column="1" 
-                               Grid.ColumnSpan="2" 
-                               x:Name="LblMainVideoCaption" 
-                               Background="AntiqueWhite"
-                               TextBlock.FontSize="30">
-                                Hardwell on Air - 2016 (mix gatso batso) edni neshto
-                            </Label>
+                                FontSize="20"/>-->
+                            <!--<Label Grid.Row="3" 
+                                   Grid.Column="1" 
+                                   Grid.ColumnSpan="2" 
+                                   x:Name="LblMainVideoCaption" 
+                                   Background="AntiqueWhite"
+                                   TextBlock.FontSize="30"
+                                   Content="Hardwell on Air - 2016 (mix gatso batso) edni neshto"/>-->
                         </Grid>
                         <Grid Grid.Column="2" 
                           Grid.Row="1">
@@ -215,7 +221,7 @@
                                     x:Name="BtnMainDownload"/>
                             </Grid>
                         </Grid>
-                        <Grid Grid.Column="2" 
+                        <!--<Grid Grid.Column="2" 
                           Grid.Row="0">
                             <Grid.RowDefinitions>
                                 <RowDefinition/>
@@ -240,7 +246,7 @@
                                 Content="≜"
                                 FontSize="30"
                                 x:Name="BtnMainUpload"/>
-                        </Grid>
+                        </Grid>-->
                     </Grid>
                     <Grid x:Name="GrdMainStartScreen">
                         <Grid.ColumnDefinitions>
@@ -258,7 +264,7 @@
                             <Grid.RowDefinitions>
                                 <RowDefinition/>
                                 <RowDefinition Height="2*"/>
-                                <RowDefinition Height="6*"/>
+                                <RowDefinition Height="7*"/>
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
@@ -274,19 +280,20 @@
                                 Grid.Row="1"
                                 Content="⏏"
                                 FontSize="20"
-                                x:Name="BtnMainStartScreenGoHome"/>
+                                x:Name="BtnMainGoHome"/>
                             <Button Grid.Column="4"
                                 Grid.Row="1"
                                 Content="◐"
                                 FontSize="20"
-                                x:Name="BtnMainStartScreenChangeTheme"/>
+                                x:Name="BtnMainChangeTheme"
+                                    Click="BtnMainChangeTheme_Click"/>
                         </Grid>
                         <Grid Grid.Row="0" 
                           Grid.Column="1">
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="2*"/>
+                                <RowDefinition Height="1.5*"/>
                                 <RowDefinition Height="4*"/>
-                                <RowDefinition Height="3*"/>
+                                <RowDefinition Height="5*"/>
                                 <RowDefinition Height="7*"/>
                                 <RowDefinition />
                             </Grid.RowDefinitions>
@@ -297,13 +304,12 @@
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
                             <TextBox Grid.Row="1" 
-                                 Grid.Column="1"
-                                 x:Name="TxtMainStartScreenSearch"
-                                 Keyboard.KeyDown="TxtMainStartScreenSearch_KeyDown"
-                                 FontSize="30"/>
+                                     Grid.Column="1"
+                                     x:Name="TxtMainSearch"
+                                     FontSize="30"/>
                             <Button Grid.Column="2" 
                                 Grid.Row="1"
-                                x:Name="BtnMainStartScreenSearch"
+                                x:Name="BtnMainSearch"
                                 Content="🔍"
                                 FontSize="20"/>
                         </Grid>
@@ -312,7 +318,7 @@
                             <Grid.RowDefinitions>
                                 <RowDefinition/>
                                 <RowDefinition Height="2*"/>
-                                <RowDefinition Height="6*"/>
+                                <RowDefinition Height="7.5*"/>
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
@@ -326,12 +332,12 @@
                                 Grid.Row="1"
                                 Content="⊝"
                                 FontSize="20"
-                                x:Name="BtnMainStartScreenLogOut"/>
+                                x:Name="BtnMainLogOut"/>
                             <Button Grid.Column="2"
-                                Grid.Row="1"
-                                Content="≜"
-                                FontSize="30"
-                                x:Name="BtnMainStartScreenUpload"/>
+                                    Grid.Row="1"
+                                    Content="≜"
+                                    FontSize="30"
+                                    x:Name="BtnMainUpload"/>
                         </Grid>
                         <Grid Grid.Row="1" Grid.ColumnSpan="3">
                             <Grid.RowDefinitions>

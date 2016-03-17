@@ -4,18 +4,18 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="fe11f4b8024a4dfc8d6bb8c015b1a5ae" Name="Diagram1">
-        <EntityTypeShape EntityType="DownTubersModel.HistorySet" Width="1.5" PointX="5.25" PointY="7.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="DownTubersModel.PlaylistSet" Width="1.5" PointX="8.25" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DownTubersModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DownTubersModel.UserSet" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
-        <EntityTypeShape EntityType="DownTubersModel.VideoSet" Width="1.5" PointX="3" PointY="10.625" IsExpanded="true" />
+      <Diagram DiagramId="0b398e3638b7461eaf907c44d24503b1" Name="Diagram1">
+        <EntityTypeShape EntityType="DownTubersModel.HistorySet" Width="1.5" PointX="5.25" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="DownTubersModel.PlaylistSet" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DownTubersModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DownTubersModel.UserSet" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="DownTubersModel.VideoSet" Width="1.5" PointX="7.5" PointY="1.375" IsExpanded="true" />
         <AssociationConnector Association="DownTubersModel.FK_HistorySet_UserSet" ManuallyRouted="false" />
-        <AssociationConnector Association="DownTubersModel.FK_HistorySet_VideoSet" ManuallyRouted="false" />
-        <AssociationConnector Association="DownTubersModel.FK_PlaylistSet_UserSet" ManuallyRouted="false" />
-        <AssociationConnector Association="DownTubersModel.FK_PlaylistSet_VideoSet" ManuallyRouted="false" />
         <AssociationConnector Association="DownTubersModel.FK_VideoSet_UserSet" ManuallyRouted="false" />
+        <AssociationConnector Association="DownTubersModel.HistoryVideoJoin" ManuallyRouted="false" />
         <AssociationConnector Association="DownTubersModel.Subscribers" ManuallyRouted="false" />
+        <AssociationConnector Association="DownTubersModel.UserPlaylistJoin" ManuallyRouted="false" />
+        <AssociationConnector Association="DownTubersModel.VideoPlaylistsJoin" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
