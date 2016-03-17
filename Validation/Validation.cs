@@ -13,7 +13,6 @@ namespace Validation
     {
         public static bool IsNullOrEmpty(string text)
         {
-			
             return String.IsNullOrEmpty(text);
         }
 
