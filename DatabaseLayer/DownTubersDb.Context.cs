@@ -13,10 +13,10 @@ namespace DatabaseLayer
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DownTubersEntities : DbContext
+    public partial class DownTubersDb : DbContext
     {
-        public DownTubersEntities()
-            : base("name=DownTubersEntities")
+        public DownTubersDb()
+            : base("name=DownTubersDb")
         {
         }
     
@@ -27,7 +27,6 @@ namespace DatabaseLayer
     
         public virtual DbSet<HistorySet> HistorySet { get; set; }
         public virtual DbSet<PlaylistSet> PlaylistSet { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<UserSet> UserSet { get; set; }
         public virtual DbSet<VideoSet> VideoSet { get; set; }
     }

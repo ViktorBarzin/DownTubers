@@ -52,6 +52,7 @@ namespace UserInterface
 		    {
 				Player.MediaPlayer.Play();
 				BtnPause.Content = "❚❚";
+                //Player.MediaPlayer.Length;   
 			}
 	    }
 
@@ -184,8 +185,7 @@ namespace UserInterface
 
         private void BtnMainSearch_OnClick(object sender, RoutedEventArgs e)
         {
-            this.GrdMainStartScreen.Visibility = Visibility.Hidden;
-            this.GrdMainVideo.Visibility = Visibility.Visible;
+
         }
 
         private void BtnMainStartScreenChangeTheme_Click(object sender, RoutedEventArgs e)

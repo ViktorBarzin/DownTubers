@@ -7,20 +7,20 @@
 				         MappingMode="RelativeToBoundingBox" 
 				         StartPoint="0.5,0">
         <GradientStop Color="Black" Offset="0"/>
-        <GradientStop Color="#FF1741D6" Offset="0.477"/>
+        <GradientStop Color="Brown"  Offset="0.477"/>
     </LinearGradientBrush>
     <LinearGradientBrush x:Key="ButtonBackGroundBrush"
                          EndPoint="0.5,1" 
 				         MappingMode="RelativeToBoundingBox" 
 				         StartPoint="0.5,0">
-        <GradientStop Color="#FF8200FF" Offset="0.068"/>
+        <GradientStop Color="OrangeRed"  Offset="0.068"/>
         <GradientStop Color="#FFDBBDFF" Offset="0.904"/>
     </LinearGradientBrush>
     <SolidColorBrush x:Key="ContentBackGroundBrush" 
                      Color="AliceBlue"
                      Opacity="0.3"/>
     <SolidColorBrush x:Key="ContentBorderBrush"
-                     Color="#FF270F3A"/>
+                     Color="Chartreuse"/>
 
     <!--Setting Styles-->
     <Style x:Key="BackGroundTheme" TargetType="Grid">
@@ -57,14 +57,10 @@
         <Setter Property="FontFamily" Value="Franklin Gothic Demi Cond"/>
         <Setter Property="Foreground" Value="White"/>
     </Style>
-    
+
     <Style x:Key="PasswordBoxStyle" TargetType="PasswordBox">
         <Setter Property="Background" Value="{DynamicResource ContentBackGroundBrush}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource ContentBorderBrush}"/>
         <Setter Property="Foreground" Value="White"/>
-    </Style>
-
-    <Style x:Key="GridStyle" TargetType="Grid">
-        <Setter Property="Background" Value="{DynamicResource ContentBackGroundBrush}"/>
     </Style>
 </ResourceDictionary>
