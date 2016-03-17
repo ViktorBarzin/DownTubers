@@ -10,7 +10,14 @@
         Width="330"
         Height="450"
         Title="EditTab">
-    <Grid>
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="BlueTheme.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid Style="{DynamicResource BackGroundTheme}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="157"/>
             <ColumnDefinition Width="90*"/>
@@ -27,7 +34,8 @@
                VerticalAlignment="Center"
                FontSize="20"
                x:Name="LblEditUser"
-               Content="vanka7a"/>
+               Content="vanka7a"
+               Style="{DynamicResource LabelStyle}"/>
         <Grid Grid.Row="1"
               Grid.Column="0">
             <Grid.RowDefinitions>
@@ -45,31 +53,36 @@
                    Content="Username"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"
-                   x:Name="LblEditUsername"/>
+                   x:Name="LblEditUsername"
+                   Style="{DynamicResource LabelStyle}"/>
             <Label Grid.Row="2"
                    FontSize="18"
                    Content="Password"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"
-                   x:Name="LblEditPassword"/>
+                   x:Name="LblEditPassword"
+                   Style="{DynamicResource LabelStyle}"/>
             <Label Grid.Row="3"
                    FontSize="18"
-                   Content="ConfirmPassword"
+                   Content="Confirm Password"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"
-                   x:Name="LblEditConfirmPassword"/>
+                   x:Name="LblEditConfirmPassword"
+                   Style="{DynamicResource LabelStyle}"/>
             <Label Grid.Row="4"
                    FontSize="18"
                    Content="Email"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"
-                   x:Name="LblEditEmail"/>
+                   x:Name="LblEditEmail"
+                   Style="{DynamicResource LabelStyle}"/>
             <Label Grid.Row="5"
                    FontSize="18"
                    Content="Description"
                    HorizontalAlignment="Center"
-                   VerticalAlignment="Top"
-                   x:Name="LblEditDescription"/>
+                   VerticalAlignment="Center"
+                   x:Name="LblEditDescription"
+                   Style="{DynamicResource LabelStyle}"/>
         </Grid>
         <Grid Grid.Column="1"
               Grid.Row="1">
@@ -88,7 +101,8 @@
                     VerticalAlignment="Center"
                     FontSize="16"
                     Content="Change"
-                    x:Name="BtnEditChangePic"/>
+                    x:Name="BtnEditChangePic"
+                    Style="{DynamicResource ButtonStyle}"/>
             <TextBox Grid.Row="1"
                      Width="150"
                      Height="27"
@@ -96,21 +110,25 @@
                      VerticalAlignment="Center"
                      FontSize="16"
                      Text="sdas"
-                     x:Name="TxtEditUsername"/>
+                     x:Name="TxtEditUsername" 
+                     TextChanged="TxtEditUsername_TextChanged"
+                     Style="{DynamicResource TextBoxStyle}"/>
             <PasswordBox Grid.Row="2"
                          Width="150"
                          Height="27"
                          HorizontalAlignment="Center"
                          VerticalAlignment="Center"
                          FontSize="16"
-                         x:Name="PassEditPassword"/>
+                         x:Name="PassEditPassword"
+                         Style="{DynamicResource PasswordBoxStyle}"/>
             <PasswordBox Grid.Row="3"
                          Width="150"
                          Height="27"
                          HorizontalAlignment="Center"
                          VerticalAlignment="Center"
                          FontSize="16"
-                         x:Name="PassEditConfirmPassword"/>
+                         x:Name="PassEditConfirmPassword"
+                         Style="{DynamicResource PasswordBoxStyle}"/>
             <TextBox Grid.Row="4"
                      Width="150"
                      Height="27"
@@ -118,7 +136,8 @@
                      VerticalAlignment="Center"
                      FontSize="16"
                      Text="sdas"
-                     x:Name="TxtEditEmail"/>
+                     x:Name="TxtEditEmail"
+                     Style="{DynamicResource TextBoxStyle}"/>
             <TextBox Grid.Row="5"
                      Width="150"
                      Height="65"
@@ -127,7 +146,8 @@
                      FontSize="16"
                      Text="sdas"
                      TextWrapping="Wrap"
-                     x:Name="TxtEditDescription"/>
+                     x:Name="TxtEditDescription"
+                     Style="{DynamicResource TextBoxStyle}"/>
         </Grid>
         <Grid Grid.Column="1"
               Grid.Row="2">
@@ -148,7 +168,8 @@
                 FontSize="15"
                 Content="Save"
                 x:Name="BtnEditSave"
-                Click="BtnEditSave_OnClick"/>
+                Click="BtnEditSave_OnClick"
+                Style="{DynamicResource ButtonStyle}"/>
         </Grid>
         <Grid Grid.Column="1"
               Grid.Row="2">
@@ -169,7 +190,8 @@
                 FontSize="15"
                 Content="Exit"
                 x:Name="BtnEditExit"
-                Click="BtnEditExit_OnClick"/>
+                Click="BtnEditExit_OnClick"
+                Style="{DynamicResource ButtonStyle}"/>
         </Grid>
     </Grid>
 </Window>

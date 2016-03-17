@@ -55,7 +55,6 @@ namespace UserInterface
 			}
 	    }
 
-
 	    private void SdrVolume_OnValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
 	    {
 			if(this.Player.MediaPlayer?.Audio != null) this.Player.MediaPlayer.Audio.Volume = (int)this.SdrVolume.Value;
@@ -120,7 +119,7 @@ namespace UserInterface
                 this.LvlMainThirdVideo.Visibility = Visibility.Visible;
                 this.LvlMainFourthVideo.Visibility = Visibility.Visible;
 
-                this.LblMainComments.Visibility = Visibility.Visible;
+                this.TxtMainComments.Visibility = Visibility.Visible;
                 this.TxtMainWriteComment.Visibility = Visibility.Visible;
                 this.BtnMainSendComment.Visibility = Visibility.Visible;
             
@@ -135,7 +134,7 @@ namespace UserInterface
                 this.LvlMainThirdVideo.Visibility = Visibility.Hidden;
                 this.LvlMainFourthVideo.Visibility = Visibility.Hidden;
 
-                this.LblMainComments.Visibility = Visibility.Hidden;
+                this.TxtMainComments.Visibility = Visibility.Hidden;
                 this.TxtMainWriteComment.Visibility = Visibility.Hidden;
                 this.BtnMainSendComment.Visibility = Visibility.Hidden;
 
@@ -187,6 +186,14 @@ namespace UserInterface
         {
             this.GrdMainVideo.Visibility = Visibility.Visible;
             this.GrdMainStartScreen.Visibility = Visibility.Hidden;
+        }
+
+        private void BtnMainStartScreenChangeTheme_Click(object sender, RoutedEventArgs e)
+        {
+            //ResourceDictionary blueTheme = new ResourceDictionary();
+            //blueTheme.Source = new Uri("BlueTheme.xaml", UriKind.Relative);
+            //this.Resources.MergedDictionaries.Clear();
+            //this.Resources.MergedDictionaries.Add(blueTheme);
         }
     }
 }
