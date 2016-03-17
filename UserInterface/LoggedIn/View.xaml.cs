@@ -4,15 +4,9 @@ using System.IO;
 
 namespace UserInterface
 {
-    using System.Collections.Specialized;
-    using System.Windows.Input;
     using ViewModel;
     using Interfaces;
-    using System.Windows.Controls;
-    using System.Windows.Media;
-    using System.Windows.Input;/// <summary>
-                               /// Interaction logic for View.xaml
-                               /// </summary>
+
     public partial class View : Window
     {
         private readonly IViewModel viewModel;
