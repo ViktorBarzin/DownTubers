@@ -723,13 +723,7 @@
                                  VerticalAlignment="Top"
                                  FontSize="16"
                                  x:Name="TxtAdminVideoSearch"
-                                 Style="{DynamicResource TextBoxStyle}">
-                            <TextBox.Background>
-                                <SolidColorBrush 
-                                    Color="AliceBlue"
-                                    Opacity="0.3"/>
-                            </TextBox.Background>
-                        </TextBox>
+                                 Style="{DynamicResource TextBoxStyle}"/>
                         <Button Grid.Column="0"
                                 Grid.Row="1"
                                 Width="120"
