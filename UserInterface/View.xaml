@@ -42,9 +42,8 @@
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="5"/>
                                 <ColumnDefinition/>
-                            </Grid.ColumnDefinitions>
-                            <Label Style="{DynamicResource LabelStyle}" 
-                               x:Name="LblMainComments"/>
+                                </Grid.ColumnDefinitions>
+                            <TextBox Style="{DynamicResource TextBoxStyle}"/>
                             <Grid Grid.Column="1" 
                               Grid.Row="2">
                                 <Grid.ColumnDefinitions>
