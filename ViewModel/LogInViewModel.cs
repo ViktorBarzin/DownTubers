@@ -15,6 +15,7 @@ namespace ViewModel
         // Return codes described in interface documentation
 
         private readonly Model model = new Model();
+
         public int LogIn(string username, string password)
         {
             if (Validation.IsNullOrEmpty(username) || Validation.IsNullOrEmpty(password))
@@ -33,6 +34,8 @@ namespace ViewModel
                 return -2;
             }
 
+            this.model.GetAllUsers().FirstOrDefault(x => x.Username == username).LastLogin = DateTime.Now;
+            this.model.SaveChanges();
             return user.Id;
         }
     }

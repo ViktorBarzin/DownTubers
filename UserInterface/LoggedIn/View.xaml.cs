@@ -24,6 +24,7 @@ namespace UserInterface
 			GrdMainVideo.Visibility = Visibility.Hidden;
 			//this.ShowHideComment(visible);
             this.loggedInUserId = userId;
+            
         }
 
         private void BtnUserSearch_OnClick(object sender, RoutedEventArgs e)

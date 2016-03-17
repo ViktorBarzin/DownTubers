@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace Interfaces
 {
+    using DatabaseLayer;
+
     public interface ILogInViewModel
     {
         /// <summary>

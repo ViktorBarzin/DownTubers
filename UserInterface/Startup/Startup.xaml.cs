@@ -54,6 +54,7 @@ namespace UserInterface.Startup
                     break;
                 default:
                     View view = new View(loginId);
+                    
                     this.Close();
                     view.Show();
                     break;
