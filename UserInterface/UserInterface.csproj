@@ -75,14 +75,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="BlueTheme.xaml">
+    <Page Include="Themes\BlueTheme.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Register.xaml">
-	  <Generator>MSBuild:Compile</Generator>
-	  <SubType>Designer</SubType>
-	</Page>
+    <Page Include="Startup\Register.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="UploadTab.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -99,9 +99,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Register.xaml.cs">
+    <Compile Include="Startup\Register.xaml.cs">
       <DependentUpon>Register.xaml</DependentUpon>
-	</Compile>
+    </Compile>
     <Compile Include="UploadTab.xaml.cs">
       <DependentUpon>UploadTab.xaml</DependentUpon>
     </Compile>
