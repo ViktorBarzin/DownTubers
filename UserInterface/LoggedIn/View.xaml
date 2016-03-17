@@ -334,6 +334,7 @@
                         </Grid>
                         <ListView Grid.Column="1"
                                   Grid.Row="1"
+                                  x:Name="LsvMainSearchResults"
                                   Style="{DynamicResource ListViewStyle}"/>
                     </Grid>
                 </Grid>
