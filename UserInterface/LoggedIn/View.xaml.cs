@@ -44,13 +44,20 @@ namespace UserInterface
             this._viewModel = new ViewModel(userId, this);
             DataContext = this._viewModel;
             GrdMainVideo.Visibility = Visibility.Hidden;
-            //this.ShowHideComment(visible);
+			//this.ShowHideComment(visible);
 
-			var task = Task.Run((Func<Task>)View.Run);
-	        task.Wait();
+	        using (var dbx = new DropboxClient("N6LeEI8nmwAAAAAAAAAGErJyYPZcGf-_TRbjpFICvxOrODJiK9YIGQcF-0buCnTC"))
+	        {
+		        Func<DropboxClient, string, string, Task> task1 = Download;
+
+		        Func<Task> task2 = () => task1(dbx, "", "test.txt"); 
+
+		        var task = Task.Run(task2);
+		        task.Wait();
+	        }
 
 
-			this.loggedInUserId = userId;
+	        this.loggedInUserId = userId;
             this.priveleges = userPriveleges;
             this.SetPrivileges(priveleges);
             ResourceDictionary darkTheme = new ResourceDictionary();
@@ -65,9 +72,40 @@ namespace UserInterface
 			
         }
 
+		static async Task Download(DropboxClient dbx, string folder, string file)
+		{
+			using (var sw = new FileStream(file, FileMode.OpenOrCreate))
+			{
+				using (var response = await dbx.Files.DownloadAsync(folder + "/" + file))
+				{
+					byte[] data = await response.GetContentAsByteArrayAsync();
+					sw.Write(data,0,data.Length);
+				}
+			}
+		}
+
+		static async Task ListRootFolder()
+		{
+			using (var dbx = new DropboxClient("N6LeEI8nmwAAAAAAAAAGErJyYPZcGf-_TRbjpFICvxOrODJiK9YIGQcF-0buCnTC"))
+			{
+				var list = await dbx.Files.ListFolderAsync(string.Empty);
+
+				// show folders then files
+				foreach (var item in list.Entries.Where(i => i.IsFolder))
+				{
+					MessageBox.Show(item.Name);
+				}
+
+				foreach (var item in list.Entries.Where(i => i.IsFile))
+				{
+					MessageBox.Show(item.Name);
+				}
+			}
+		}
+
 		static async Task Run()
 		{
-			using(var dbx = new DropboxClient("YOUR ACCESS TOKEN"))
+			using(var dbx = new DropboxClient("N6LeEI8nmwAAAAAAAAAGErJyYPZcGf-_TRbjpFICvxOrODJiK9YIGQcF-0buCnTC"))
 			{
 				var full = await dbx.Users.GetCurrentAccountAsync();
 				MessageBox.Show(String.Format("{0} - {1}", full.Name.DisplayName, full.Email));

@@ -18,7 +18,7 @@ namespace UserInterface
     using System.IO;
     using System.Net;
 
-    using HigLabo.Net.Dropbox;
+//    using HigLabo.Net.Dropbox;
 
     using Interfaces;
 
@@ -65,9 +65,9 @@ namespace UserInterface
             {
                 // TODO : change stuff for upload
                 //MessageBox.Show("Starting upload");
-                DropboxClient client = new DropboxClient();
+//                DropboxClient client = new DropboxClient();
                 
-                DropboxCommand command = new UploadFileCommand();
+//                DropboxCommand command = new UploadFileCommand();
                 
                 //NameValueCollection nvc = new NameValueCollection();
                 //nvc.Add("id", "TTR");
