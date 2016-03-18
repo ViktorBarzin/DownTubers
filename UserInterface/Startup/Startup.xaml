@@ -5,7 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UserInterface.Startup"
         mc:Ignorable="d"
-        Title="Startup" Height="320.769" Width="499.615">
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize" 
+        Title="Startup" 
+        Height="320.769" 
+        Width="499.615">
     <Grid Style="{DynamicResource BackGroundTheme}">
         <Grid.RowDefinitions>
             <RowDefinition/>
