@@ -13,6 +13,9 @@ using MessageBox = System.Windows.MessageBox;
 
 namespace UserInterface
 {
+    using System.Text;
+    using System.Windows.Input;
+
     using ViewModel;
     using Interfaces;
     using System.Windows.Media;
@@ -282,6 +285,35 @@ namespace UserInterface
             }
 
             UpdateTheme();
+        }
+
+        private void BtnMainSendComment_OnClick(object sender, RoutedEventArgs e)
+        {
+            //StringBuilder comments = new StringBuilder(this.lbl);
+            this.LsvMainComments.Items.Add(string.Format(this._viewModel.GetUserById(this.loggedInUserId)));
+            this.LsvMainComments.Items.Add(this.TxtMainWriteComment.Text);
+            
+            this.TxtMainWriteComment.Text = string.Empty;
+            this.LsvMainComments.ScrollIntoView(this.LsvMainComments.Items[this.LsvMainComments.Items.Count - 1]);
+        }
+
+        private void Keyboard_OnKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                if (this.TxtMainSearch.IsFocused)
+                {
+                    object sen = new object();
+                    RoutedEventArgs e2 = new RoutedEventArgs();
+                    this.BtnMainSearch_OnClick(sen,e2);
+                }
+                if (this.TxtMainWriteComment.IsFocused)
+                {
+                    object sen = new object();
+                    RoutedEventArgs e2 = new RoutedEventArgs();
+                    this.BtnMainSendComment_OnClick(sen, e2);
+                }
+            }
         }
     }
 }

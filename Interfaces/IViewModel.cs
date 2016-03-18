@@ -12,6 +12,8 @@ namespace Interfaces
 
 	public interface IViewModel
 	{
+	    string GetUserById(int id);
+
 		// Admin tab updates
 		void SearchUsers(string username);
 

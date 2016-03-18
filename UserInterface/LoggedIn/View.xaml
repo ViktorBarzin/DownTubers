@@ -9,7 +9,7 @@
         WindowStartupLocation="CenterScreen"
         WindowState="Maximized"
         Title="View">
-    <Grid>
+    <Grid Keyboard.KeyDown="Keyboard_OnKeyDown">
         <TabControl TabStripPlacement="Top" Margin="0,10,0,-10">
             <TabItem Name="MainTab" 
                      Header="MAIN">
@@ -76,6 +76,7 @@
                                     Content="✍"
                                     FontSize="30"
                                     x:Name="BtnMainSendComment"
+                                        Click="BtnMainSendComment_OnClick"
                                     Style="{DynamicResource ButtonStyle}"/>
                             </Grid>
                         </Grid>
