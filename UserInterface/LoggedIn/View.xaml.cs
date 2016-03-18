@@ -22,7 +22,7 @@ namespace UserInterface
             this.InitializeComponent();
             this.Player.MediaPlayer.VlcLibDirectory = new DirectoryInfo(Path.Combine(Directory.GetCurrentDirectory(), "VLCLibs"));
             this.Player.MediaPlayer.EndInit();
-            this._viewModel = new ViewModel();
+            this._viewModel = new ViewModel(this.loggedInUserId);
 			GrdMainVideo.Visibility = Visibility.Hidden;
 			//this.ShowHideComment(visible);
 

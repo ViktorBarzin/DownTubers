@@ -335,7 +335,32 @@
                         <ListView Grid.Column="1"
                                   Grid.Row="1"
                                   x:Name="LsvMainSearchResults"
-                                  Style="{DynamicResource ListViewStyle}"/>
+                                  Style="{DynamicResource ListViewStyle}"
+                                  ItemsSource="{Binding VideoSearchResults}">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Width="100" 
+                                               Height="60" 
+                                               Source="{Binding ThumbnailSource}"/>
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition/>
+                                                <RowDefinition Height="2*"/>
+                                            </Grid.RowDefinitions>
+                                            <TextBlock FontSize="25" 
+                                                       FontWeight="Bold" 
+                                                       Text="{Binding Title}"
+                                                       Grid.Row="0"/>
+                                            <TextBlock FontSize="14.5" 
+                                                       FontWeight="SemiBold"
+                                                       Text="{Binding Description}"
+                                                       Grid.Row="1"/>
+                                        </Grid>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
                     </Grid>
                 </Grid>
             </TabItem>
