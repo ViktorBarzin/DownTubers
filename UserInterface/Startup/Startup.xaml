@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:UserInterface.Startup"
         mc:Ignorable="d"
         Title="Startup" Height="320.769" Width="499.615">
-    <Grid>
+    <Grid Style="{DynamicResource BackGroundTheme}">
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
@@ -19,14 +19,57 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Content="Welcome to Downtubers Video Sharing Application" HorizontalAlignment="Center" FontSize="20"></Label>
-        <Label Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Username:" FontSize="12"></Label>
-        <TextBox x:Name="TxtUsername" Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" Margin="0 0 20 0"/>
-        <Label Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Password:" FontSize="12"></Label>
-        <PasswordBox x:Name="TxtPassword" Grid.Row="2" Grid.Column="2" VerticalAlignment="Center" Margin="0 0 20 0"/>
+        <Label Grid.Row="0" 
+               Grid.Column="0" 
+               Grid.ColumnSpan="3" 
+               Content="Welcome to Downtubers Video Sharing Application" 
+               HorizontalAlignment="Center" 
+               FontSize="20"
+               Style="{DynamicResource LabelStyle}"/>
+        <Label Grid.Row="1" 
+               Grid.Column="1" 
+               HorizontalAlignment="Center" 
+               VerticalAlignment="Center" 
+               Content="Username:" 
+               FontSize="12"
+               Style="{DynamicResource LabelStyle}"/>
+        <TextBox x:Name="TxtUsername" 
+                 Grid.Row="1" 
+                 Grid.Column="2" 
+                 VerticalAlignment="Center" 
+                 Margin="0 0 20 0"
+                 Style="{DynamicResource TextBoxStyle}"/>
+        <Label Grid.Row="2" 
+               Grid.Column="1" 
+               HorizontalAlignment="Center" 
+               VerticalAlignment="Center" 
+               Content="Password:" 
+               FontSize="12"
+               Style="{DynamicResource LabelStyle}"/>
+        <PasswordBox x:Name="TxtPassword" 
+                     Grid.Row="2" 
+                     Grid.Column="2" 
+                     VerticalAlignment="Center" 
+                     Margin="0 0 20 0"
+                     Style="{DynamicResource PasswordBoxStyle}"/>
 
-        <Image Grid.Row="1" Grid.Column="0" Grid.RowSpan="2" Source="http://i.imgur.com/XDs60og.png"/>
-        <Button x:Name="BtnRegister" Grid.Row="3" Grid.Column="1" Margin="30 25 30 25" Content="Register" Click="BtnRegister_OnClick"/>
-        <Button x:Name="BtnLogin" Grid.Row="3" Grid.Column="2" Margin="30 25 30 25" Content="Login" Click="BtnLogin_OnClick"/>
+        <Image Grid.Row="1" 
+               Grid.Column="0" 
+               Grid.RowSpan="2" 
+               Source="http://i.imgur.com/XDs60og.png"/>
+        <Button x:Name="BtnRegister" 
+                Grid.Row="3" 
+                Grid.Column="1" 
+                Margin="30 25 30 25" 
+                Content="Register" 
+                Click="BtnRegister_OnClick"
+                Style="{DynamicResource ButtonStyle}"/>
+        <Button x:Name="BtnLogin" 
+                Grid.Row="3" 
+                Grid.Column="2" 
+                Margin="30 25 30 25" 
+                Content="Login" 
+                Click="BtnLogin_OnClick"
+                Style="{DynamicResource ButtonStyle}"/>
     </Grid>
 </Window>
