@@ -44,7 +44,7 @@ namespace UserInterface
 
         private void BtnEditExit_OnClick(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            this.Close();
         }
 
         private void TxtEditUsername_TextChanged(object sender, TextChangedEventArgs e)

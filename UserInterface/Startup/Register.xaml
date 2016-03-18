@@ -7,12 +7,6 @@
         mc:Ignorable="d"
         Title="Register" Height="461.318" Width="421.553">
     <Grid Style="{DynamicResource BackGroundTheme}">
-        <Grid.Background>
-            <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
-                <GradientStop Color="Black" Offset="0"/>
-                <GradientStop Color="#FF363A40"/>
-            </LinearGradientBrush>
-        </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
@@ -132,13 +126,6 @@
                Content="Fields with * are mandatory"
                Style="{DynamicResource LabelStyle}"/>
         <Button x:Name="BtnBack" Grid.Row="8" Grid.Column="0" Margin="25 10 25 10" Content="Back" Click="BtnBack_OnClick" Style="{DynamicResource ButtonStyle}"/>
-        <Button x:Name="BtnRegister" Grid.Row="8" Grid.Column="1" Margin="25 10 25 10" Content="Register" Click="BtnRegister_OnClick" Style="{DynamicResource ButtonStyle}">
-            <Button.Background>
-                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
-                    <GradientStop Color="#007ACC" Offset="0.333"/>
-                   
-                </LinearGradientBrush>
-            </Button.Background>
-        </Button>
+        <Button x:Name="BtnRegister" Grid.Row="8" Grid.Column="1" Margin="25 10 25 10" Content="Register" Click="BtnRegister_OnClick" Style="{DynamicResource ButtonStyle}"/>
     </Grid>
 </Window>

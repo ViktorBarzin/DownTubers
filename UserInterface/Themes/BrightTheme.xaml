@@ -2,12 +2,14 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:UserInterface">
     <!--ColorBrushes-->
+    <!--ColorBrushes-->
     <SolidColorBrush x:Key="MainBackGroudBrush"
-                     Color="#2D2D30"/>
+                     Color="#8EDCF8"
+                     Opacity="0.3"/>
     <SolidColorBrush x:Key="ButtonBackGroundBrush"
                      Color="#007ACC"/>
     <SolidColorBrush x:Key="ContentBackGroundBrush" 
-                     Color="#3F3F46"/>
+                     Color="#57C6E6"/>
     <SolidColorBrush x:Key="ContentBorderBrush"
                      Color="Black"/>
 
@@ -24,7 +26,7 @@
     </Style>
 
     <Style x:Key="LabelStyle" TargetType="Label">
-        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Foreground" Value="Black"/>
         <Setter Property="FontFamily" Value="Segoe UI"/>
     </Style>
 
@@ -46,7 +48,7 @@
         <Setter Property="FontFamily" Value="Segoe UI"/>
         <Setter Property="Foreground" Value="White"/>
     </Style>
-    
+
     <Style x:Key="PasswordBoxStyle" TargetType="PasswordBox">
         <Setter Property="Background" Value="{DynamicResource ContentBackGroundBrush}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource ContentBorderBrush}"/>

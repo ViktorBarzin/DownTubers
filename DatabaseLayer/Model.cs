@@ -5,6 +5,7 @@
     using System.Data.Entity.Validation;
     using System.Data.SqlClient;
     using System.Linq;
+    using System.Runtime.CompilerServices;
     using System.Text;
     using System.Threading.Tasks;
 
@@ -142,6 +143,11 @@
             this.Context.Entry(original).CurrentValues.SetValues(updatedVideo);
             this.SaveChanges();
             return true;
+        }
+
+        public ICollection<VideoSet> SearchVideo(string videoTitle)
+        {
+            return this.Context.VideoSet.Where(x => x.Title.ToLower().Contains(videoTitle.ToLower())).ToList();
         }
 
         // Subscribers logic

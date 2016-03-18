@@ -20,6 +20,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -64,6 +65,7 @@
     <Compile Include="PasswordHash.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="RegisterViewModel.cs" />
+    <Compile Include="UploadViewModel.cs" />
     <Compile Include="UserSearchResult.cs" />
     <Compile Include="VideoSearchResult.cs" />
     <Compile Include="ViewModel.cs" />
