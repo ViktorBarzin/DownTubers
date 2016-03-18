@@ -321,6 +321,7 @@
                                 Grid.Row="1"
                                 Content="⊝"
                                 FontSize="20"
+                                Click="BtnProfileLogOut_OnClick"
                                 x:Name="BtnMainLogOut"
                                 Style="{DynamicResource ButtonStyle}">
                                 <Button.ToolTip>

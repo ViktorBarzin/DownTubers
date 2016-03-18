@@ -103,7 +103,7 @@ namespace UserInterface
 
         private void BtnMainSearch_OnClick(object sender, RoutedEventArgs e)
         {
-            
+               
         }
 
         private void BtnMainStartScreenChangeTheme_Click(object sender, RoutedEventArgs e)
@@ -152,9 +152,18 @@ namespace UserInterface
 
         private void BtnProfileLogOut_OnClick(object sender, RoutedEventArgs e)
         {
-            Startup.Startup startup = new Startup.Startup();
-            this.Close();
-            startup.Show();
+            Startup.Startup startUp = new Startup.Startup();
+
+            if (MessageBox.Show("Are you sure?", "Log out!",
+               MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+            {
+                this.Close();
+                startUp.Show();
+            }
+            else
+            {
+                this.Show();
+            }
         }
     }
 }
