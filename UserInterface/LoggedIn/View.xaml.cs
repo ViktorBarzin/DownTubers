@@ -10,17 +10,28 @@ namespace UserInterface
     public partial class View : Window, IView
     {
         private readonly IViewModel _viewModel;
-        private bool _visible = true;
+        //private bool visible = true;
+        private bool isBlue = true;
 
-        public View()
+        private int loggedInUserId;
+
+        private int priveleges;
+
+        public View(int userId,int userPriveleges)
         {
             this.InitializeComponent();
             this.Player.MediaPlayer.VlcLibDirectory = new DirectoryInfo(Path.Combine(Directory.GetCurrentDirectory(), "VLCLibs"));
             this.Player.MediaPlayer.EndInit();
-            this._viewModel = new ViewModel();
+            this._viewModel = new ViewModel(this.loggedInUserId);
 			GrdMainVideo.Visibility = Visibility.Hidden;
 			//this.ShowHideComment(visible);
-		}
+
+
+            this.loggedInUserId = userId;
+            this.priveleges = userPriveleges;
+            this.SetPrivileges(priveleges);
+            
+        }
 
         private void BtnUserSearch_OnClick(object sender, RoutedEventArgs e)
         {
@@ -61,15 +72,12 @@ namespace UserInterface
 
         private void BtnMainChangeTheme_Click(object sender, RoutedEventArgs e)
         {
-
+            
         }
 
         private void BtnMainSearch_OnClick(object sender, RoutedEventArgs e)
         {
-            this.BtnMainSearch.Visibility = Visibility.Visible;
-            this.GrdMainVideo.Visibility = Visibility.Visible;
-            this.LsvMainSearchResults.Visibility = Visibility.Hidden;
-            //PlayVideo(new Uri(@"http://37.157.138.76/videos/GOT_Best_Scene.mp4"));
+            PlayVideo(new Uri(@"http://37.157.138.76/videos/GOT_Best_Scene.mp4"));
         }
 
         private void BtnMainStartScreenChangeTheme_Click(object sender, RoutedEventArgs e)
@@ -94,15 +102,25 @@ namespace UserInterface
 
 	    public void PlayVideo(Uri video)
 	    {
-		    GrdMainVideo.Visibility = Visibility.Visible;
-		    GrdMainStartScreen.Visibility = Visibility.Hidden;
-			this.BtnMainChangeTheme.Visibility = Visibility.Visible;
-			this.BtnMainGoHome.Visibility = Visibility.Visible;
-			this.TxtMainSearch.Visibility = Visibility.Visible;
-			this.BtnMainSearch.Visibility = Visibility.Visible;
-			this.BtnMainLogOut.Visibility = Visibility.Visible;
-		    this.BtnMainUpload.Visibility = Visibility.Visible;
-			this.Player.MediaPlayer.Play(video);
+            this.BtnMainSearch.Visibility = Visibility.Visible;
+            this.GrdMainVideo.Visibility = Visibility.Visible;
+            this.LsvMainSearchResults.Visibility = Visibility.Hidden;
+            this.Player.MediaPlayer.Play(video);
 		}
+
+        private void SetPrivileges(int userPriveleges)
+        {
+            switch (userPriveleges)
+            {
+                case 0:
+                    this.Admin.Visibility = Visibility.Visible;
+                    break;
+                case 1:
+                    this.Admin.Visibility = Visibility.Hidden;
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 }

@@ -1,51 +1,55 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Interfaces
 {
-    using System.Reflection.Emit;
-    using DatabaseLayer;
+	using System.Reflection.Emit;
+	using DatabaseLayer;
 
-    public interface IViewModel
-    {
-        // Admin tab updates
-        void SearchUsers(string username);
+	public interface IViewModel
+	{
+		// Admin tab updates
+		void SearchUsers(string username);
 
-        void SearchVideos(string videoTitle);
+		void SearchVideos(string videoTitle);
 
-        void SaveChangesToUser();
+		void SaveChangesToUser();
 
-        void CancelChanges();
+		void CancelChanges();
 
-        UserSet DetailedUserInfo { get; set; }
+		//        UserSet DetailedUserInfo { get; set; }
 
-        VideoSet DetailedVideoInfo { get; set; }
+		//        VideoSet DetailedVideoInfo { get; set; }
 
-        // Profile tab updates
+		// Profile tab updates
 
-        void ProfilePictureCLick();
+		void ProfilePictureCLick();
 
-        void PlaylistClick(string playlistName);
+		void PlaylistClick(string playlistName);
 
-        void UploadedVideoClick(string videoName);
+		void UploadedVideoClick(string videoName);
 
-        void LikedVideoClick(string videoName);
+		void LikedVideoClick(string videoName);
 
-        // Main tab logic
+		// Main tab logic
 
-        void ShowHideComment();
+		ObservableCollection<IVideoSearchResult> VideoSearchResults { get; }
 
-        void VideoSearch(string search);
 
-        void Upload();
+		void ShowHideComment();
 
-        void Download(string videoName);
+		void VideoSearch(string search);
 
-        void OpenSuggestedVideo(string videoName);
+		void Upload();
 
-        void Logout();
-    }
+		void Download(string videoName);
+
+		void OpenSuggestedVideo(string videoName);
+
+		void Logout();
+	}
 }
