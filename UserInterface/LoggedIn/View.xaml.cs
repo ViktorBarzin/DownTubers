@@ -13,15 +13,25 @@ namespace UserInterface
         //private bool visible = true;
         //private bool isBlue = true;
 
-        public View()
+        private int loggedInUserId;
+
+        private int priveleges;
+
+        public View(int userId,int userPriveleges)
         {
             this.InitializeComponent();
             this.Player.MediaPlayer.VlcLibDirectory = new DirectoryInfo(Path.Combine(Directory.GetCurrentDirectory(), "VLCLibs"));
             this.Player.MediaPlayer.EndInit();
-            this._viewModel = new ViewModel();
+            this._viewModel = new ViewModel(this.loggedInUserId);
 			GrdMainVideo.Visibility = Visibility.Hidden;
 			//this.ShowHideComment(visible);
-		}
+
+
+            this.loggedInUserId = userId;
+            this.priveleges = userPriveleges;
+            this.SetPrivileges(priveleges);
+            
+        }
 
         private void BtnUserSearch_OnClick(object sender, RoutedEventArgs e)
         {
@@ -97,5 +107,20 @@ namespace UserInterface
             this.LsvMainSearchResults.Visibility = Visibility.Hidden;
             this.Player.MediaPlayer.Play(video);
 		}
+
+        private void SetPrivileges(int userPriveleges)
+        {
+            switch (userPriveleges)
+            {
+                case 0:
+                    this.Admin.Visibility = Visibility.Visible;
+                    break;
+                case 1:
+                    this.Admin.Visibility = Visibility.Hidden;
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 }

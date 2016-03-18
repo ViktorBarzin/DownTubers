@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DownTubersContext.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="DownTubersModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="HistorySet">
           <Key>
             <PropertyRef Name="Id" />
@@ -55,7 +55,7 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="PasswordHash" Type="nchar" MaxLength="44" Nullable="false" />
+          <Property Name="PasswordHash" Type="nchar" MaxLength="66" />
           <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
           <Property Name="LastName" Type="nvarchar" MaxLength="50" />
@@ -211,7 +211,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DownTubersContextStoreContainer">
+        <EntityContainer Name="DownTubersModelStoreContainer">
           <EntitySet Name="HistorySet" EntityType="Self.HistorySet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HistoryVideoJoin" EntityType="Self.HistoryVideoJoin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PlaylistSet" EntityType="Self.PlaylistSet" Schema="dbo" store:Type="Tables" />
@@ -265,7 +265,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="DownTubersContext" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="DownTubersModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="HistorySet">
           <Key>
             <PropertyRef Name="Id" />
@@ -296,7 +296,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="PasswordHash" Type="String" MaxLength="44" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="66" FixedLength="true" Unicode="true" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -405,9 +405,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DownTubersContextStoreContainer" CdmEntityContainer="DownTubersDb">
+        <EntityContainerMapping StorageEntityContainer="DownTubersModelStoreContainer" CdmEntityContainer="DownTubersDb">
           <EntitySetMapping Name="HistorySet">
-            <EntityTypeMapping TypeName="DownTubersContext.HistorySet">
+            <EntityTypeMapping TypeName="DownTubersModel.HistorySet">
               <MappingFragment StoreEntitySet="HistorySet">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
@@ -417,7 +417,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PlaylistSet">
-            <EntityTypeMapping TypeName="DownTubersContext.PlaylistSet">
+            <EntityTypeMapping TypeName="DownTubersModel.PlaylistSet">
               <MappingFragment StoreEntitySet="PlaylistSet">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
@@ -429,7 +429,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UserSet">
-            <EntityTypeMapping TypeName="DownTubersContext.UserSet">
+            <EntityTypeMapping TypeName="DownTubersModel.UserSet">
               <MappingFragment StoreEntitySet="UserSet">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Username" ColumnName="Username" />
@@ -446,7 +446,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="VideoSet">
-            <EntityTypeMapping TypeName="DownTubersContext.VideoSet">
+            <EntityTypeMapping TypeName="DownTubersModel.VideoSet">
               <MappingFragment StoreEntitySet="VideoSet">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
@@ -460,7 +460,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="HistoryVideoJoin" TypeName="DownTubersContext.HistoryVideoJoin" StoreEntitySet="HistoryVideoJoin">
+          <AssociationSetMapping Name="HistoryVideoJoin" TypeName="DownTubersModel.HistoryVideoJoin" StoreEntitySet="HistoryVideoJoin">
             <EndProperty Name="HistorySet">
               <ScalarProperty Name="Id" ColumnName="HistoryId" />
             </EndProperty>
@@ -468,7 +468,7 @@
               <ScalarProperty Name="Id" ColumnName="VideoId" />
             </EndProperty>
           </AssociationSetMapping>
-          <AssociationSetMapping Name="Subscribers" TypeName="DownTubersContext.Subscribers" StoreEntitySet="Subscribers">
+          <AssociationSetMapping Name="Subscribers" TypeName="DownTubersModel.Subscribers" StoreEntitySet="Subscribers">
             <EndProperty Name="UserSet">
               <ScalarProperty Name="Id" ColumnName="UserId" />
             </EndProperty>
@@ -476,7 +476,7 @@
               <ScalarProperty Name="Id" ColumnName="SubscriberId" />
             </EndProperty>
           </AssociationSetMapping>
-          <AssociationSetMapping Name="UserPlaylistJoin" TypeName="DownTubersContext.UserPlaylistJoin" StoreEntitySet="UserPlaylistJoin">
+          <AssociationSetMapping Name="UserPlaylistJoin" TypeName="DownTubersModel.UserPlaylistJoin" StoreEntitySet="UserPlaylistJoin">
             <EndProperty Name="PlaylistSet">
               <ScalarProperty Name="Id" ColumnName="PlaylistId" />
             </EndProperty>
@@ -484,7 +484,7 @@
               <ScalarProperty Name="Id" ColumnName="UserId" />
             </EndProperty>
           </AssociationSetMapping>
-          <AssociationSetMapping Name="VideoPlaylistsJoin" TypeName="DownTubersContext.VideoPlaylistsJoin" StoreEntitySet="VideoPlaylistsJoin">
+          <AssociationSetMapping Name="VideoPlaylistsJoin" TypeName="DownTubersModel.VideoPlaylistsJoin" StoreEntitySet="VideoPlaylistsJoin">
             <EndProperty Name="PlaylistSet">
               <ScalarProperty Name="Id" ColumnName="PlaylistId" />
             </EndProperty>

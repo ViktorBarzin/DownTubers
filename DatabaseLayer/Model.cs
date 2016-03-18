@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Data.Entity.Validation;
     using System.Data.SqlClient;
     using System.Linq;
     using System.Text;
@@ -15,7 +16,24 @@
 
         public void SaveChanges()
         {
-            this.Context.SaveChanges();
+            try
+            {
+                this.Context.SaveChanges();
+
+            }
+
+            // The code below actually fixes a runtime error somehow
+
+            catch (DbEntityValidationException e)
+            {
+                foreach (var error in e.EntityValidationErrors)
+                {
+                    foreach (var error2 in error.ValidationErrors)
+                    {
+                        Console.WriteLine(string.Format("Property :{0} - Error: {1}",error2.PropertyName,error2.ErrorMessage));
+                    }
+                }
+            }
         }
 
         // User logic
@@ -25,7 +43,12 @@
             return this.Context.UserSet.ToList();
         }
 
-        public bool AddUser(UserSet user)
+		public UserSet GetUser(int userId)
+		{
+			return Context.UserSet.FirstOrDefault(user => user.Id == userId);
+		}
+
+		public bool AddUser(UserSet user)
         {
             try
             {
@@ -74,7 +97,12 @@
             return this.Context.VideoSet.ToList();
         }
 
-        public bool AddVideo(VideoSet video)
+		public VideoSet GetVideo(int videoId)
+		{
+			return Context.VideoSet.FirstOrDefault(video => video.Id == videoId);
+		}
+
+		public bool AddVideo(VideoSet video)
         {
             try
             {
