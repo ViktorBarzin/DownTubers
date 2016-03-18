@@ -11,7 +11,7 @@ namespace UserInterface
     {
         private readonly IViewModel _viewModel;
         //private bool visible = true;
-        private bool isBlue = true;
+        //private bool isBlue = true;
 
         private int loggedInUserId;
 
