@@ -265,7 +265,7 @@ namespace UserInterface
         private void LsvMainSearchResults_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var result = (IVideoSearchResult)(LsvMainSearchResults.SelectedItem);
-
+            
             if (result == null) return;
 
             _viewModel.PlayVideo(result.Id);
@@ -309,20 +309,23 @@ namespace UserInterface
 
         private void Keyboard_OnKeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Enter)
+            if (e.Key != Key.Enter)
             {
-                if (this.TxtMainSearch.IsFocused)
-                {
-                    object sen = new object();
-                    RoutedEventArgs e2 = new RoutedEventArgs();
-                    this.BtnMainSearch_OnClick(sen,e2);
-                }
-                if (this.TxtMainWriteComment.IsFocused)
-                {
-                    object sen = new object();
-                    RoutedEventArgs e2 = new RoutedEventArgs();
-                    this.BtnMainSendComment_OnClick(sen, e2);
-                }
+                return;
+            }
+
+            if (this.TxtMainSearch.IsFocused)
+            {
+                object sen = new object();
+                RoutedEventArgs e2 = new RoutedEventArgs();
+                this.BtnMainSearch_OnClick(sen,e2);
+            }
+
+            if (this.TxtMainWriteComment.IsFocused)
+            {
+                object sen = new object();
+                RoutedEventArgs e2 = new RoutedEventArgs();
+                this.BtnMainSendComment_OnClick(sen, e2);
             }
         }
     }
