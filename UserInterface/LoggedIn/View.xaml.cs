@@ -98,16 +98,6 @@ namespace UserInterface
             Application.Current.Resources.MergedDictionaries.Add(Themes[currentIndex]);
         }
 
-        private void BtnMainChangeTheme_Click(object sender, RoutedEventArgs e)
-        {
-            currentIndex++;
-            if (currentIndex == Themes.Count)
-            {
-                currentIndex = 0;
-            }
-            UpdateTheme();
-        }
-
         private void BtnMainSearch_OnClick(object sender, RoutedEventArgs e)
         {
             PlayVideo(new Uri(@"http://37.157.138.76/videos/GOT_Best_Scene.mp4"));
@@ -221,5 +211,14 @@ namespace UserInterface
 		}
 
 
+        private void BtnMainChangeTheme_OnClick(object sender, RoutedEventArgs e)
+        {
+            currentIndex++;
+            if (currentIndex == Themes.Count)
+            {
+                currentIndex = 0;
+            }
+            UpdateTheme();
+        }
     }
 }
