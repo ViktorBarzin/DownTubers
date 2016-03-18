@@ -130,5 +130,12 @@ namespace UserInterface
                     break;
             }
         }
+
+        private void BtnProfileLogOut_OnClick(object sender, RoutedEventArgs e)
+        {
+            Startup.Startup startup = new Startup.Startup();
+            this.Close();
+            startup.Show();
+        }
     }
 }

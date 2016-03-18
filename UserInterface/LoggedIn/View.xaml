@@ -425,7 +425,7 @@
                                     x:Name="BtnProfileLogOut"
                                     Content="Log Out"
                                     FontSize="16"
-                                    Click="BtnProfileEdit_OnClick"
+                                    Click="BtnProfileLogOut_OnClick"
                                     Style="{DynamicResource ButtonStyle}"/>
                         </Grid>
                     </Grid>
