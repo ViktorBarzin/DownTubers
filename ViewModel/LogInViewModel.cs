@@ -16,27 +16,27 @@ namespace ViewModel
 
         private readonly Model model = new Model();
 
-        public int LogIn(string username, string password)
+        public int[] LogIn(string username, string password)
         {
             if (Validation.IsNullOrEmpty(username) || Validation.IsNullOrEmpty(password))
             {
-                return -3;
+                return new []{-3};
             }
 
             UserSet user = this.model.GetAllUsers().FirstOrDefault(x => x.Username == username);
             if (user == null)
             {
-                return -1;
+                return new[] {-1};
             }
 
             if (!DataAccess.PasswordHash.ValidatePassword(password,user.PasswordHash))
             {
-                return -2;
+                return new []{-2};
             }
 
             this.model.GetAllUsers().FirstOrDefault(x => x.Username == username).LastLogin = DateTime.Now;
             this.model.SaveChanges();
-            return user.Id;
+            return new []{user.Id,user.Priveleges};
         }
     }
 }

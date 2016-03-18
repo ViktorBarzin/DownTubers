@@ -15,7 +15,9 @@ namespace UserInterface
 
         private int loggedInUserId;
 
-        public View(int userId)
+        private int priveleges;
+
+        public View(int userId,int userPriveleges)
         {
             this.InitializeComponent();
             this.Player.MediaPlayer.VlcLibDirectory = new DirectoryInfo(Path.Combine(Directory.GetCurrentDirectory(), "VLCLibs"));
@@ -23,8 +25,11 @@ namespace UserInterface
             this._viewModel = new ViewModel();
 			GrdMainVideo.Visibility = Visibility.Hidden;
 			//this.ShowHideComment(visible);
+
+
             this.loggedInUserId = userId;
-            this.SetPrivileges(this.loggedInUserId);
+            this.priveleges = userPriveleges;
+            this.SetPrivileges(priveleges);
             
         }
 
@@ -103,9 +108,9 @@ namespace UserInterface
             this.Player.MediaPlayer.Play(video);
 		}
 
-        private void SetPrivileges(int userId)
+        private void SetPrivileges(int userPriveleges)
         {
-            switch (userId)
+            switch (userPriveleges)
             {
                 case 0:
                     this.Admin.Visibility = Visibility.Visible;
