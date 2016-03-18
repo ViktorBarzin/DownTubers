@@ -1,7 +1,15 @@
-﻿using System;
+﻿
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Windows;
 using System.IO;
 using System.Windows.Controls;
+using System.Linq;
+using System.Net;
+using System.Windows.Forms;
+using Application = System.Windows.Application;
+using MessageBox = System.Windows.MessageBox;
 
 namespace UserInterface
 {
@@ -11,16 +19,19 @@ namespace UserInterface
     public partial class View : Window, IView
     {
         private readonly IViewModel _viewModel;
+        public static List<ResourceDictionary> Themes;
+        public static int currentIndex = 0;
         //private bool visible = true;
         //private bool isBlue = true;
 
         private int loggedInUserId;
-
+	    private string DownloadPath;
         private int priveleges;
+	    private int _currVideoId;
 
-        public View() : this (0, 0)
+        // TODO : check below logic?
+        public View() : this (1, 0)
         {
-            
         }
 
         public View(int userId,int userPriveleges)
@@ -28,6 +39,7 @@ namespace UserInterface
             this.InitializeComponent();
             this.Player.MediaPlayer.VlcLibDirectory = new DirectoryInfo(Path.Combine(Directory.GetCurrentDirectory(), "VLCLibs"));
             this.Player.MediaPlayer.EndInit();
+			this.Player.MediaPlayer.Click += (s,e) => BtnPause_OnClick(s, (RoutedEventArgs)e);
             this._viewModel = new ViewModel(userId, this);
 	        DataContext = this._viewModel;
 			GrdMainVideo.Visibility = Visibility.Hidden;
@@ -37,17 +49,17 @@ namespace UserInterface
             this.loggedInUserId = userId;
             this.priveleges = userPriveleges;
             this.SetPrivileges(priveleges);
+            ResourceDictionary darkTheme = new ResourceDictionary();
+            darkTheme.Source = new Uri("/Themes/DarkTheme.xaml", UriKind.Relative);
+            ResourceDictionary brightTheme = new ResourceDictionary();
+            brightTheme.Source = new Uri("/Themes/BrightTheme.xaml", UriKind.Relative);
+            Themes = new List<ResourceDictionary>();
+            Themes.Add(darkTheme);
+            Themes.Add(brightTheme);
+            UpdateTheme();
+        }
 
-	        for (int i = 0; i < 6; i++)
-	        {
-	        LsvProfilePlayLists.Items.Add(0);
-
-			}
-
-
-		}
-
-        private void BtnUserSearch_OnClick(object sender, RoutedEventArgs e)
+		private void BtnUserSearch_OnClick(object sender, RoutedEventArgs e)
         {
 			this._viewModel.SearchUsers(this.TxtAdminUserSearch.Text);
 		}
@@ -83,14 +95,28 @@ namespace UserInterface
         //    ShowHideComment(this.visible);
         //}
 
+        public static void UpdateTheme()
+        {
+            Application.Current.Resources.MergedDictionaries.Clear();
+            Application.Current.Resources.MergedDictionaries.Add(Themes[currentIndex]);
+        }
+
         private void BtnMainChangeTheme_Click(object sender, RoutedEventArgs e)
         {
+            currentIndex++;
+            if (currentIndex == Themes.Count)
+            {
+                currentIndex = 0;
+            }
+            UpdateTheme();
         }
 
         private void BtnMainSearch_OnClick(object sender, RoutedEventArgs e)
         {
-            //PlayVideo(new Uri(@"http://37.157.138.76/videos/GOT_Best_Scene.mp4"));
-//            PlayVideo(new Uri(@"http://37.157.138.76/videos/GOT_Best_Scene.mp4"));
+			_viewModel.VideoSearch(TxtMainSearch.Text);
+			this.GrdMainVideo.Visibility = Visibility.Hidden;
+			this.LsvMainSearchResults.Visibility = Visibility.Visible;
+			this.Player.MediaPlayer.Stop();
         }
 
         private void BtnMainStartScreenChangeTheme_Click(object sender, RoutedEventArgs e)
@@ -104,18 +130,14 @@ namespace UserInterface
         private void BtnMainUpload_OnClick(object sender, RoutedEventArgs e)
         {
             View newView = this;
-            UploadTab uploadTab = new UploadTab(ref newView);
+            string videoLength = this.Player.MediaPlayer.Length.ToString();
+            // TODO : upload button click here
+            UploadTab uploadTab = new UploadTab(ref newView, this.loggedInUserId, int.Parse(videoLength));
             uploadTab.ShowDialog();
-        }
-
-        private void BtnMainDownload_OnClick(object sender, RoutedEventArgs e)
-        {
-            throw new NotImplementedException();
         }
 
 	    public void PlayVideo(Uri video)
 	    {
-            this.BtnMainSearch.Visibility = Visibility.Visible;
             this.GrdMainVideo.Visibility = Visibility.Visible;
             this.LsvMainSearchResults.Visibility = Visibility.Hidden;
 			this.GenerateRandomComments();
@@ -144,12 +166,81 @@ namespace UserInterface
                 default:
                     break;
             }
+	    }
+
+	    private void BtnMainDownload_OnClick(object sender, RoutedEventArgs e)
+		{
+
+			FolderBrowserDialog fbd = new FolderBrowserDialog();
+			DialogResult result = fbd.ShowDialog();
+			this.PbrMainVideoDownload.Visibility = Visibility.Visible;
+
+			string[] filees = Directory.GetFiles(fbd.SelectedPath);
+			DownloadPath = fbd.SelectedPath; // + nameOfNewFile;
+
+			try
+			{
+
+				// Delete the file if it exists.
+				if (File.Exists(DownloadPath))
+				{
+					File.Delete(DownloadPath);
+				}
+
+				// Create the file. 
+				using (WebClient client = new WebClient())
+				{
+					var downloadURI = "http://37.157.138.76/videos/GOT_Best_Scene.mp4";
+					DownloadPath = fbd.SelectedPath + "\\" + downloadURI.Split('/').Last();
+					var webClient = new WebClient();
+					webClient.DownloadFileCompleted += new AsyncCompletedEventHandler(Completed);
+					webClient.DownloadProgressChanged += new DownloadProgressChangedEventHandler(ProgressChanged);
+					webClient.DownloadFileAsync(new Uri(downloadURI), DownloadPath);
+				}
+			}
+			catch
+			{
+				throw new FileLoadException();
+			}
+        }
+
+        private void BtnProfileLogOut_OnClick(object sender, RoutedEventArgs e)
+        {
+            Startup.Startup startUp = new Startup.Startup();
+
+            if (MessageBox.Show("Are you sure?", "Log out!",
+               MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+            {
+                this.Close();
+                startUp.Show();
+            }
+            else
+            {
+                this.Show();
+            }
         }
 
 	    private void LsvMainSearchResults_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
 	    {
 		    var result = (IVideoSearchResult) (LsvMainSearchResults.SelectedItem);
-			_viewModel.PlayVideo(result.Id);
+
+		    if (result == null) return;
+
+		    _viewModel.PlayVideo(result.Id);
+		    _currVideoId = result.Id;
 	    }
+
+		private void Completed(object sender, AsyncCompletedEventArgs e)
+		{
+			System.Windows.MessageBox.Show("Download completed at Folder: \n {0}", DownloadPath);
+			this.PbrMainVideoDownload.Visibility = Visibility.Hidden;
+
+		}
+
+		private void ProgressChanged(object sender, DownloadProgressChangedEventArgs e)
+		{
+		//	this.PbrMainVideoDownload.Value = 0;
+			this.PbrMainVideoDownload.Value = e.ProgressPercentage;
+		}
     }
 }

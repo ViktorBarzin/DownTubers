@@ -25,6 +25,7 @@ namespace UserInterface
         public Register()
         {
             this.InitializeComponent();
+            
         }
 
         private void BtnBack_OnClick(object sender, RoutedEventArgs e)

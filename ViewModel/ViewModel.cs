@@ -121,7 +121,15 @@ namespace ViewModel
 
 		public void VideoSearch(string search)
 		{
-			throw new NotImplementedException();
+			var results = _model.SearchVideo(search);
+			_videoSearchResults.Clear();
+
+			foreach (var videoSet in results)
+			{
+				_videoSearchResults.Add(new VideoSearchResult(videoSet));
+			}
+
+			OnPropertyChanged("VideoSearchResults");
 		}
 
 		[NotifyPropertyChangedInvocator]
