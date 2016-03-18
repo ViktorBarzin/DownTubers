@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.IO;
 
@@ -10,6 +11,8 @@ namespace UserInterface
     public partial class View : Window, IView
     {
         private readonly IViewModel _viewModel;
+        private List<ResourceDictionary> Themes;
+        private int currentIndex;
         //private bool visible = true;
         //private bool isBlue = true;
 
@@ -19,7 +22,6 @@ namespace UserInterface
 
         public View() : this (0, 0)
         {
-            
         }
 
         public View(int userId,int userPriveleges)
@@ -35,7 +37,17 @@ namespace UserInterface
             this.loggedInUserId = userId;
             this.priveleges = userPriveleges;
             this.SetPrivileges(priveleges);
-            
+
+            ResourceDictionary darkTheme = new ResourceDictionary();
+            darkTheme.Source = new Uri("/Themes/DarkTheme.xaml", UriKind.Relative);
+            ResourceDictionary brightTheme = new ResourceDictionary();
+            brightTheme.Source = new Uri("/Themes/BrightTheme.xaml", UriKind.Relative);
+            Themes = new List<ResourceDictionary>();
+            Themes.Add(darkTheme);
+            Themes.Add(brightTheme);
+            this.currentIndex = 0;
+            UpdateTheme();
+
         }
 
         private void BtnUserSearch_OnClick(object sender, RoutedEventArgs e)
@@ -75,8 +87,20 @@ namespace UserInterface
         //    ShowHideComment(this.visible);
         //}
 
+        private void UpdateTheme()
+        {
+            Application.Current.Resources.MergedDictionaries.Clear();
+            Application.Current.Resources.MergedDictionaries.Add(Themes[this.currentIndex]);
+        }
+
         private void BtnMainChangeTheme_Click(object sender, RoutedEventArgs e)
         {
+            this.currentIndex++;
+            if (currentIndex == Themes.Count)
+            {
+                currentIndex = 0;
+            }
+            UpdateTheme();
         }
 
         private void BtnMainSearch_OnClick(object sender, RoutedEventArgs e)

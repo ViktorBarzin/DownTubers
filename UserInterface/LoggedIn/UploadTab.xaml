@@ -119,6 +119,7 @@
                     FontSize="18"
                     Content="Save"
                     x:Name="BtnUploadSave"
+                    Click="BtnUploadSave_OnClick"
                     Style="{DynamicResource ButtonStyle}"/>
                 <Button 
                     Grid.Column="1"
@@ -129,6 +130,7 @@
                     FontSize="18"
                     Content="Exit"
                     x:Name="BtnUploadExit"
+                    Click="BtnUploadExit_OnClick"
                     Style="{DynamicResource ButtonStyle}"/>
             </Grid>
         </Grid>

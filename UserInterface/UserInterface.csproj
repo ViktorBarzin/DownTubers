@@ -79,11 +79,15 @@
     <Compile Include="Startup\Startup.xaml.cs">
       <DependentUpon>Startup.xaml</DependentUpon>
     </Compile>
+    <Page Include="Themes\BrightTheme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Startup\Startup.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Themes\BlueTheme.xaml">
+    <Page Include="Themes\DarkTheme.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
