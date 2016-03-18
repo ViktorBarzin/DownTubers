@@ -21,6 +21,6 @@ namespace Interfaces
         /// -3 : username or password empty
         /// >= 0 : logged in user id
         /// </returns>
-        int LogIn(string username, string password);
+        int[] LogIn(string username, string password);
     }
 }

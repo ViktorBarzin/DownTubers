@@ -40,8 +40,11 @@ namespace UserInterface.Startup
 
         private void BtnLogin_OnClick(object sender, RoutedEventArgs e)
         {
-            int loginId = this.logInViewModel.LogIn(this.TxtUsername.Text, this.TxtPassword.Password);
-            switch (loginId)
+            int[] userInfo = this.logInViewModel.LogIn(this.TxtUsername.Text, this.TxtPassword.Password);
+
+            int userId = userInfo[0];
+            int userPriveleges = userInfo[1];
+            switch (userId)
             {
                 case -1:
                     MessageBox.Show("User with this username not found !");
@@ -53,7 +56,8 @@ namespace UserInterface.Startup
                     MessageBox.Show("Please fill both username and password !");
                     break;
                 default:
-                    View view = new View(loginId);
+                    
+                    View view = new View(userId,userPriveleges);
                     
                     this.Close();
                     view.Show();

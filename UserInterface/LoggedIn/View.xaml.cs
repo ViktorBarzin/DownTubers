@@ -11,25 +11,31 @@ namespace UserInterface
     {
         private readonly IViewModel _viewModel;
         //private bool visible = true;
-        private bool isBlue = true;
+        //private bool isBlue = true;
 
         private int loggedInUserId;
 
-	    public View():this(0)
-	    {
-	    }
+        private int priveleges;
 
-        public View(int userId)
+        public View() : this (0, 0)
+        {
+            
+        }
+
+        public View(int userId,int userPriveleges)
         {
             this.InitializeComponent();
             this.Player.MediaPlayer.VlcLibDirectory = new DirectoryInfo(Path.Combine(Directory.GetCurrentDirectory(), "VLCLibs"));
             this.Player.MediaPlayer.EndInit();
-            this._viewModel = new ViewModel(userId);
-	        this.DataContext = _viewModel;
+            this._viewModel = new ViewModel(this.loggedInUserId);
 			GrdMainVideo.Visibility = Visibility.Hidden;
 			//this.ShowHideComment(visible);
+
+
             this.loggedInUserId = userId;
-            this.SetPrivileges(this.loggedInUserId);
+            this.priveleges = userPriveleges;
+            this.SetPrivileges(priveleges);
+            
         }
 
         private void BtnUserSearch_OnClick(object sender, RoutedEventArgs e)
@@ -55,8 +61,9 @@ namespace UserInterface
 		    {
 				Player.MediaPlayer.Play();
 				BtnPause.Content = "❚❚";
-                //Player.MediaPlayer.Length;   
-			}
+                this.TxtMainComments.Text = Player.MediaPlayer.Length.ToString();   
+
+            }
 	    }
 
 	    private void SdrVolume_OnValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -71,12 +78,12 @@ namespace UserInterface
 
         private void BtnMainChangeTheme_Click(object sender, RoutedEventArgs e)
         {
-            
         }
 
         private void BtnMainSearch_OnClick(object sender, RoutedEventArgs e)
         {
-            PlayVideo(new Uri(@"http://37.157.138.76/videos/GOT_Best_Scene.mp4"));
+            //PlayVideo(new Uri(@"http://37.157.138.76/videos/GOT_Best_Scene.mp4"));
+            PlayVideo(new Uri(@"D:\movies\Ip.Man.3.2015.BDRip.x265.AAC-REFLUX\sample.mkv"));
         }
 
         private void BtnMainStartScreenChangeTheme_Click(object sender, RoutedEventArgs e)
@@ -107,9 +114,9 @@ namespace UserInterface
             this.Player.MediaPlayer.Play(video);
 		}
 
-        private void SetPrivileges(int userId)
+        private void SetPrivileges(int userPriveleges)
         {
-            switch (userId)
+            switch (userPriveleges)
             {
                 case 0:
                     this.Admin.Visibility = Visibility.Visible;

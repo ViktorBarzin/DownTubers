@@ -31,7 +31,7 @@ namespace ViewModel
 		public ViewModel(int userId)
 		{
 			_model = new Model();
-			_loggedInUser = _model.GetUser(userId);
+			_loggedInUser = _model.GetAllUsers().FirstOrDefault(x => x.Id == userId);
 			var test = new VideoSet() { Title = "TestTitle", Description = "VideoDescriptionlalalallalaasdfasdf" };
 
 			_videoSearchResults = new List<IVideoSearchResult>
