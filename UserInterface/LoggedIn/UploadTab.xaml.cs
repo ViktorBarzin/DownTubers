@@ -52,10 +52,10 @@ namespace UserInterface
 
         private void BtnUploadBrowse_OnClick(object sender, RoutedEventArgs e)
         {
-            FileDialog filePath = new OpenFileDialog();
-            if ((bool)filePath.ShowDialog())
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            if (openFileDialog.ShowDialog() == true)
             {
-                this.filePath = filePath.FileName;
+                this.TxtUploadBrowse.Text = openFileDialog.FileName;
             }
         }
 
