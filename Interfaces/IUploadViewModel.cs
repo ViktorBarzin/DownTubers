@@ -8,6 +8,6 @@ namespace Interfaces
 {
     public interface IUploadViewModel
     {
-        bool Upload(int authorId,string filePath, string title, string description);
+        bool Upload(int authorId,string filePath, string title, string description,int videoLength);
     }
 }
