@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows;
 using System.IO;
+using System.Windows.Controls;
 using System.Linq;
 using System.Net;
 using System.Windows.Forms;
@@ -16,38 +17,40 @@ namespace UserInterface
 {
     using ViewModel;
     using Interfaces;
-
+    using System.Windows.Media;
     public partial class View : Window, IView
     {
         private readonly IViewModel _viewModel;
         public static List<ResourceDictionary> Themes;
         public static int currentIndex = 0;
-        //private bool visible = true;
+        private bool visible = true;
         //private bool isBlue = true;
 
         private int loggedInUserId;
-	    private string DownloadPath;
+        private string DownloadPath;
         private int priveleges;
+        private int _currVideoId;
 
         // TODO : check below logic?
-        public View() : this (1, 0)
+        public View() : this(1, 0)
         {
         }
 
-        public View(int userId,int userPriveleges)
+        public View(int userId, int userPriveleges)
         {
             this.InitializeComponent();
             this.Player.MediaPlayer.VlcLibDirectory = new DirectoryInfo(Path.Combine(Directory.GetCurrentDirectory(), "VLCLibs"));
             this.Player.MediaPlayer.EndInit();
-            this._viewModel = new ViewModel(this.loggedInUserId);
-			GrdMainVideo.Visibility = Visibility.Hidden;
-			//this.ShowHideComment(visible);
+            this.Player.MediaPlayer.Click += (s, e) => BtnPause_OnClick(s, (RoutedEventArgs)e);
+            this._viewModel = new ViewModel(userId, this);
+            DataContext = this._viewModel;
+            GrdMainVideo.Visibility = Visibility.Hidden;
+            //this.ShowHideComment(visible);
 
 
             this.loggedInUserId = userId;
             this.priveleges = userPriveleges;
             this.SetPrivileges(priveleges);
-
             ResourceDictionary darkTheme = new ResourceDictionary();
             darkTheme.Source = new Uri("/Themes/DarkTheme.xaml", UriKind.Relative);
             ResourceDictionary brightTheme = new ResourceDictionary();
@@ -60,8 +63,8 @@ namespace UserInterface
 
         private void BtnUserSearch_OnClick(object sender, RoutedEventArgs e)
         {
-			this._viewModel.SearchUsers(this.TxtAdminUserSearch.Text);
-		}
+            this._viewModel.SearchUsers(this.TxtAdminUserSearch.Text);
+        }
 
         private void BtnProfileEdit_OnClick(object sender, RoutedEventArgs e)
         {
@@ -70,24 +73,24 @@ namespace UserInterface
             editTab.ShowDialog();
         }
 
-	    private void BtnPause_OnClick(object sender, RoutedEventArgs e)
-	    {
-		    if (Player.MediaPlayer.IsPlaying)
-		    {
-			    Player.MediaPlayer.Pause();
-			    BtnPause.Content = "▶";
+        private void BtnPause_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (Player.MediaPlayer.IsPlaying)
+            {
+                Player.MediaPlayer.Pause();
+                BtnPause.Content = "▶";
             }
-		    else
-		    {
-				Player.MediaPlayer.Play();
-				BtnPause.Content = "❚❚";
+            else
+            {
+                Player.MediaPlayer.Play();
+                BtnPause.Content = "❚❚";
             }
-	    }
+        }
 
-	    private void SdrVolume_OnValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-	    {
-			if(this.Player.MediaPlayer?.Audio != null) this.Player.MediaPlayer.Audio.Volume = (int)this.SdrVolume.Value;
-	    }
+        private void SdrVolume_OnValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            if (this.Player.MediaPlayer?.Audio != null) this.Player.MediaPlayer.Audio.Volume = (int)this.SdrVolume.Value;
+        }
 
         //private void BtnMainShowHideComments_Click(object sender, RoutedEventArgs e)
         //{
@@ -102,7 +105,10 @@ namespace UserInterface
 
         private void BtnMainSearch_OnClick(object sender, RoutedEventArgs e)
         {
-            PlayVideo(new Uri(@"http://37.157.138.76/videos/GOT_Best_Scene.mp4"));
+            _viewModel.VideoSearch(TxtMainSearch.Text);
+            this.GrdMainVideo.Visibility = Visibility.Hidden;
+            this.LsvMainSearchResults.Visibility = Visibility.Visible;
+            this.Player.MediaPlayer.Stop();
         }
 
         private void BtnMainStartScreenChangeTheme_Click(object sender, RoutedEventArgs e)
@@ -122,15 +128,22 @@ namespace UserInterface
             uploadTab.ShowDialog();
         }
 
-
-
-	    public void PlayVideo(Uri video)
-	    {
-            this.BtnMainSearch.Visibility = Visibility.Visible;
+        public void PlayVideo(Uri video)
+        {
             this.GrdMainVideo.Visibility = Visibility.Visible;
             this.LsvMainSearchResults.Visibility = Visibility.Hidden;
+            this.GenerateRandomComments();
             this.Player.MediaPlayer.Play(video);
-		}
+        }
+
+        private void GenerateRandomComments()
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                this.LsvMainComments.Items.Add("User" + i);
+                this.LsvMainComments.Items.Add("BLABLABLALBLABL");
+            }
+        }
 
         private void SetPrivileges(int userPriveleges)
         {
@@ -146,7 +159,7 @@ namespace UserInterface
                     break;
             }
 	    }
-
+  
         async Task Download(DropboxClient dbx, string folder, string file)
         {
             using (var response = await dbx.Files.DownloadAsync(folder + "/" + file))
@@ -199,6 +212,7 @@ namespace UserInterface
                MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
             {
                 this.Close();
+                Player.MediaPlayer.Stop();
                 startUp.Show();
             }
             else
@@ -206,28 +220,77 @@ namespace UserInterface
                 this.Show();
             }
         }
+        private void BtnMainShowHide_Click(object sender, RoutedEventArgs e)
+        {
+            ShowHideComments();
+        }
 
-		private void Completed(object sender, AsyncCompletedEventArgs e)
-		{
-			System.Windows.MessageBox.Show("Download completed at Folder: \n {0}", DownloadPath);
-			this.PbrMainVideoDownload.Visibility = Visibility.Hidden;
+        public void ShowHideComments()
+        {
+            if (visible)
+            {
+                this.LsvMainComments.Visibility = Visibility.Visible;
+                this.LvlMainFirstVideo.Visibility = Visibility.Visible;
+                this.TxtMainWriteComment.Visibility = Visibility.Visible;
+                this.BtnMainSendComment.Visibility = Visibility.Visible;
 
-		}
+                this.visible = false;
+            }
+            else
+            {
+                this.LsvMainComments.Visibility = Visibility.Hidden;
+                this.LvlMainFirstVideo.Visibility = Visibility.Hidden;
+                this.TxtMainWriteComment.Visibility = Visibility.Hidden;
+                this.BtnMainSendComment.Visibility = Visibility.Hidden;
 
-		private void ProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-		{
-		//	this.PbrMainVideoDownload.Value = 0;
-			this.PbrMainVideoDownload.Value = e.ProgressPercentage;
-		}
+                this.visible = true;
+            }
+        }
 
+        private void BtnMainGoHome_Click(object sender, RoutedEventArgs e)
+        {
+            this.GrdMainStartScreen.Visibility = Visibility.Visible;
+            this.LsvMainSearchResults.Visibility = Visibility.Visible;
+            this.GrdMainVideo.Visibility = Visibility.Hidden;
+            Player.MediaPlayer.Stop();
+        }
+
+        private void BtnFullscreen_Click(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private void LsvMainSearchResults_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var result = (IVideoSearchResult)(LsvMainSearchResults.SelectedItem);
+
+            if (result == null) return;
+
+            _viewModel.PlayVideo(result.Id);
+            _currVideoId = result.Id;
+        }
+
+        private void Completed(object sender, AsyncCompletedEventArgs e)
+        {
+            System.Windows.MessageBox.Show("Download completed at Folder: \n {0}", DownloadPath);
+            this.PbrMainVideoDownload.Visibility = Visibility.Hidden;
+
+        }
+
+        private void ProgressChanged(object sender, DownloadProgressChangedEventArgs e)
+        {
+            //	this.PbrMainVideoDownload.Value = 0;
+            this.PbrMainVideoDownload.Value = e.ProgressPercentage;
+        }
 
         private void BtnMainChangeTheme_OnClick(object sender, RoutedEventArgs e)
         {
             currentIndex++;
+
             if (currentIndex == Themes.Count)
             {
                 currentIndex = 0;
             }
+
             UpdateTheme();
         }
     }
