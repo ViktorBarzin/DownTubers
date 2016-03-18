@@ -1,5 +1,5 @@
-﻿
-using System;
+﻿using System;
+using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows;
@@ -8,6 +8,7 @@ using System.Windows.Controls;
 using System.Linq;
 using System.Net;
 using System.Windows.Forms;
+using Dropbox.Api;
 using Application = System.Windows.Application;
 using MessageBox = System.Windows.MessageBox;
 
@@ -45,8 +46,11 @@ namespace UserInterface
             GrdMainVideo.Visibility = Visibility.Hidden;
             //this.ShowHideComment(visible);
 
+			var task = Task.Run((Func<Task>)View.Run);
+	        task.Wait();
 
-            this.loggedInUserId = userId;
+
+			this.loggedInUserId = userId;
             this.priveleges = userPriveleges;
             this.SetPrivileges(priveleges);
             ResourceDictionary darkTheme = new ResourceDictionary();
@@ -57,9 +61,20 @@ namespace UserInterface
             Themes.Add(darkTheme);
             Themes.Add(brightTheme);
             UpdateTheme();
+
+			
         }
 
-        private void BtnUserSearch_OnClick(object sender, RoutedEventArgs e)
+		static async Task Run()
+		{
+			using(var dbx = new DropboxClient("YOUR ACCESS TOKEN"))
+			{
+				var full = await dbx.Users.GetCurrentAccountAsync();
+				MessageBox.Show(String.Format("{0} - {1}", full.Name.DisplayName, full.Email));
+			}
+		}
+
+		private void BtnUserSearch_OnClick(object sender, RoutedEventArgs e)
         {
             this._viewModel.SearchUsers(this.TxtAdminUserSearch.Text);
         }
