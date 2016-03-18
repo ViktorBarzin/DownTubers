@@ -1,26 +1,26 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Interfaces;
 
 namespace ViewModel
 {
-    using System.ComponentModel;
+	using System.ComponentModel;
 
-    using DatabaseLayer;
+	using DatabaseLayer;
 
-    public class VideoSearchResult : INotifyPropertyChanged
-    {
-        public event PropertyChangedEventHandler PropertyChanged;
+	public class VideoSearchResult : IVideoSearchResult
+	{
+		public Uri ThumbnailSource { get; }
 
-        public List<VideoSet> VideosToVisualize { get; set; }
+		public string Title { get; }
 
-        public string FormattedString { get; set; }
+		public string Description { get; }
 
-        public void FormatVideoResult()
-        {
-            // todo : format videos for visualization
-        }
-    }
+		public VideoSearchResult(VideoSet video)
+		{
+			ThumbnailSource = new Uri(@"http://images.mentalfloss.com/sites/default/files/styles/insert_main_wide_image/public/einstein1_7.jpg");
+
+			Title = video.Title;
+			Description = video.Description;
+		}
+	}
 }

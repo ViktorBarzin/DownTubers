@@ -15,17 +15,21 @@ namespace UserInterface
 
         private int loggedInUserId;
 
+	    public View():this(0)
+	    {
+	    }
+
         public View(int userId)
         {
             this.InitializeComponent();
             this.Player.MediaPlayer.VlcLibDirectory = new DirectoryInfo(Path.Combine(Directory.GetCurrentDirectory(), "VLCLibs"));
             this.Player.MediaPlayer.EndInit();
-            this._viewModel = new ViewModel();
+            this._viewModel = new ViewModel(userId);
+	        this.DataContext = _viewModel;
 			GrdMainVideo.Visibility = Visibility.Hidden;
 			//this.ShowHideComment(visible);
             this.loggedInUserId = userId;
             this.SetPrivileges(this.loggedInUserId);
-            
         }
 
         private void BtnUserSearch_OnClick(object sender, RoutedEventArgs e)

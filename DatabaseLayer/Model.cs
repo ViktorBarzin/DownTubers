@@ -43,7 +43,12 @@
             return this.Context.UserSet.ToList();
         }
 
-        public bool AddUser(UserSet user)
+		public UserSet GetUser(int userId)
+		{
+			return Context.UserSet.FirstOrDefault(user => user.Id == userId);
+		}
+
+		public bool AddUser(UserSet user)
         {
             try
             {
@@ -92,7 +97,12 @@
             return this.Context.VideoSet.ToList();
         }
 
-        public bool AddVideo(VideoSet video)
+		public VideoSet GetVideo(int videoId)
+		{
+			return Context.VideoSet.FirstOrDefault(video => video.Id == videoId);
+		}
+
+		public bool AddVideo(VideoSet video)
         {
             try
             {
