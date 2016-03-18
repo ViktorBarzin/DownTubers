@@ -17,6 +17,11 @@ namespace UserInterface
 
         private int priveleges;
 
+        public View() : this (0, 0)
+        {
+            
+        }
+
         public View(int userId,int userPriveleges)
         {
             this.InitializeComponent();
@@ -72,7 +77,6 @@ namespace UserInterface
 
         private void BtnMainChangeTheme_Click(object sender, RoutedEventArgs e)
         {
-            
         }
 
         private void BtnMainSearch_OnClick(object sender, RoutedEventArgs e)
