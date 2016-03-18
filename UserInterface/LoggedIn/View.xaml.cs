@@ -73,8 +73,9 @@ namespace UserInterface
 		    {
 				Player.MediaPlayer.Play();
 				BtnPause.Content = "❚❚";
-                //Player.MediaPlayer.Length;   
-			}
+                this.TxtMainComments.Text = Player.MediaPlayer.Length.ToString();   
+
+            }
 	    }
 
 	    private void SdrVolume_OnValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -105,7 +106,8 @@ namespace UserInterface
 
         private void BtnMainSearch_OnClick(object sender, RoutedEventArgs e)
         {
-            PlayVideo(new Uri(@"http://37.157.138.76/videos/GOT_Best_Scene.mp4"));
+            //PlayVideo(new Uri(@"http://37.157.138.76/videos/GOT_Best_Scene.mp4"));
+            PlayVideo(new Uri(@"D:\movies\Ip.Man.3.2015.BDRip.x265.AAC-REFLUX\sample.mkv"));
         }
 
         private void BtnMainStartScreenChangeTheme_Click(object sender, RoutedEventArgs e)
