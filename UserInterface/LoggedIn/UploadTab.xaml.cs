@@ -14,6 +14,10 @@ using System.Windows.Shapes;
 
 namespace UserInterface
 {
+    using System.Collections.Specialized;
+    using System.IO;
+    using System.Net;
+
     using Interfaces;
 
     using Microsoft.Win32;
@@ -26,17 +30,20 @@ namespace UserInterface
     {
         private View parent;
 
-        private IUploadViewModel uploadViewModel;
+        private readonly IUploadViewModel uploadViewModel;
 
-        private int authorId;
+        private readonly int authorId;
 
         private string filePath = string.Empty;
 
-        public UploadTab(ref View parent, int authorId)
+        private readonly int videoLength;
+
+        public UploadTab(ref View parent, int authorId,int videoLength)
         {
 
             this.parent = parent;
             this.authorId = authorId;
+            this.videoLength = videoLength;
             this.uploadViewModel = new UploadViewModel();
             this.InitializeComponent();
         }
@@ -52,19 +59,90 @@ namespace UserInterface
 
         private void BtnUploadSave_OnClick(object sender, RoutedEventArgs e)
         {
-            if (this.uploadViewModel.Upload(this.authorId,this.filePath, TxtUploadTitle.Text, TxtUploadDescription.Text))
+            if (this.uploadViewModel.Upload(this.authorId,this.filePath, TxtUploadTitle.Text, TxtUploadDescription.Text,this.videoLength))
             {
-                MessageBox.Show("Starting upload");
+                // TODO : change stuff for upload
+                //MessageBox.Show("Starting upload");
+                NameValueCollection nvc = new NameValueCollection();
+                nvc.Add("id", "TTR");
+                nvc.Add("btn-submit-photo", "Upload");
+                HttpUploadFile("http://your.server.com/upload",
+                     @"C:\test\test.jpg", "file", "image/jpeg", nvc);
             }
             else
             {
-                MessageBox.Show("Something fucked up");
+                //MessageBox.Show("Something fucked up");
             }
         }
 
         private void BtnUploadExit_OnClick(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+           this.Close();
+        }
+
+        public static void HttpUploadFile(string url, string file, string paramName, string contentType, NameValueCollection nvc)
+        {
+            MessageBox.Show((string.Format("Uploading {0} to {1}", file, url)));
+            string boundary = "---------------------------" + DateTime.Now.Ticks.ToString("x");
+            byte[] boundarybytes = System.Text.Encoding.ASCII.GetBytes("\r\n--" + boundary + "\r\n");
+
+            HttpWebRequest wr = (HttpWebRequest)WebRequest.Create(url);
+            wr.ContentType = "multipart/form-data; boundary=" + boundary;
+            wr.Method = "POST";
+            wr.KeepAlive = true;
+            wr.Credentials = System.Net.CredentialCache.DefaultCredentials;
+
+            Stream rs = wr.GetRequestStream();
+
+            string formdataTemplate = "Content-Disposition: form-data; name=\"{0}\"\r\n\r\n{1}";
+            foreach (string key in nvc.Keys)
+            {
+                rs.Write(boundarybytes, 0, boundarybytes.Length);
+                string formitem = string.Format(formdataTemplate, key, nvc[key]);
+                byte[] formitembytes = System.Text.Encoding.UTF8.GetBytes(formitem);
+                rs.Write(formitembytes, 0, formitembytes.Length);
+            }
+            rs.Write(boundarybytes, 0, boundarybytes.Length);
+
+            string headerTemplate = "Content-Disposition: form-data; name=\"{0}\"; filename=\"{1}\"\r\nContent-Type: {2}\r\n\r\n";
+            string header = string.Format(headerTemplate, paramName, file, contentType);
+            byte[] headerbytes = System.Text.Encoding.UTF8.GetBytes(header);
+            rs.Write(headerbytes, 0, headerbytes.Length);
+
+            FileStream fileStream = new FileStream(file, FileMode.Open, FileAccess.Read);
+            byte[] buffer = new byte[4096];
+            int bytesRead = 0;
+            while ((bytesRead = fileStream.Read(buffer, 0, buffer.Length)) != 0)
+            {
+                rs.Write(buffer, 0, bytesRead);
+            }
+            fileStream.Close();
+
+            byte[] trailer = System.Text.Encoding.ASCII.GetBytes("\r\n--" + boundary + "--\r\n");
+            rs.Write(trailer, 0, trailer.Length);
+            rs.Close();
+
+            WebResponse wresp = null;
+            try
+            {
+                wresp = wr.GetResponse();
+                Stream stream2 = wresp.GetResponseStream();
+                StreamReader reader2 = new StreamReader(stream2);
+                MessageBox.Show(string.Format("File uploaded, server response is: {0}", reader2.ReadToEnd()));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(string.Format("Error uploading file", ex));
+                if (wresp != null)
+                {
+                    wresp.Close();
+                    wresp = null;
+                }
+            }
+            finally
+            {
+                wr = null;
+            }
         }
     }
 }
