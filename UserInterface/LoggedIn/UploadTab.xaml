@@ -117,8 +117,9 @@
                     Width="50"
                     Height="25"
                     FontSize="18"
-                    Content="Save"
+                    Content="Upload"
                     x:Name="BtnUploadSave"
+                    Click="BtnUploadSave_OnClick"
                     Style="{DynamicResource ButtonStyle}"/>
                 <Button 
                     Grid.Column="1"

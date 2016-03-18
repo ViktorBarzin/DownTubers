@@ -14,6 +14,11 @@ using System.Windows.Shapes;
 
 namespace UserInterface
 {
+    using Interfaces;
+
+    using Microsoft.Win32;
+
+    using ViewModel;
     /// <summary>
     /// Interaction logic for UploadTab.xaml
     /// </summary>
@@ -21,20 +26,40 @@ namespace UserInterface
     {
         private View parent;
 
-        public UploadTab(ref View parent)
+        private IUploadViewModel uploadViewModel;
+
+        private int authorId;
+
+        private string filePath = string.Empty;
+
+        public UploadTab(ref View parent, int authorId)
         {
+
             this.parent = parent;
-            InitializeComponent();
+            this.authorId = authorId;
+            this.uploadViewModel = new UploadViewModel();
+            this.InitializeComponent();
         }
 
         private void BtnUploadBrowse_OnClick(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            FileDialog filePath = new OpenFileDialog();
+            if ((bool)filePath.ShowDialog())
+            {
+                this.filePath = filePath.FileName;
+            }
         }
 
         private void BtnUploadSave_OnClick(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            if (this.uploadViewModel.Upload(this.authorId,this.filePath, TxtUploadTitle.Text, TxtUploadDescription.Text))
+            {
+                MessageBox.Show("Starting upload");
+            }
+            else
+            {
+                MessageBox.Show("Something fucked up");
+            }
         }
     }
 }

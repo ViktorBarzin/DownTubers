@@ -99,8 +99,9 @@ namespace UserInterface
         private void BtnMainUpload_OnClick(object sender, RoutedEventArgs e)
         {
             View newView = this;
-            UploadTab uploadTab = new UploadTab(ref newView);
-            uploadTab.ShowDialog();
+            string videoLength = this.Player.MediaPlayer.Length.ToString();
+            //UploadTab uploadTab = new UploadTab(ref newView,this.loggedInUserId,double.Parse(videoLength));
+            //uploadTab.ShowDialog();
         }
 
         private void BtnMainDownload_OnClick(object sender, RoutedEventArgs e)
