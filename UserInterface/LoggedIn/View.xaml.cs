@@ -122,8 +122,9 @@ namespace UserInterface
         {
             View newView = this;
             string videoLength = this.Player.MediaPlayer.Length.ToString();
-            //UploadTab uploadTab = new UploadTab(ref newView,this.loggedInUserId,double.Parse(videoLength));
-            //uploadTab.ShowDialog();
+            // TODO : upload button click here
+            UploadTab uploadTab = new UploadTab(ref newView, this.loggedInUserId, int.Parse(videoLength));
+            uploadTab.ShowDialog();
         }
 
         private void BtnMainDownload_OnClick(object sender, RoutedEventArgs e)

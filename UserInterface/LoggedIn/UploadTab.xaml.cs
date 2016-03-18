@@ -26,17 +26,20 @@ namespace UserInterface
     {
         private View parent;
 
-        private IUploadViewModel uploadViewModel;
+        private readonly IUploadViewModel uploadViewModel;
 
-        private int authorId;
+        private readonly int authorId;
 
         private string filePath = string.Empty;
 
-        public UploadTab(ref View parent, int authorId)
+        private readonly int videoLength;
+
+        public UploadTab(ref View parent, int authorId,int videoLength)
         {
 
             this.parent = parent;
             this.authorId = authorId;
+            this.videoLength = videoLength;
             this.uploadViewModel = new UploadViewModel();
             this.InitializeComponent();
         }
@@ -52,7 +55,7 @@ namespace UserInterface
 
         private void BtnUploadSave_OnClick(object sender, RoutedEventArgs e)
         {
-            if (this.uploadViewModel.Upload(this.authorId,this.filePath, TxtUploadTitle.Text, TxtUploadDescription.Text))
+            if (this.uploadViewModel.Upload(this.authorId,this.filePath, TxtUploadTitle.Text, TxtUploadDescription.Text,this.videoLength))
             {
                 MessageBox.Show("Starting upload");
             }
