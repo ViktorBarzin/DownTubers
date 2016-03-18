@@ -20,6 +20,7 @@ namespace UserInterface
 
         private int priveleges;
 
+        // TODO : check below logic?
         public View() : this (1, 0)
         {
         }
