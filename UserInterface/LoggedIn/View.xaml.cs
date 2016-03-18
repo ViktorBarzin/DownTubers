@@ -11,8 +11,8 @@ namespace UserInterface
     public partial class View : Window, IView
     {
         private readonly IViewModel _viewModel;
-        private List<ResourceDictionary> Themes;
-        private int currentIndex;
+        public static List<ResourceDictionary> Themes;
+        public static int currentIndex = 0;
         //private bool visible = true;
         //private bool isBlue = true;
 
@@ -46,7 +46,6 @@ namespace UserInterface
             Themes = new List<ResourceDictionary>();
             Themes.Add(darkTheme);
             Themes.Add(brightTheme);
-            this.currentIndex = 0;
             UpdateTheme();
         }
 
@@ -88,15 +87,15 @@ namespace UserInterface
         //    ShowHideComment(this.visible);
         //}
 
-        private void UpdateTheme()
+        public static void UpdateTheme()
         {
             Application.Current.Resources.MergedDictionaries.Clear();
-            Application.Current.Resources.MergedDictionaries.Add(Themes[this.currentIndex]);
+            Application.Current.Resources.MergedDictionaries.Add(Themes[currentIndex]);
         }
 
         private void BtnMainChangeTheme_Click(object sender, RoutedEventArgs e)
         {
-            this.currentIndex++;
+            currentIndex++;
             if (currentIndex == Themes.Count)
             {
                 currentIndex = 0;
