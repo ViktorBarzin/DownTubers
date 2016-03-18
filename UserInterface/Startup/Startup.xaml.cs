@@ -43,7 +43,7 @@ namespace UserInterface.Startup
             int[] userInfo = this.logInViewModel.LogIn(this.TxtUsername.Text, this.TxtPassword.Password);
 
             int userId = userInfo[0];
-            int userPriveleges = userInfo[1];
+            int userPriveleges = userInfo[0];
             switch (userId)
             {
                 case -1:

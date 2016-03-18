@@ -2,18 +2,19 @@
 using System.Collections.Generic;
 using System.Windows;
 using System.IO;
+using System.Windows.Controls;
 
 namespace UserInterface
 {
     using ViewModel;
     using Interfaces;
-
+    using System.Windows.Media;
     public partial class View : Window, IView
     {
         private readonly IViewModel _viewModel;
         private List<ResourceDictionary> Themes;
         private int currentIndex;
-        //private bool visible = true;
+        private bool visible = true;
         //private bool isBlue = true;
 
         private int loggedInUserId;
@@ -160,12 +161,52 @@ namespace UserInterface
                MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
             {
                 this.Close();
+                Player.MediaPlayer.Stop();
                 startUp.Show();
             }
             else
             {
                 this.Show();
             }
+        }
+
+        private void BtnMainShowHide_Click(object sender, RoutedEventArgs e)
+        {
+            ShowHideComments();
+        }
+
+        public void ShowHideComments()
+        {
+            if (visible)
+            {
+                this.TxtMainComments.Visibility = Visibility.Visible;
+                this.LvlMainFirstVideo.Visibility = Visibility.Visible;
+                this.TxtMainWriteComment.Visibility = Visibility.Visible;
+                this.BtnMainSendComment.Visibility = Visibility.Visible;
+
+                this.visible = false;
+            }
+            else
+            {
+                this.TxtMainComments.Visibility = Visibility.Hidden;
+                this.LvlMainFirstVideo.Visibility = Visibility.Hidden;
+                this.TxtMainWriteComment.Visibility = Visibility.Hidden;
+                this.BtnMainSendComment.Visibility = Visibility.Hidden;
+
+                this.visible = true;
+            }
+        }
+
+        private void BtnMainGoHome_Click(object sender, RoutedEventArgs e)
+        {
+            this.GrdMainStartScreen.Visibility = Visibility.Visible;
+            this.LsvMainSearchResults.Visibility = Visibility.Visible;
+            this.GrdMainVideo.Visibility = Visibility.Hidden;
+            Player.MediaPlayer.Stop();
+        }
+
+        private void BtnFullscreen_Click(object sender, RoutedEventArgs e)
+        {
         }
     }
 }
