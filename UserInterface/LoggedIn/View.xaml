@@ -8,7 +8,6 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         WindowState="Maximized"
-        ResizeMode="NoResize"
         Title="View">
     <Grid>
         <TabControl TabStripPlacement="Top" Margin="0,10,0,-10">

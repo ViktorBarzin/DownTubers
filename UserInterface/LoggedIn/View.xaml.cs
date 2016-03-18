@@ -11,11 +11,16 @@ namespace UserInterface
     {
         private readonly IViewModel _viewModel;
         //private bool visible = true;
-        private bool isBlue = true;
+        //private bool isBlue = true;
 
         private int loggedInUserId;
 
         private int priveleges;
+
+        public View() : this (0, 0)
+        {
+            
+        }
 
         public View(int userId,int userPriveleges)
         {
@@ -76,7 +81,6 @@ namespace UserInterface
 
         private void BtnMainChangeTheme_Click(object sender, RoutedEventArgs e)
         {
-            
         }
 
         private void BtnMainSearch_OnClick(object sender, RoutedEventArgs e)
