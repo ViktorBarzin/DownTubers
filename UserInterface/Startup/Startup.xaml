@@ -22,13 +22,23 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-
+        <Button VerticalAlignment="Center"
+                HorizontalAlignment="Left"
+                Width="30"
+                Height="25"
+                Margin="3,10,0,38" 
+                RenderTransformOrigin="0.505,0.437"
+                FontSize="16"
+                Content="◐"
+                x:Name="BtnStartUpChangeTheme"
+                Style="{DynamicResource ButtonStyle}"
+                Click="BtnStartUpChangeTheme_OnClick"/>
         <Label Grid.Row="0" 
                Grid.Column="0" 
                Grid.ColumnSpan="3" 
                Content="Welcome to Downtubers Video Sharing Application" 
                HorizontalAlignment="Center" 
-               FontSize="20"
+               FontSize="18"
                Style="{DynamicResource LabelStyle}"/>
         <Label Grid.Row="1" 
                Grid.Column="1" 
@@ -42,7 +52,8 @@
                  Grid.Column="2" 
                  VerticalAlignment="Center" 
                  Margin="0 0 20 0"
-                 Style="{DynamicResource TextBoxStyle}"/>
+                 Style="{DynamicResource TextBoxStyle}"
+                 Foreground="Black"/>
         <Label Grid.Row="2" 
                Grid.Column="1" 
                HorizontalAlignment="Center" 
