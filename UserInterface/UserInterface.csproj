@@ -35,6 +35,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="HigLabo.Net, Version=1.3.7.0, Culture=neutral, PublicKeyToken=20abaee7662647f3, processorArchitecture=MSIL">
+      <HintPath>..\packages\HigLabo.Net.1.0.0.4\lib\net45\HigLabo.Net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="HigLabo.Net.Dropbox, Version=1.3.1.0, Culture=neutral, PublicKeyToken=20abaee7662647f3, processorArchitecture=MSIL">
+      <HintPath>..\packages\HigLabo.Net.Dropbox.1.0.0.3\lib\net45\HigLabo.Net.Dropbox.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=b9a188c8922137c6, processorArchitecture=MSIL">
+      <HintPath>..\packages\HigLabo.Net.1.0.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+<Private>True</Private>
+    </Reference>
     <Reference Include="Dropbox.Api, Version=0.1.5918.26186, Culture=neutral, PublicKeyToken=310f0e82fbb45d01, processorArchitecture=MSIL">
       <HintPath>..\packages\Dropbox.Api.3.0.5\lib\net45\Dropbox.Api.dll</HintPath>
       <Private>True</Private>
