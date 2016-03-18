@@ -39,6 +39,7 @@ namespace Interfaces
 
 		ObservableCollection<IVideoSearchResult> VideoSearchResults { get; }
 
+		void PlayVideo(int id);
 
 		void ShowHideComment();
 

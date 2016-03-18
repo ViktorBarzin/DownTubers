@@ -28,6 +28,14 @@ namespace UserInterface.Startup
         public Startup()
         {
             this.InitializeComponent();
+            ResourceDictionary darkTheme = new ResourceDictionary();
+            darkTheme.Source = new Uri("/Themes/DarkTheme.xaml", UriKind.Relative);
+            ResourceDictionary brightTheme = new ResourceDictionary();
+            brightTheme.Source = new Uri("/Themes/BrightTheme.xaml", UriKind.Relative);
+            View.Themes = new List<ResourceDictionary>();
+            View.Themes.Add(darkTheme);
+            View.Themes.Add(brightTheme);
+            View.UpdateTheme();
         }
 
         private void BtnRegister_OnClick(object sender, RoutedEventArgs e)
@@ -63,6 +71,16 @@ namespace UserInterface.Startup
                     view.Show();
                     break;
             }
+        }
+
+        private void BtnStartUpChangeTheme_OnClick(object sender, RoutedEventArgs e)
+        {
+            View.currentIndex++;
+            if (View.currentIndex == View.Themes.Count)
+            {
+                View.currentIndex = 0;
+            }
+            View.UpdateTheme();
         }
     }
 }
