@@ -141,7 +141,7 @@ namespace ViewModel
 		public void PlayVideo(int id)
 		{
 			string videoPath = "GOT_Best_Scene.mp4"; // Get video from model
-			_view.PlayVideo(new Uri(@"http://37.157.138.76/videos/" + videoPath));
+			_view.PlayVideo(new Uri(@"https://www.dropbox.com/home/Apps/DownTubers?preview=test2.mkv"));
 		}
 	}
 }

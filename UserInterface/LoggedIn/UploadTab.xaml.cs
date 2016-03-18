@@ -1,4 +1,5 @@
 ﻿using System;
+using Dropbox.Api;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Dropbox.Api.Files;
 
 namespace UserInterface
 {
@@ -59,22 +61,43 @@ namespace UserInterface
             }
         }
 
-        private void BtnUploadSave_OnClick(object sender, RoutedEventArgs e)
+		static async Task Upload(DropboxClient dbx, string folder, string file, string filePath)
+		{
+			using(var mem = new FileStream(filePath, FileMode.Open))
+			{
+				var updated = await dbx.Files.UploadAsync(
+					folder + "/" + file,
+					WriteMode.Overwrite.Instance,
+					body: mem);
+				//				Console.WriteLine("Saved {0}/{1} rev {2}", folder, file, updated.Rev);
+			}
+		}
+
+		private void BtnUploadSave_OnClick(object sender, RoutedEventArgs e)
         {
             if (this.uploadViewModel.Upload(this.authorId,this.filePath, TxtUploadTitle.Text, TxtUploadDescription.Text,this.videoLength))
             {
-                // TODO : change stuff for upload
-                //MessageBox.Show("Starting upload");
-//                DropboxClient client = new DropboxClient();
-                
-//                DropboxCommand command = new UploadFileCommand();
-                
-                //NameValueCollection nvc = new NameValueCollection();
-                //nvc.Add("id", "TTR");
-                //nvc.Add("btn-submit-photo", "Upload");
-                //HttpUploadFile(@"http://37.157.138.76/videos/",
-                //     filePath, TxtUploadTitle.Text, "mp4/mkv", nvc);
-            }
+				// TODO : change stuff for upload
+				//MessageBox.Show("Starting upload");
+				//                DropboxClient client = new DropboxClient();
+
+				//                DropboxCommand command = new UploadFileCommand();
+
+				//NameValueCollection nvc = new NameValueCollection();
+				//nvc.Add("id", "TTR");
+				//nvc.Add("btn-submit-photo", "Upload");
+				//HttpUploadFile(@"http://37.157.138.76/videos/",
+				//     filePath, TxtUploadTitle.Text, "mp4/mkv", nvc);
+				using(var dbx = new DropboxClient("N6LeEI8nmwAAAAAAAAAGErJyYPZcGf-_TRbjpFICvxOrODJiK9YIGQcF-0buCnTC"))
+				{
+					Func<DropboxClient, string, string, string, Task> task1 = Upload;
+
+					Func<Task> task2 = () => task1(dbx, "", "test2.mkv", "test.mkv");
+
+					var task = Task.Run(task2);
+					task.Wait();
+				}
+			}
             else
             {
                 //MessageBox.Show("Something fucked up");

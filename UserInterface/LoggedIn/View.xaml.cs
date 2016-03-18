@@ -7,12 +7,14 @@ using System.IO;
 using System.Windows.Controls;
 using System.Linq;
 using System.Net;
+using System.Text;
 using System.Windows.Forms;
 using Dropbox.Api;
 using Application = System.Windows.Application;
 using MessageBox = System.Windows.MessageBox;
 using Dropbox.Api;
 using System.Threading.Tasks;
+using Dropbox.Api.Files;
 
 namespace UserInterface
 {
@@ -48,17 +50,6 @@ namespace UserInterface
             GrdMainVideo.Visibility = Visibility.Hidden;
 			//this.ShowHideComment(visible);
 
-	        using (var dbx = new DropboxClient("N6LeEI8nmwAAAAAAAAAGErJyYPZcGf-_TRbjpFICvxOrODJiK9YIGQcF-0buCnTC"))
-	        {
-		        Func<DropboxClient, string, string, Task> task1 = Download;
-
-		        Func<Task> task2 = () => task1(dbx, "", "test.txt"); 
-
-		        var task = Task.Run(task2);
-		        task.Wait();
-	        }
-
-
 	        this.loggedInUserId = userId;
             this.priveleges = userPriveleges;
             this.SetPrivileges(priveleges);
@@ -86,33 +77,7 @@ namespace UserInterface
 			}
 		}
 
-		static async Task ListRootFolder()
-		{
-			using (var dbx = new DropboxClient("N6LeEI8nmwAAAAAAAAAGErJyYPZcGf-_TRbjpFICvxOrODJiK9YIGQcF-0buCnTC"))
-			{
-				var list = await dbx.Files.ListFolderAsync(string.Empty);
-
-				// show folders then files
-				foreach (var item in list.Entries.Where(i => i.IsFolder))
-				{
-					MessageBox.Show(item.Name);
-				}
-
-				foreach (var item in list.Entries.Where(i => i.IsFile))
-				{
-					MessageBox.Show(item.Name);
-				}
-			}
-		}
-
-		static async Task Run()
-		{
-			using(var dbx = new DropboxClient("N6LeEI8nmwAAAAAAAAAGErJyYPZcGf-_TRbjpFICvxOrODJiK9YIGQcF-0buCnTC"))
-			{
-				var full = await dbx.Users.GetCurrentAccountAsync();
-				MessageBox.Show(String.Format("{0} - {1}", full.Name.DisplayName, full.Email));
-			}
-		}
+		
 
 		private void BtnUserSearch_OnClick(object sender, RoutedEventArgs e)
         {
@@ -212,14 +177,6 @@ namespace UserInterface
                     break;
             }
 	    }
-  
-        async Task Download(DropboxClient dbx, string folder, string file)
-        {
-            using (var response = await dbx.Files.DownloadAsync(folder + "/" + file))
-            {
-                Console.WriteLine(await response.GetContentAsStringAsync());
-            }
-        }
 
         private void BtnMainDownload_OnClick(object sender, RoutedEventArgs e)
         {
