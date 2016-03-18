@@ -11,6 +11,8 @@ using System.Windows.Forms;
 using Dropbox.Api;
 using Application = System.Windows.Application;
 using MessageBox = System.Windows.MessageBox;
+using Dropbox.Api;
+using System.Threading.Tasks;
 
 namespace UserInterface
 {
@@ -209,42 +211,50 @@ namespace UserInterface
                 default:
                     break;
             }
+	    }
+  
+        async Task Download(DropboxClient dbx, string folder, string file)
+        {
+            using (var response = await dbx.Files.DownloadAsync(folder + "/" + file))
+            {
+                Console.WriteLine(await response.GetContentAsStringAsync());
+            }
         }
 
         private void BtnMainDownload_OnClick(object sender, RoutedEventArgs e)
         {
+            // OLD DOWNLOAD METHOD FOR HTTP server
+            //FolderBrowserDialog fbd = new FolderBrowserDialog();
+            //DialogResult result = fbd.ShowDialog();
+            //this.PbrMainVideoDownload.Visibility = Visibility.Visible;
 
-            FolderBrowserDialog fbd = new FolderBrowserDialog();
-            DialogResult result = fbd.ShowDialog();
-            this.PbrMainVideoDownload.Visibility = Visibility.Visible;
+            //string[] filees = Directory.GetFiles(fbd.SelectedPath);
+            //DownloadPath = fbd.SelectedPath; // + nameOfNewFile;
 
-            string[] filees = Directory.GetFiles(fbd.SelectedPath);
-            DownloadPath = fbd.SelectedPath; // + nameOfNewFile;
+            //try
+            //{
 
-            try
-            {
+            //	// Delete the file if it exists.
+            //	if (File.Exists(DownloadPath))
+            //	{
+            //		File.Delete(DownloadPath);
+            //	}
 
-                // Delete the file if it exists.
-                if (File.Exists(DownloadPath))
-                {
-                    File.Delete(DownloadPath);
-                }
-
-                // Create the file. 
-                using (WebClient client = new WebClient())
-                {
-                    var downloadURI = "http://37.157.138.76/videos/GOT_Best_Scene.mp4";
-                    DownloadPath = fbd.SelectedPath + "\\" + downloadURI.Split('/').Last();
-                    var webClient = new WebClient();
-                    webClient.DownloadFileCompleted += new AsyncCompletedEventHandler(Completed);
-                    webClient.DownloadProgressChanged += new DownloadProgressChangedEventHandler(ProgressChanged);
-                    webClient.DownloadFileAsync(new Uri(downloadURI), DownloadPath);
-                }
-            }
-            catch
-            {
-                throw new FileLoadException();
-            }
+            //	// Create the file. 
+            //	using (WebClient client = new WebClient())
+            //	{
+            //		var downloadURI = "http://37.157.138.76/videos/GOT_Best_Scene.mp4";
+            //		DownloadPath = fbd.SelectedPath + "\\" + downloadURI.Split('/').Last();
+            //		var webClient = new WebClient();
+            //		webClient.DownloadFileCompleted += new AsyncCompletedEventHandler(Completed);
+            //		webClient.DownloadProgressChanged += new DownloadProgressChangedEventHandler(ProgressChanged);
+            //		webClient.DownloadFileAsync(new Uri(downloadURI), DownloadPath);
+            //	}
+            //}
+            //catch
+            //{
+            //	throw new FileLoadException();
+            //}
         }
 
         private void BtnProfileLogOut_OnClick(object sender, RoutedEventArgs e)
