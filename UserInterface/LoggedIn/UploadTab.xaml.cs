@@ -31,5 +31,10 @@ namespace UserInterface
         {
             throw new NotImplementedException();
         }
+
+        private void BtnUploadSave_OnClick(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

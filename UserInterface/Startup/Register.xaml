@@ -6,7 +6,13 @@
         xmlns:local="clr-namespace:UserInterface"
         mc:Ignorable="d"
         Title="Register" Height="461.318" Width="421.553">
-    <Grid>
+    <Grid Style="{DynamicResource BackGroundTheme}">
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                <GradientStop Color="Black" Offset="0"/>
+                <GradientStop Color="#FF363A40"/>
+            </LinearGradientBrush>
+        </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
@@ -29,80 +35,93 @@
                Margin="0 0 20 0"
                VerticalAlignment="Center"
                HorizontalAlignment="Center"
-               Content="Username*"/>
+               Content="Username*"
+               Style="{DynamicResource LabelStyle}" FontFamily="Segoe UI"/>
         <TextBox x:Name="TxtUsername" 
                  Grid.Row="0"
                  Grid.Column="1"
                  Margin="0 0 15 0"
-                 VerticalAlignment="Center"/>
+                 VerticalAlignment="Center"
+                 Style="{DynamicResource TextBoxStyle}"/>
         <Label Grid.Row="1"
                Grid.Column="0" 
                Margin="0 0 20 0"
                VerticalAlignment="Center"
                HorizontalAlignment="Center"
-               Content="Email*"/>
+               Content="Email*"
+               Style="{DynamicResource LabelStyle}"/>
         <TextBox x:Name="TxtEmail"
                  Grid.Row="1" 
                  Grid.Column="1" 
                  Margin="0 0 15 0"
-                 VerticalAlignment="Center"/>
+                 VerticalAlignment="Center"
+                 Style="{DynamicResource TextBoxStyle}"/>
         <Label Grid.Row="2"
                Grid.Column="0"
                Margin="0 0 20 0"
                VerticalAlignment="Center"
                HorizontalAlignment="Center"
-               Content="Password*"/>
+               Content="Password*"
+               Style="{DynamicResource LabelStyle}"/>
         <PasswordBox x:Name="TxtPassword"
                      Grid.Row="2"
                      Grid.Column="1"
                      Margin="0 0 15 0"
-                     VerticalAlignment="Center"/>
+                     VerticalAlignment="Center"
+                     Style="{DynamicResource PasswordBoxStyle}"/>
         <Label Grid.Row="3"
                Grid.Column="0"
                Margin="0 0 20 0"
                VerticalAlignment="Center"
                HorizontalAlignment="Center"
-               Content="Confirm Password*"/>
+               Content="Confirm Password*"
+               Style="{DynamicResource LabelStyle}"/>
         <PasswordBox x:Name="TxtConfirmPassword"
                      Grid.Row="3"
                      Grid.Column="1"
                      Margin="0 0 15 0"
-                     VerticalAlignment="Center"/>
-
+                     VerticalAlignment="Center"
+                     Style="{DynamicResource PasswordBoxStyle}"/>
         <Label Grid.Row="4"
                Grid.Column="0"
                Margin="0 0 20 0"
                VerticalAlignment="Center"
                HorizontalAlignment="Center" 
-               Content="Describe yourself"/>
+               Content="Describe yourself"
+               Style="{DynamicResource LabelStyle}"/>
         <TextBox x:Name="TxtDescription"
                  Grid.Row="4" 
                  Grid.Column="1" 
                  Margin="0 0 15 0" 
                  VerticalAlignment="Center"
-                 TextWrapping="Wrap"/>
+                 TextWrapping="Wrap"
+                 Style="{DynamicResource TextBoxStyle}"/>
         <Label Grid.Row="5"
                Grid.Column="0"
                Margin="0 0 20 0"
                VerticalAlignment="Center"
                HorizontalAlignment="Center" 
-               Content="First name"/>
+               Content="First name"
+               Style="{DynamicResource LabelStyle}"/>
         <TextBox x:Name="TxtFirstName"
                  Grid.Row="5" 
                  Grid.Column="1" 
                  Margin="0 0 15 0" 
-                 VerticalAlignment="Center"/>
+                 VerticalAlignment="Center"
+                 Style="{DynamicResource TextBoxStyle}"/>
         <Label Grid.Row="6" 
                Grid.Column="0"
                Margin="0 0 20 0"
                VerticalAlignment="Center" 
                HorizontalAlignment="Center"
-               Content="Last Name"/>
+               Content="Last Name"
+               Style="{DynamicResource LabelStyle}"/>
         <TextBox x:Name="TxtLastName" 
                  Grid.Row="6" 
                  Grid.Column="1"
                  Margin="0 0 15 0" 
-                 VerticalAlignment="Center"/>
+                 VerticalAlignment="Center"
+                 Style="{DynamicResource TextBoxStyle}"/>
 
         <Label Grid.Row="7"
                Grid.Column="1" 
@@ -110,9 +129,16 @@
                VerticalAlignment="Center" 
                HorizontalAlignment="Center" 
                FontSize="12"
-               Content="Fields with * are mandatory"/>
-
-        <Button x:Name="BtnBack" Grid.Row="8" Grid.Column="0" Margin="25 10 25 10" Content="Back" Click="BtnBack_OnClick"/>
-        <Button x:Name="BtnRegister" Grid.Row="8" Grid.Column="1" Margin="25 10 25 10" Content="Register" Click="BtnRegister_OnClick"/>
+               Content="Fields with * are mandatory"
+               Style="{DynamicResource LabelStyle}"/>
+        <Button x:Name="BtnBack" Grid.Row="8" Grid.Column="0" Margin="25 10 25 10" Content="Back" Click="BtnBack_OnClick" Style="{DynamicResource ButtonStyle}"/>
+        <Button x:Name="BtnRegister" Grid.Row="8" Grid.Column="1" Margin="25 10 25 10" Content="Register" Click="BtnRegister_OnClick" Style="{DynamicResource ButtonStyle}">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                    <GradientStop Color="#007ACC" Offset="0.333"/>
+                   
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
     </Grid>
 </Window>
