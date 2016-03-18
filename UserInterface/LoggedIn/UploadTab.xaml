@@ -32,10 +32,10 @@
                      VerticalAlignment="Center"
                      Width="200"
                      Height="30"
-                     FontSize="18"
-                     TextWrapping="Wrap"
+                     FontSize="14"
                      x:Name="TxtUploadBrowse"
-                     Style="{DynamicResource TextBoxStyle}"/>
+                     Style="{DynamicResource TextBoxStyle}"
+                     VerticalContentAlignment="Center"/>
             <Button Grid.Column="1"
                     Grid.Row="0"
                     Grid.RowSpan="2"

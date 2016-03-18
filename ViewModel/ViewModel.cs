@@ -27,7 +27,12 @@ namespace ViewModel
 		private Model _model;
 		private List<IVideoSearchResult> _videoSearchResults;
 
-		public ObservableCollection<IVideoSearchResult> VideoSearchResults => new ObservableCollection<IVideoSearchResult>(_videoSearchResults);
+	    public string GetUserById(int id)
+	    {
+	        return this._model.GetUser(id).Username;
+	    }
+
+	    public ObservableCollection<IVideoSearchResult> VideoSearchResults => new ObservableCollection<IVideoSearchResult>(_videoSearchResults);
 		public UserSet LoggedInUser { get; private set; }
 
 //		public ObservableCollection<> 

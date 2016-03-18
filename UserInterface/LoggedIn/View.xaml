@@ -9,7 +9,7 @@
         WindowStartupLocation="CenterScreen"
         WindowState="Maximized"
         Title="View">
-    <Grid>
+    <Grid Keyboard.KeyDown="Keyboard_OnKeyDown">
         <TabControl TabStripPlacement="Top" Margin="0,10,0,-10">
             <TabItem Name="MainTab" 
                      Header="MAIN">
@@ -76,6 +76,7 @@
                                     Content="✍"
                                     FontSize="30"
                                     x:Name="BtnMainSendComment"
+                                        Click="BtnMainSendComment_OnClick"
                                     Style="{DynamicResource ButtonStyle}"/>
                             </Grid>
                         </Grid>
@@ -449,36 +450,42 @@
                                    Content="Username:"
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="Right"
+                                   FontSize="24"
                                    Style="{DynamicResource LabelStyle}"/>
                             <Label Grid.Column="0"
                                    Grid.Row="1"
                                    Content="Email:"
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="Right"
+                                   FontSize="24"
                                    Style="{DynamicResource LabelStyle}"/>
                             <Label Grid.Column="0"
                                    Grid.Row="2"
                                    Content="FirstName:"
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="Right"
+                                   FontSize="24"
                                    Style="{DynamicResource LabelStyle}"/>
                             <Label Grid.Column="0"
                                    Grid.Row="3"
                                    Content="LastName:"
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="Right"
+                                   FontSize="24"
                                    Style="{DynamicResource LabelStyle}"/>
                             <Label Grid.Column="0"
                                    Grid.Row="4"
                                    Content="Registered:"
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="Right"
+                                   FontSize="24"
                                    Style="{DynamicResource LabelStyle}"/>
                             <Label Grid.Column="0"
                                    Grid.Row="5"
                                    Content="LastLogin:"
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="Right"
+                                   FontSize="24"
                                    Style="{DynamicResource LabelStyle}"/>
                             
                             <Label Grid.Column="1"
@@ -486,36 +493,42 @@
                                    Content="{Binding LoggedInUser.Username}"
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="Left"
+                                   FontSize="24"
                                    Style="{DynamicResource LabelStyle}"/>
                             <Label Grid.Column="1"
                                    Grid.Row="1"
                                    Content="{Binding LoggedInUser.Email}"
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="Left"
+                                   FontSize="24"
                                    Style="{DynamicResource LabelStyle}"/>
                             <Label Grid.Column="1"
                                    Grid.Row="2"
                                    Content="{Binding Path=LoggedInUser.FirstName}"
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="Left"
+                                   FontSize="24"
                                    Style="{DynamicResource LabelStyle}"/>
                             <Label Grid.Column="1"
                                    Grid.Row="3"
                                    Content="{Binding LoggedInUser.LastName}"
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="Left"
+                                   FontSize="24"
                                    Style="{DynamicResource LabelStyle}"/>
                             <Label Grid.Column="1"
                                    Grid.Row="4"
                                    Content="{Binding LoggedInUser.Registered}"
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="Left"
+                                   FontSize="24"
                                    Style="{DynamicResource LabelStyle}"/>
                             <Label Grid.Column="1"
                                    Grid.Row="5"
                                    Content="{Binding LoggedInUser.LastLogin}"
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="Left"
+                                   FontSize="24"
                                    Style="{DynamicResource LabelStyle}"/>
                         </Grid>
                         <Grid Grid.Row="2"
