@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.IO;
+using System.Windows.Controls;
 
 namespace UserInterface
 {
@@ -27,7 +28,8 @@ namespace UserInterface
             this.InitializeComponent();
             this.Player.MediaPlayer.VlcLibDirectory = new DirectoryInfo(Path.Combine(Directory.GetCurrentDirectory(), "VLCLibs"));
             this.Player.MediaPlayer.EndInit();
-            this._viewModel = new ViewModel(this.loggedInUserId);
+            this._viewModel = new ViewModel(userId, this);
+	        DataContext = this._viewModel;
 			GrdMainVideo.Visibility = Visibility.Hidden;
 			//this.ShowHideComment(visible);
 
@@ -35,8 +37,15 @@ namespace UserInterface
             this.loggedInUserId = userId;
             this.priveleges = userPriveleges;
             this.SetPrivileges(priveleges);
-            
-        }
+
+	        for (int i = 0; i < 6; i++)
+	        {
+	        LsvProfilePlayLists.Items.Add(0);
+
+			}
+
+
+		}
 
         private void BtnUserSearch_OnClick(object sender, RoutedEventArgs e)
         {
@@ -61,8 +70,6 @@ namespace UserInterface
 		    {
 				Player.MediaPlayer.Play();
 				BtnPause.Content = "❚❚";
-                this.TxtMainComments.Text = Player.MediaPlayer.Length.ToString();   
-
             }
 	    }
 
@@ -83,7 +90,7 @@ namespace UserInterface
         private void BtnMainSearch_OnClick(object sender, RoutedEventArgs e)
         {
             //PlayVideo(new Uri(@"http://37.157.138.76/videos/GOT_Best_Scene.mp4"));
-            PlayVideo(new Uri(@"D:\movies\Ip.Man.3.2015.BDRip.x265.AAC-REFLUX\sample.mkv"));
+//            PlayVideo(new Uri(@"http://37.157.138.76/videos/GOT_Best_Scene.mp4"));
         }
 
         private void BtnMainStartScreenChangeTheme_Click(object sender, RoutedEventArgs e)
@@ -111,8 +118,18 @@ namespace UserInterface
             this.BtnMainSearch.Visibility = Visibility.Visible;
             this.GrdMainVideo.Visibility = Visibility.Visible;
             this.LsvMainSearchResults.Visibility = Visibility.Hidden;
+			this.GenerateRandomComments();
             this.Player.MediaPlayer.Play(video);
 		}
+
+	    private void GenerateRandomComments()
+	    {
+		    for (int i = 0; i < 10; i++)
+		    {
+				this.LsvMainComments.Items.Add("User" + i);
+			    this.LsvMainComments.Items.Add("BLABLABLALBLABL");
+		    }
+	    }
 
         private void SetPrivileges(int userPriveleges)
         {
@@ -128,5 +145,11 @@ namespace UserInterface
                     break;
             }
         }
+
+	    private void LsvMainSearchResults_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+	    {
+		    var result = (IVideoSearchResult) (LsvMainSearchResults.SelectedItem);
+			_viewModel.PlayVideo(result.Id);
+	    }
     }
 }

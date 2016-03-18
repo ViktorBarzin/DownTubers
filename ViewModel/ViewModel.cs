@@ -21,18 +21,25 @@ namespace ViewModel
 	{
 		public event PropertyChangedEventHandler PropertyChanged;
 
-		private UserSet _loggedInUser;
+
+		private IView _view;
 		private VideoSet _playingVideo;
 		private Model _model;
 		private List<IVideoSearchResult> _videoSearchResults;
 
 		public ObservableCollection<IVideoSearchResult> VideoSearchResults => new ObservableCollection<IVideoSearchResult>(_videoSearchResults);
+		public UserSet LoggedInUser { get; private set; }
 
-		public ViewModel(int userId)
+//		public ObservableCollection<> 
+
+		public ViewModel(int userId, IView view)
 		{
+			_view = view;
 			_model = new Model();
-			_loggedInUser = _model.GetAllUsers().FirstOrDefault(x => x.Id == userId);
+			LoggedInUser = _model.GetAllUsers().FirstOrDefault(x => x.Id == userId);
 			var test = new VideoSet() { Title = "TestTitle", Description = "VideoDescriptionlalalallalaasdfasdf" };
+//			_loggedInUser.
+
 
 			_videoSearchResults = new List<IVideoSearchResult>
 			{
@@ -121,6 +128,12 @@ namespace ViewModel
 		private void OnPropertyChanged([CallerMemberName] string propertyName = null)
 		{
 			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+		}
+
+		public void PlayVideo(int id)
+		{
+			string videoPath = "GOT_Best_Scene.mp4"; // Get video from model
+			_view.PlayVideo(new Uri(@"http://37.157.138.76/videos/" + videoPath));
 		}
 	}
 }
