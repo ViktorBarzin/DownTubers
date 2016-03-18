@@ -56,10 +56,11 @@
                                 <ColumnDefinition Width="5"/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-                            <TextBox Grid.Column="1" 
-                                     Style="{DynamicResource TextBoxStyle}" 
-                                     x:Name="TxtMainComments"
-                                     IsReadOnly="True"/>
+                            <ListView Grid.Column="1" 
+                                     Style="{DynamicResource ListViewStyle}" 
+                                     x:Name="LsvMainComments"
+                                     Foreground="White"
+                            />
                             <Grid Grid.Column="1" 
                               Grid.Row="2">
                                 <Grid.ColumnDefinitions>
@@ -255,7 +256,7 @@
                                 Content="◐"
                                 FontSize="20"
                                 x:Name="BtnMainChangeTheme" 
-                                
+                                Click="BtnMainChangeTheme_OnClick"
                                 Style="{DynamicResource ButtonStyle}">
                                 <Button.ToolTip>
                                     <ToolTip>
@@ -356,7 +357,9 @@
                                   Grid.Row="1"
                                   x:Name="LsvMainSearchResults"
                                   Style="{DynamicResource ListViewStyle}"
-                                  ItemsSource="{Binding VideoSearchResults}">
+                                  ItemsSource="{Binding VideoSearchResults}"
+                                  SelectionChanged="LsvMainSearchResults_OnSelectionChanged"
+                                  >
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
@@ -403,21 +406,100 @@
                             <ColumnDefinition Width="30*"/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-                        <Grid Grid.Column="1">
+                        <Image Grid.Column="0" 
+                               Grid.Row="0"
+                               x:Name="ImgProfileUserLogo">
+                        </Image>
+                        <!--Username -->
+                        <Grid Grid.Row="1"
+                                 Grid.Column="1"
+                                 Style="{DynamicResource GridStyle}">
                             <Grid.RowDefinitions>
                                 <RowDefinition/>
-                                <RowDefinition Height="25*"/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
                                 <RowDefinition/>
                             </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="3*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0"
+                                   Grid.Row="0"
+                                   Content="Username:"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Right"
+                                   Style="{DynamicResource LabelStyle}"/>
+                            <Label Grid.Column="0"
+                                   Grid.Row="1"
+                                   Content="Email:"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Right"
+                                   Style="{DynamicResource LabelStyle}"/>
+                            <Label Grid.Column="0"
+                                   Grid.Row="2"
+                                   Content="FirstName:"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Right"
+                                   Style="{DynamicResource LabelStyle}"/>
+                            <Label Grid.Column="0"
+                                   Grid.Row="3"
+                                   Content="LastName:"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Right"
+                                   Style="{DynamicResource LabelStyle}"/>
+                            <Label Grid.Column="0"
+                                   Grid.Row="4"
+                                   Content="Registered:"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Right"
+                                   Style="{DynamicResource LabelStyle}"/>
+                            <Label Grid.Column="0"
+                                   Grid.Row="5"
+                                   Content="LastLogin:"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Right"
+                                   Style="{DynamicResource LabelStyle}"/>
+                            
+                            <Label Grid.Column="1"
+                                   Grid.Row="0"
+                                   Content="{Binding LoggedInUser.Username}"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Left"
+                                   Style="{DynamicResource LabelStyle}"/>
+                            <Label Grid.Column="1"
+                                   Grid.Row="1"
+                                   Content="{Binding LoggedInUser.Email}"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Left"
+                                   Style="{DynamicResource LabelStyle}"/>
+                            <Label Grid.Column="1"
+                                   Grid.Row="2"
+                                   Content="{Binding Path=LoggedInUser.FirstName}"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Left"
+                                   Style="{DynamicResource LabelStyle}"/>
+                            <Label Grid.Column="1"
+                                   Grid.Row="3"
+                                   Content="{Binding LoggedInUser.LastName}"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Left"
+                                   Style="{DynamicResource LabelStyle}"/>
+                            <Label Grid.Column="1"
+                                   Grid.Row="4"
+                                   Content="{Binding LoggedInUser.Registered}"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Left"
+                                   Style="{DynamicResource LabelStyle}"/>
+                            <Label Grid.Column="1"
+                                   Grid.Row="5"
+                                   Content="{Binding LoggedInUser.LastLogin}"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Left"
+                                   Style="{DynamicResource LabelStyle}"/>
                         </Grid>
-                        <TextBox Grid.Row="1"
-                                 Grid.Column="1"
-                                 x:Name="TxtProfileUserInfo"
-                                 TextWrapping="Wrap"
-                                 IsReadOnly="True"
-                                 FontSize="16"
-                                 BorderThickness="0"
-                                 Style="{DynamicResource TextBoxStyle}"/>
                         <Grid Grid.Row="2"
                               Grid.Column="1">
                             <Grid.RowDefinitions>
@@ -470,11 +552,12 @@
                                 <RowDefinition/>
                                 <RowDefinition Height="3*"/>
                             </Grid.RowDefinitions>
-                            <Label Grid.Row="1"
-                                   x:Name="LblProfileDescription"
+                            <TextBox Grid.Row="1"
+                                   x:Name="TxtProfileDescription"
+                                   IsReadOnly="True"
                                    FontSize="18"
-                                   BorderThickness="2"
-                                   Style="{DynamicResource LabelStyle}"/>
+                                   Style="{DynamicResource TextBoxStyle}"
+                                   Text="{Binding Path=LoggedInUser.Description}"/>
                             <Label Grid.Row="0"
                                    HorizontalAlignment="Left"
                                    VerticalAlignment="Center"
@@ -493,9 +576,28 @@
                                       Style="{DynamicResource ListViewStyle}">
                                 <ListView.ItemsPanel>
                                     <ItemsPanelTemplate>
-                                        <StackPanel Orientation="Horizontal"/>
+                                        <StackPanel Orientation="Horizontal"></StackPanel>
                                     </ItemsPanelTemplate>
                                 </ListView.ItemsPanel>
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition/>
+                                                <RowDefinition Height="3*"/>
+                                            </Grid.RowDefinitions>
+
+                                            <Label Grid.Row="0"
+                                                   Style="{DynamicResource LabelStyle}"
+                                                   Content="Title"
+                                                   HorizontalAlignment="Center"/>
+                                            <Image Grid.Row="1"
+                                                   Source="https://i.imgur.com/D0wY0p6.jpg"
+                                                   Width="150"
+                                                   Stretch="Fill"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
                             </ListView>
                             <Label Grid.Row="0"
                                    HorizontalAlignment="Left"
@@ -515,9 +617,28 @@
                                       Style="{DynamicResource ListViewStyle}">
                                 <ListView.ItemsPanel>
                                     <ItemsPanelTemplate>
-                                        <StackPanel Orientation="Horizontal"/>
+                                        <StackPanel Orientation="Horizontal"></StackPanel>
                                     </ItemsPanelTemplate>
                                 </ListView.ItemsPanel>
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition/>
+                                                <RowDefinition Height="3*"/>
+                                            </Grid.RowDefinitions>
+
+                                            <Label Grid.Row="0"
+                                                   Style="{DynamicResource LabelStyle}"
+                                                   Content="Title"
+                                                   HorizontalAlignment="Center"/>
+                                            <Image Grid.Row="1"
+                                                   Source="https://i.imgur.com/D0wY0p6.jpg"
+                                                   Width="150"
+                                                   Stretch="Fill"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
                             </ListView>
                             <Label Grid.Row="0"
                                    HorizontalAlignment="Left"
@@ -537,9 +658,28 @@
                                       Style="{DynamicResource ListViewStyle}">
                                 <ListView.ItemsPanel>
                                     <ItemsPanelTemplate>
-                                        <StackPanel Orientation="Horizontal"/>
+                                        <StackPanel Orientation="Horizontal"></StackPanel>
                                     </ItemsPanelTemplate>
                                 </ListView.ItemsPanel>
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition/>
+                                                <RowDefinition Height="3*"/>
+                                            </Grid.RowDefinitions>
+
+                                            <Label Grid.Row="0"
+                                                   Style="{DynamicResource LabelStyle}"
+                                                   Content="Title"
+                                                   HorizontalAlignment="Center"/>
+                                            <Image Grid.Row="1"
+                                                   Source="https://i.imgur.com/D0wY0p6.jpg"
+                                                   Width="150"
+                                                   Stretch="Fill"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
                             </ListView>
                             <Label Grid.Row="0"
                                    HorizontalAlignment="Left"
