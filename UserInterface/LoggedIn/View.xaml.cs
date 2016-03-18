@@ -24,6 +24,7 @@ namespace UserInterface
 			GrdMainVideo.Visibility = Visibility.Hidden;
 			//this.ShowHideComment(visible);
             this.loggedInUserId = userId;
+            this.SetPrivileges(this.loggedInUserId);
             
         }
 
@@ -101,5 +102,20 @@ namespace UserInterface
             this.LsvMainSearchResults.Visibility = Visibility.Hidden;
             this.Player.MediaPlayer.Play(video);
 		}
+
+        private void SetPrivileges(int userId)
+        {
+            switch (userId)
+            {
+                case 0:
+                    this.Admin.Visibility = Visibility.Visible;
+                    break;
+                case 1:
+                    this.Admin.Visibility = Visibility.Hidden;
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 }

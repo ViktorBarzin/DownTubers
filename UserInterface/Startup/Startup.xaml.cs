@@ -23,7 +23,7 @@ namespace UserInterface.Startup
     /// </summary>
     public partial class Startup : Window
     {
-        ILogInViewModel logInViewModel = new LogInViewModel();
+        readonly ILogInViewModel logInViewModel = new LogInViewModel();
 
         public Startup()
         {
