@@ -21,7 +21,7 @@
     <Style x:Key="TextBoxStyle" TargetType="TextBox">
         <Setter Property="Background" Value="{DynamicResource ContentBackGroundBrush}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource ContentBorderBrush}"/>
-        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Foreground" Value="Black"/>
         <Setter Property="FontFamily" Value="Segoe UI"/>
     </Style>
 
@@ -52,7 +52,7 @@
     <Style x:Key="PasswordBoxStyle" TargetType="PasswordBox">
         <Setter Property="Background" Value="{DynamicResource ContentBackGroundBrush}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource ContentBorderBrush}"/>
-        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Foreground" Value="Black"/>
     </Style>
 
     <Style x:Key="GridStyle" TargetType="Grid">
