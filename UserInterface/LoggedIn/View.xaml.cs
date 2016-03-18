@@ -30,7 +30,11 @@ namespace UserInterface
             this.loggedInUserId = userId;
             this.priveleges = userPriveleges;
             this.SetPrivileges(priveleges);
-            
+        }
+
+        public View(bool contentLoaded)
+        {
+            this._contentLoaded = contentLoaded;
         }
 
         private void BtnUserSearch_OnClick(object sender, RoutedEventArgs e)
