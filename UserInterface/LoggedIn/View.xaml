@@ -256,7 +256,7 @@
                                 Content="◐"
                                 FontSize="20"
                                 x:Name="BtnMainChangeTheme" 
-                                
+                                Click="BtnMainChangeTheme_OnClick"
                                 Style="{DynamicResource ButtonStyle}">
                                 <Button.ToolTip>
                                     <ToolTip>

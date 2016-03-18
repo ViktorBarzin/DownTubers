@@ -101,16 +101,6 @@ namespace UserInterface
             Application.Current.Resources.MergedDictionaries.Add(Themes[currentIndex]);
         }
 
-        private void BtnMainChangeTheme_Click(object sender, RoutedEventArgs e)
-        {
-            currentIndex++;
-            if (currentIndex == Themes.Count)
-            {
-                currentIndex = 0;
-            }
-            UpdateTheme();
-        }
-
         private void BtnMainSearch_OnClick(object sender, RoutedEventArgs e)
         {
 			_viewModel.VideoSearch(TxtMainSearch.Text);
@@ -242,5 +232,17 @@ namespace UserInterface
 		//	this.PbrMainVideoDownload.Value = 0;
 			this.PbrMainVideoDownload.Value = e.ProgressPercentage;
 		}
+
+        private void BtnMainChangeTheme_OnClick(object sender, RoutedEventArgs e)
+        {
+            currentIndex++;
+
+            if (currentIndex == Themes.Count)
+            {
+                currentIndex = 0;
+            }
+
+            UpdateTheme();
+        }
     }
 }
