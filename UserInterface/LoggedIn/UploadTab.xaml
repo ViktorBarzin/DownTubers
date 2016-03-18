@@ -130,6 +130,7 @@
                     FontSize="18"
                     Content="Exit"
                     x:Name="BtnUploadExit"
+                    Click="BtnUploadExit_OnClick"
                     Style="{DynamicResource ButtonStyle}"/>
             </Grid>
         </Grid>

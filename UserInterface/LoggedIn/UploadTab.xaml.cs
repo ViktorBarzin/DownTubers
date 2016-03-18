@@ -61,5 +61,10 @@ namespace UserInterface
                 MessageBox.Show("Something fucked up");
             }
         }
+
+        private void BtnUploadExit_OnClick(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
