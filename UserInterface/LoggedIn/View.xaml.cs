@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Windows.Forms;
+using Application = System.Windows.Application;
+using MessageBox = System.Windows.MessageBox;
 
 namespace UserInterface
 {
@@ -14,6 +17,8 @@ namespace UserInterface
     public partial class View : Window, IView
     {
         private readonly IViewModel _viewModel;
+        private List<ResourceDictionary> Themes;
+        private int currentIndex;
         //private bool visible = true;
         //private bool isBlue = true;
 
@@ -21,9 +26,9 @@ namespace UserInterface
 	    private string DownloadPath;
         private int priveleges;
 
-        public View() : this (0, 0)
+        // TODO : check below logic?
+        public View() : this (1, 0)
         {
-            
         }
 
         public View(int userId,int userPriveleges)
@@ -40,6 +45,15 @@ namespace UserInterface
             this.priveleges = userPriveleges;
             this.SetPrivileges(priveleges);
             
+            ResourceDictionary darkTheme = new ResourceDictionary();
+            darkTheme.Source = new Uri("/Themes/DarkTheme.xaml", UriKind.Relative);
+            ResourceDictionary brightTheme = new ResourceDictionary();
+            brightTheme.Source = new Uri("/Themes/BrightTheme.xaml", UriKind.Relative);
+            Themes = new List<ResourceDictionary>();
+            Themes.Add(darkTheme);
+            Themes.Add(brightTheme);
+            this.currentIndex = 0;
+            UpdateTheme();
         }
 
         private void BtnUserSearch_OnClick(object sender, RoutedEventArgs e)
@@ -65,8 +79,6 @@ namespace UserInterface
 		    {
 				Player.MediaPlayer.Play();
 				BtnPause.Content = "❚❚";
-                this.TxtMainComments.Text = Player.MediaPlayer.Length.ToString();   
-
             }
 	    }
 
@@ -80,14 +92,25 @@ namespace UserInterface
         //    ShowHideComment(this.visible);
         //}
 
+        private void UpdateTheme()
+        {
+            Application.Current.Resources.MergedDictionaries.Clear();
+            Application.Current.Resources.MergedDictionaries.Add(Themes[this.currentIndex]);
+        }
+
         private void BtnMainChangeTheme_Click(object sender, RoutedEventArgs e)
         {
+            this.currentIndex++;
+            if (currentIndex == Themes.Count)
+            {
+                currentIndex = 0;
+        }
+            UpdateTheme();
         }
 
         private void BtnMainSearch_OnClick(object sender, RoutedEventArgs e)
         {
-            //PlayVideo(new Uri(@"http://37.157.138.76/videos/GOT_Best_Scene.mp4"));
-            PlayVideo(new Uri(@"D:\movies\Ip.Man.3.2015.BDRip.x265.AAC-REFLUX\sample.mkv"));
+            PlayVideo(new Uri(@"http://37.157.138.76/videos/GOT_Best_Scene.mp4"));
         }
 
         private void BtnMainStartScreenChangeTheme_Click(object sender, RoutedEventArgs e)
@@ -101,11 +124,13 @@ namespace UserInterface
         private void BtnMainUpload_OnClick(object sender, RoutedEventArgs e)
         {
             View newView = this;
-            UploadTab uploadTab = new UploadTab(ref newView);
+            string videoLength = this.Player.MediaPlayer.Length.ToString();
+            // TODO : upload button click here
+            UploadTab uploadTab = new UploadTab(ref newView, this.loggedInUserId, int.Parse(videoLength));
             uploadTab.ShowDialog();
         }
 
-        
+
 
 	    public void PlayVideo(Uri video)
 	    {
@@ -115,19 +140,19 @@ namespace UserInterface
             this.Player.MediaPlayer.Play(video);
 		}
 
-	    private void SetPrivileges(int userPriveleges)
-	    {
-		    switch (userPriveleges)
-		    {
-			    case 0:
-				    this.Admin.Visibility = Visibility.Visible;
-				    break;
-			    case 1:
-				    this.Admin.Visibility = Visibility.Hidden;
-				    break;
-			    default:
-				    break;
-		    }
+        private void SetPrivileges(int userPriveleges)
+        {
+            switch (userPriveleges)
+            {
+                case 0:
+                    this.Admin.Visibility = Visibility.Visible;
+                    break;
+                case 1:
+                    this.Admin.Visibility = Visibility.Hidden;
+                    break;
+                default:
+                    break;
+            }
 	    }
 
 	    private void BtnMainDownload_OnClick(object sender, RoutedEventArgs e)
@@ -164,7 +189,23 @@ namespace UserInterface
 			{
 				throw new FileLoadException();
 			}
-		}
+        }
+
+        private void BtnProfileLogOut_OnClick(object sender, RoutedEventArgs e)
+        {
+            Startup.Startup startUp = new Startup.Startup();
+
+            if (MessageBox.Show("Are you sure?", "Log out!",
+               MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+            {
+                this.Close();
+                startUp.Show();
+            }
+            else
+            {
+                this.Show();
+            }
+        }
 
 		private void Completed(object sender, AsyncCompletedEventArgs e)
 		{
@@ -180,5 +221,5 @@ namespace UserInterface
 		}
 
 
-	}
+    }
 }

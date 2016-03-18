@@ -2,11 +2,12 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:UserInterface"
-             StartupUri="LoggedIn/View.xaml">
+             StartupUri="Startup/Startup.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Themes/BlueTheme.xaml"/>
+                <ResourceDictionary Source="Themes/DarkTheme.xaml"/>
+                <ResourceDictionary Source="Themes/BrightTheme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

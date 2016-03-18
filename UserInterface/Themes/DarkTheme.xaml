@@ -1,0 +1,58 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:UserInterface">
+    <SolidColorBrush x:Key="MainBackGroudBrush"
+                     Color="#2D2D30"/>
+    <SolidColorBrush x:Key="ButtonBackGroundBrush"
+                     Color="#007ACC"/>
+    <SolidColorBrush x:Key="ContentBackGroundBrush" 
+                     Color="#3F3F46"/>
+    <SolidColorBrush x:Key="ContentBorderBrush"
+                     Color="Black"/>
+
+    <!--Setting Styles-->
+    <Style x:Key="BackGroundTheme" TargetType="Grid">
+        <Setter Property="Background" Value="{DynamicResource MainBackGroudBrush}"/>
+    </Style>
+
+    <Style x:Key="TextBoxStyle" TargetType="TextBox">
+        <Setter Property="Background" Value="{DynamicResource ContentBackGroundBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource ContentBorderBrush}"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="FontFamily" Value="Segoe UI"/>
+    </Style>
+
+    <Style x:Key="LabelStyle" TargetType="Label">
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="FontFamily" Value="Segoe UI"/>
+    </Style>
+
+    <Style x:Key="DataGridStyle" TargetType="DataGrid">
+        <Setter Property="Background" Value="{DynamicResource ContentBackGroundBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource ContentBorderBrush}"/>
+        <Setter Property="FontFamily" Value="Segoe UI"/>
+        <Setter Property="Foreground" Value="White"/>
+    </Style>
+
+    <Style x:Key="ListViewStyle" TargetType="ListView">
+        <Setter Property="Background" Value="{DynamicResource ContentBackGroundBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource ContentBorderBrush}"/>
+    </Style>
+
+    <Style x:Key="ButtonStyle" TargetType="Button">
+        <Setter Property="Background" Value="{DynamicResource ButtonBackGroundBrush}"/>
+        <Setter Property="BorderBrush" Value="Black"/>
+        <Setter Property="FontFamily" Value="Segoe UI"/>
+        <Setter Property="Foreground" Value="White"/>
+    </Style>
+
+    <Style x:Key="PasswordBoxStyle" TargetType="PasswordBox">
+        <Setter Property="Background" Value="{DynamicResource ContentBackGroundBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource ContentBorderBrush}"/>
+        <Setter Property="Foreground" Value="White"/>
+    </Style>
+
+    <Style x:Key="GridStyle" TargetType="Grid">
+        <Setter Property="Background" Value="{DynamicResource ContentBackGroundBrush}"/>
+    </Style>
+</ResourceDictionary>

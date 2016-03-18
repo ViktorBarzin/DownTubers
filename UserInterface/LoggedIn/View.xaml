@@ -323,6 +323,7 @@
                                 Grid.Row="1"
                                 Content="⊝"
                                 FontSize="20"
+                                Click="BtnProfileLogOut_OnClick"
                                 x:Name="BtnMainLogOut"
                                 Style="{DynamicResource ButtonStyle}">
                                 <Button.ToolTip>
@@ -402,10 +403,13 @@
                             <ColumnDefinition Width="30*"/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-                        <Image Grid.Column="0" 
-                               Grid.Row="0"
-                               x:Name="ImgProfileUserLogo">
-                        </Image>
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition Height="25*"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                        </Grid>
                         <TextBox Grid.Row="1"
                                  Grid.Column="1"
                                  x:Name="TxtProfileUserInfo"
@@ -445,7 +449,7 @@
                                     x:Name="BtnProfileLogOut"
                                     Content="Log Out"
                                     FontSize="16"
-                                    Click="BtnProfileEdit_OnClick"
+                                    Click="BtnProfileLogOut_OnClick"
                                     Style="{DynamicResource ButtonStyle}"/>
                         </Grid>
                     </Grid>
@@ -602,13 +606,7 @@
                                  VerticalAlignment="Top"
                                  FontSize="16"
                                  x:Name="TxtAdminVideoSearch"
-                                 Style="{DynamicResource TextBoxStyle}">
-                            <TextBox.Background>
-                                <SolidColorBrush 
-                                    Color="AliceBlue"
-                                    Opacity="0.3"/>
-                            </TextBox.Background>
-                        </TextBox>
+                                 Style="{DynamicResource TextBoxStyle}"/>
                         <Button Grid.Column="0"
                                 Grid.Row="1"
                                 Width="120"
