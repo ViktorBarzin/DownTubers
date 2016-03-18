@@ -1,7 +1,14 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Windows;
 using System.IO;
+using System.Linq;
+using System.Net;
+using System.Windows.Forms;
+using Application = System.Windows.Application;
+using MessageBox = System.Windows.MessageBox;
 
 namespace UserInterface
 {
@@ -17,7 +24,7 @@ namespace UserInterface
         //private bool isBlue = true;
 
         private int loggedInUserId;
-
+	    private string DownloadPath;
         private int priveleges;
 
         // TODO : check below logic?
@@ -72,8 +79,6 @@ namespace UserInterface
 		    {
 				Player.MediaPlayer.Play();
 				BtnPause.Content = "❚❚";
-                this.TxtMainComments.Text = Player.MediaPlayer.Length.ToString();   
-
             }
 	    }
 
@@ -125,10 +130,7 @@ namespace UserInterface
             uploadTab.ShowDialog();
         }
 
-        private void BtnMainDownload_OnClick(object sender, RoutedEventArgs e)
-        {
-            throw new NotImplementedException();
-        }
+
 
 	    public void PlayVideo(Uri video)
 	    {
@@ -151,13 +153,73 @@ namespace UserInterface
                 default:
                     break;
             }
+	    }
+
+	    private void BtnMainDownload_OnClick(object sender, RoutedEventArgs e)
+		{
+
+			FolderBrowserDialog fbd = new FolderBrowserDialog();
+			DialogResult result = fbd.ShowDialog();
+			this.PbrMainVideoDownload.Visibility = Visibility.Visible;
+
+			string[] filees = Directory.GetFiles(fbd.SelectedPath);
+			DownloadPath = fbd.SelectedPath; // + nameOfNewFile;
+
+			try
+			{
+
+				// Delete the file if it exists.
+				if (File.Exists(DownloadPath))
+				{
+					File.Delete(DownloadPath);
+				}
+
+				// Create the file. 
+				using (WebClient client = new WebClient())
+				{
+					var downloadURI = "http://37.157.138.76/videos/GOT_Best_Scene.mp4";
+					DownloadPath = fbd.SelectedPath + "\\" + downloadURI.Split('/').Last();
+					var webClient = new WebClient();
+					webClient.DownloadFileCompleted += new AsyncCompletedEventHandler(Completed);
+					webClient.DownloadProgressChanged += new DownloadProgressChangedEventHandler(ProgressChanged);
+					webClient.DownloadFileAsync(new Uri(downloadURI), DownloadPath);
+				}
+			}
+			catch
+			{
+				throw new FileLoadException();
+			}
         }
 
         private void BtnProfileLogOut_OnClick(object sender, RoutedEventArgs e)
         {
-            Startup.Startup startup = new Startup.Startup();
-            this.Close();
-            startup.Show();
+            Startup.Startup startUp = new Startup.Startup();
+
+            if (MessageBox.Show("Are you sure?", "Log out!",
+               MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+            {
+                this.Close();
+                startUp.Show();
+            }
+            else
+            {
+                this.Show();
+            }
         }
+
+		private void Completed(object sender, AsyncCompletedEventArgs e)
+		{
+			System.Windows.MessageBox.Show("Download completed at Folder: \n {0}", DownloadPath);
+			this.PbrMainVideoDownload.Visibility = Visibility.Hidden;
+
+		}
+
+		private void ProgressChanged(object sender, DownloadProgressChangedEventArgs e)
+		{
+		//	this.PbrMainVideoDownload.Value = 0;
+			this.PbrMainVideoDownload.Value = e.ProgressPercentage;
+		}
+
+
     }
 }

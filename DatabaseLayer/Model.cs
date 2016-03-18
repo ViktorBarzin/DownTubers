@@ -94,7 +94,7 @@
         // Videos logic
 
         public ICollection<VideoSet> GetAllVideos()
-        {
+        {               
             return this.Context.VideoSet.ToList();
         }
 

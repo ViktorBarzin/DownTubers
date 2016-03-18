@@ -42,6 +42,7 @@
                                    x:Name="LblMainVideoDownload"/>
                             <ProgressBar Grid.Row="3"
                                          x:Name="PbrMainVideoDownload"
+                                        Visibility="Hidden"
                                          />
                         </Grid>
                         <Grid Grid.Column="0" 
@@ -200,6 +201,7 @@
                                     Content="⬇"
                                     FontSize="30"
                                     x:Name="BtnMainDownload"
+                                        
                                         Click="BtnMainDownload_OnClick"
                                     Style="{DynamicResource ButtonStyle}"/>
                             </Grid>
@@ -253,7 +255,7 @@
                                 Content="◐"
                                 FontSize="20"
                                 x:Name="BtnMainChangeTheme" 
-                                Click="BtnMainChangeTheme_Click"
+                                
                                 Style="{DynamicResource ButtonStyle}">
                                 <Button.ToolTip>
                                     <ToolTip>
@@ -321,6 +323,7 @@
                                 Grid.Row="1"
                                 Content="⊝"
                                 FontSize="20"
+                                Click="BtnProfileLogOut_OnClick"
                                 x:Name="BtnMainLogOut"
                                 Style="{DynamicResource ButtonStyle}">
                                 <Button.ToolTip>
