@@ -5,7 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UserInterface"
         mc:Ignorable="d"
-        Title="Register" Height="461.318" Width="421.553">
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Title="Register" 
+        Height="461.318" 
+        Width="421.553">
     <Grid Style="{DynamicResource BackGroundTheme}">
         <Grid.RowDefinitions>
             <RowDefinition/>

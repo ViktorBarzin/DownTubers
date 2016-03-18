@@ -400,10 +400,13 @@
                             <ColumnDefinition Width="30*"/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-                        <Image Grid.Column="0" 
-                               Grid.Row="0"
-                               x:Name="ImgProfileUserLogo">
-                        </Image>
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition Height="25*"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                        </Grid>
                         <TextBox Grid.Row="1"
                                  Grid.Column="1"
                                  x:Name="TxtProfileUserInfo"
